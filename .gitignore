@@ -1,0 +1,3 @@
+.venv
+uti/data.sqlite
+uti/__pycache__

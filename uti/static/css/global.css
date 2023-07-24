@@ -1,0 +1,38 @@
+:root {
+    --g1: #141414;
+    --g2: #1d1d1d;
+    --g3: #303030;
+    --g4: #3d3d3d;
+    --g5: #525252;
+    --g6: #696969;
+    --g7: #7e7d7d;
+    --g8: #929292;
+    --g9: #a5a5a5;
+    --g10: #b6b6b6;
+    --g11: #cacaca;
+    --g12: #e0e0e0;
+    --g13: #f7f7f7;
+}
+
+body {
+    background: var(--g2);
+    color: var(--g13);
+    margin: 0px;
+    font-family: 'Ubuntu', Arial, sans-serif;
+
+}
+
+h1, h2, h3, p {
+    margin: 0px;
+}
+
+ul {
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
