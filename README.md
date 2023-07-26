@@ -2,3 +2,6 @@
 Um sistema de Ordem de Serviço (em Construção)
 
 Status: Inutilizável
+
+## Funcionalidades
+- Login
