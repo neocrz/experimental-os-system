@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg width="216px" height="216px" viewBox="0 0 216 216" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg">
+  <g id="Group-3">
+    <path d="M0 0L216 0L216 216L0 216L0 0Z" id="Rectangle" fill="none" fill-rule="evenodd" stroke="none" />
+    <g id="Group-2" transform="translate(18 26)">
+      <path d="M140 0C162.094 0 180 17.9056 180 40L180 190L146 190L146 100L38 100L38 190L0 190L0 40C0 17.9056 17.9056 0 40 0L40 60L140 60L140 0Z" id="Rectangle-Copy-Subtract-Subtract" fill="#1D1D1D" fill-rule="evenodd" stroke="none" />
+      <g id="Group" transform="translate(44 0)">
+        <path d="M0 0L92 0L92 25L0 25L0 0Z" id="Rectangle-2" fill="#1D1D1D" fill-rule="evenodd" stroke="none" />
+        <path d="M0 30L92 30L92 55L0 55L0 30Z" id="Rectangle-2-Copy" fill="#1D1D1D" fill-rule="evenodd" stroke="none" />
+      </g>
+    </g>
+  </g>
+</svg>

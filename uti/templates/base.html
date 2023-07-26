@@ -12,16 +12,60 @@
 <body>
     <header class="header">
         <div class="header-container">
-            <a href="{{ url_for('home_page') }}">Logo</a>
-            <div class="header-nav-container">
-                <ul class="header-nav">
-                    <li class="nav-item nav-user"><a href="{{ url_for('login_page') }}">Login</a></li>
-                    <li class="nav-item nav-user"><a href="{{ url_for('register_page') }}">Register</a></li>
+            <a href="{{ url_for('home_page') }}" class="header-logo">O.S.</a>
+            
+            
+                {% if current_user.is_authenticated %}
+                <ul class="header-tools-container">
+                    <li><a href="#"><img src="{{ url_for('static', filename='./img/ordem.svg', _external=True) }}" alt="person ico"></a></li>
+                    <li><a href="#"><img src="{{ url_for('static', filename='./img/person.svg', _external=True) }}" alt="person ico"></a></li>
+                    <li><a href="#"><img src="{{ url_for('static', filename='./img/equipamento.svg', _external=True) }}" alt="person ico"></a></li>
+                    <li><a href="#"><img src="{{ url_for('static', filename='./img/peca.svg', _external=True) }}" alt="person ico"></a></li>
+                    <li><a href="#"><img src="{{ url_for('static', filename='./img/fornecedor.svg', _external=True) }}" alt="person ico"></a></li>
+                    <li><a href="#"><img src="{{ url_for('static', filename='./img/tecnico.svg', _external=True) }}" alt="person ico"></a></li>
                 </ul>
-            </div>
+                <div class="header-nav-container">
+                    <ul class="header-nav">
+                        <li class="nav-item nav-user"><a class="nav-link"><strong>{{ current_user.username }}</strong></a></li>
+                        <li class="nav-item nav-user"><a class="nav-link" href="{{ url_for('logout_page') }}">Sair</a></li>
+                    </ul>
+                </div>
+                {% else %}
+                <div class="header-nav-container">
+                    <ul class="header-nav">
+                        <li class="nav-item nav-user"><a class="nav-link" href="{{ url_for('login_page') }}">Login</a></li>
+                        <!-- <li class="nav-item nav-user"><a class="nav-link" href="{{ url_for('register_page') }}">Register</a></li> -->
+                    </ul>
+                </div>
+                {% endif %}
+            
         </div>
     </header>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">
+                    <button type="button" class="btn close-btn" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <span>{{ message }}</span>
+                </div>
+            {% endfor%}
+        {% endif %}
+    {% endwith %}
     {% block content %}
     {% endblock %}
 </body>
 </html>
+
+<script>
+    closeButtons = document.querySelectorAll(".alert .close-btn");
+    
+    for (closeButton of closeButtons) {
+        closeButton.addEventListener("click", function() {
+            alertDiv = this.closest(".alert");
+		    alertDiv.remove();
+        }
+    );
+}
+</script>

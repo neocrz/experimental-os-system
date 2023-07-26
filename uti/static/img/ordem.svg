@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg width="216px" height="216px" viewBox="0 0 216 216" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg">
+  <g id="ordem">
+    <path d="M0 0L216 0L216 216L0 216L0 0Z" id="Rectangle" fill="none" fill-rule="evenodd" stroke="none" />
+    <path d="M95 26L95 92L94.9999 92.0001L29 92.0001L29 216L187.333 216L187.333 26L95 26ZM29 86.0001L89 86.0001L89 26.0072L29.0072 86L29 86L29 86.0001Z" id="Rectangle-2-Subtract" fill="#1D1D1D" fill-rule="evenodd" stroke="none" />
+  </g>
+</svg>

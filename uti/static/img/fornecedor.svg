@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg width="216px" height="216px" viewBox="0 0 216 216" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg">
+  <g id="fornecedor">
+    <path d="M0 0L216 0L216 216L0 216L0 0Z" id="Rectangle" fill="none" fill-rule="evenodd" stroke="none" />
+    <g id="caixas">
+      <g id="caixa" transform="translate(0 111)">
+        <path d="M105 10C105 4.4764 100.524 0 95 0L85 0L85 30C85 35.5236 80.5236 40 75 40L30 40C24.4764 40 20 35.5236 20 30L20 0L10 0C4.4764 0 0 4.4764 0 10L0 95C0 100.524 4.4764 105 10 105L95 105C100.524 105 105 100.524 105 95L105 10Z" id="Rectangle-2-Copy-Subtract" fill="#1D1D1D" fill-rule="evenodd" stroke="none" />
+        <path d="M79 0L79 0L79 24C79 29.5236 74.5236 34 69 34L36 34C30.4764 34 26 29.5236 26 24L26 0L79 0Z" id="Rectangle-3-Copy" fill="#1D1D1D" stroke="none" />
+      </g>
+      <g id="caixa-Copy" transform="translate(111 111)">
+        <path d="M105 10C105 4.4764 100.524 0 95 0L85 0L85 30C85 35.5236 80.5236 40 75 40L30 40C24.4764 40 20 35.5236 20 30L20 0L10 0C4.4764 0 0 4.4764 0 10L0 95C0 100.524 4.4764 105 10 105L95 105C100.524 105 105 100.524 105 95L105 10Z" id="Rectangle-2-Copy-Subtract" fill="#1D1D1D" fill-rule="evenodd" stroke="none" />
+        <path d="M79 0L79 0L79 24C79 29.5236 74.5236 34 69 34L36 34C30.4764 34 26 29.5236 26 24L26 0L79 0Z" id="Rectangle-3-Copy" fill="#1D1D1D" stroke="none" />
+      </g>
+      <g id="caixa-Copy-2" transform="translate(56 0)">
+        <path d="M105 10C105 4.4764 100.524 0 95 0L85 0L85 30C85 35.5236 80.5236 40 75 40L30 40C24.4764 40 20 35.5236 20 30L20 0L10 0C4.4764 0 0 4.4764 0 10L0 95C0 100.524 4.4764 105 10 105L95 105C100.524 105 105 100.524 105 95L105 10Z" id="Rectangle-2-Copy-Subtract" fill="#1D1D1D" fill-rule="evenodd" stroke="none" />
+        <path d="M79 0L79 0L79 24C79 29.5236 74.5236 34 69 34L36 34C30.4764 34 26 29.5236 26 24L26 0L79 0Z" id="Rectangle-3-Copy" fill="#1D1D1D" stroke="none" />
+      </g>
+    </g>
+  </g>
+</svg>

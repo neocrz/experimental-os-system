@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg width="216px" height="216px" viewBox="0 0 216 216" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg">
+  <g id="person-Copy">
+    <path d="M78 116L82.0039 116L102 150.634L102 216L18 216L18 176C18 142.858 44.8584 116 78 116ZM88.9321 116L102 138.634L102 116L88.9321 116ZM108 216L108 150.641L128 116L138 116C171.142 116 198 142.858 198 176L198 216L108 216ZM108 138.641L121.072 116L108 116L108 138.641ZM168 155L138 155L138 161L168 161L168 155Z" id="Rectangle-Copy-Subtract-Subtract" fill="#1D1D1D" fill-rule="evenodd" stroke="none" />
+    <path d="M58 50C58 22.3858 80.3858 0 108 0C135.614 0 158 22.3858 158 50C158 77.6142 135.614 100 108 100C80.3858 100 58 77.6142 58 50Z" id="Oval" fill="#1D1D1D" fill-rule="evenodd" stroke="none" />
+  </g>
+</svg>

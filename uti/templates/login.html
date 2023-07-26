@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Login
+{% endblock %}
+
+{% block content %}
+<main class="login">
+    <div class="container login-container">
+        <h1>LOGIN</h1>
+        <h2>Faça login para acessar o sistema</h2>
+        <div class="login-form">
+            <form method="POST" class="form-signin" style="color:white">
+                {{ form.hidden_tag() }}
+
+                {{ form.username.label() }}
+                <br>
+                {{ form.username(class="form-control", placeholder="Usuário") }}
+                <br><br>
+                {{ form.password.label() }}
+                <br>
+
+                {{ form.password(class="form-control", placeholder="Senha") }}
+                <br>
+                <br>
+                {{ form.submit(class="btn") }}
+            </form>
+        </div>
+        <h6>Não possui conta? Entre em contato com o Administrador do sistema.</h6>
+    </div>
+</main>
+{% endblock%}
