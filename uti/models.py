@@ -37,24 +37,19 @@ class Cliente(Empresa, db.Model):
     __tablename__ = 'clientes'
     tipo_cliente = db.Column(db.String(length=10), nullable=False, default="físico") #físico ou jurídico
     
-    
-    
-
-class Role(db.Model):
+class Role(Base, db.Model):
+    # roles de usuários do sistema
     __tablename__ = 'roles'
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(64), unique=True)
 
     def __repr__(self):
         return f'<Role {self.name}>'
     users = db.relationship('User', backref='role')
 
-
-class User(db.Model, UserMixin):
+class User(Base, db.Model, UserMixin):
+    # usuários do sistema
     __tablename__ = 'users'
-    id = db.Column(db.Integer(), primary_key=True)
-    username = db.Column(db.String(length=30), nullable=False, unique=True, index=True)
-    password_hash = db.Column(db.String(length=60), nullable=False)
+    username = db.Column(db.String(length=64), nullable=False, unique=True)
+    password_hash = db.Column(db.String(length=64), nullable=False)
     role_id = db.Column(db.Integer, db.ForeignKey('roles.id'))
 
     def __repr__(self):
@@ -71,7 +66,8 @@ class User(db.Model, UserMixin):
     def check_password_correction(self, attemped_password):
         return bcrypt.check_password_hash(self.password_hash, attemped_password)
     
-class Equipamento(db.Model):
+class Equipamento(Base, db.Model):
     __tablename__ = 'equipamentos'
-    id = db.Column(db.Integer(), primary_key=True)
-    name = db.Column(db.String(length=30), nullable=False, unique=True, index=True)
+
+class Peca(Base, db.Model):
+    __tablename__ = 'pecas'

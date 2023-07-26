@@ -2,7 +2,7 @@ from flask import render_template, redirect, url_for, flash, request
 from uti import app, db
 from flask_login import login_user, logout_user, login_required, current_user
 from uti.forms import LoginForm
-from uti.models import User
+from uti.models import User, Cliente
 @app.route('/')
 @app.route("/home")
 def home_page():
@@ -17,7 +17,7 @@ def login_page():
             attemped_user = User.query.filter_by(username=form.username.data).first()
             if attemped_user and attemped_user.check_password_correction(attemped_password=form.password.data):
                 login_user(attemped_user)
-                flash(f"Sucesso! Logado como {attemped_user.username}.", category="success")
+                flash(f"Sucesso! Logado como {attemped_user.name}.", category="success")
                 return redirect(url_for("system_page"))
             else:
                 flash("Usuário e/ou senha não válidos. Tente novamente", category="danger")
@@ -39,3 +39,33 @@ def logout_page():
     logout_user()
     flash("Deslogado com sucesso.", category="info")
     return redirect(url_for("home_page"))
+
+@app.route("/clientes", methods=["GET", "POST"])
+@login_required
+def client_page():
+    clientes = Cliente.query.all()
+    if request.method == "POST":
+        if request.form['client-id']:
+            c_id = request.form['client-id']
+            client_data = Cliente.query.filter_by(id=c_id).first()
+            return render_template("client.html", clientes=clientes, client_data=client_data)
+        else:
+            return render_template("client.html", clientes=clientes)
+
+    if request.method == "GET":
+          # Consulta todos os clientes do banco de dados
+        return render_template("client.html", clientes=clientes)
+
+@app.route('/clientes/excluir')
+@login_required
+def excluir_cliente():
+    client_id = request.args.get('client_id')
+    client = Cliente.query.get(client_id)
+    db.session.delete(client)
+    db.session.commit()
+    return redirect(url_for('client_page'))
+
+@app.route('/clientes/cadastro')
+@login_required
+def cadastro_cliente():
+    return render_template("add-client.html")

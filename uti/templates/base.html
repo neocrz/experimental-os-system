@@ -17,16 +17,16 @@
             
                 {% if current_user.is_authenticated %}
                 <ul class="header-tools-container">
-                    <li><a href="#"><img src="{{ url_for('static', filename='./img/ordem.svg', _external=True) }}" alt="person ico"></a></li>
-                    <li><a href="#"><img src="{{ url_for('static', filename='./img/person.svg', _external=True) }}" alt="person ico"></a></li>
-                    <li><a href="#"><img src="{{ url_for('static', filename='./img/equipamento.svg', _external=True) }}" alt="person ico"></a></li>
-                    <li><a href="#"><img src="{{ url_for('static', filename='./img/peca.svg', _external=True) }}" alt="person ico"></a></li>
-                    <li><a href="#"><img src="{{ url_for('static', filename='./img/fornecedor.svg', _external=True) }}" alt="person ico"></a></li>
-                    <li><a href="#"><img src="{{ url_for('static', filename='./img/tecnico.svg', _external=True) }}" alt="person ico"></a></li>
+                    <li><a href="#"><img src="{{ url_for('static', filename='./img/ordem.svg', _external=True) }}" alt="order ico"></a></li>
+                    <li><a href="{{ url_for('client_page') }}"><img src="{{ url_for('static', filename='./img/client.svg', _external=True) }}" alt="client ico"></a></li>
+                    <li><a href="#"><img src="{{ url_for('static', filename='./img/equipamento.svg', _external=True) }}" alt="equip ico"></a></li>
+                    <li><a href="#"><img src="{{ url_for('static', filename='./img/peca.svg', _external=True) }}" alt="peca ico"></a></li>
+                    <li><a href="#"><img src="{{ url_for('static', filename='./img/fornecedor.svg', _external=True) }}" alt="fornecedor ico"></a></li>
+                    <li><a href="#"><img src="{{ url_for('static', filename='./img/tecnico.svg', _external=True) }}" alt="tecnico ico"></a></li>
                 </ul>
                 <div class="header-nav-container">
                     <ul class="header-nav">
-                        <li class="nav-item nav-user"><a class="nav-link"><strong>{{ current_user.username }}</strong></a></li>
+                        <li class="nav-item nav-user"><a class="nav-link"><strong>{{ current_user.name }}</strong></a></li>
                         <li class="nav-item nav-user"><a class="nav-link" href="{{ url_for('logout_page') }}">Sair</a></li>
                     </ul>
                 </div>
