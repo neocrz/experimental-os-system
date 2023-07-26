@@ -1,7 +1,7 @@
 from flask import render_template, redirect, url_for, flash, request
 from uti import app, db
 from flask_login import login_user, logout_user, login_required, current_user
-from uti.forms import LoginForm
+from uti.forms import LoginForm, AddClientForm
 from uti.models import User, Cliente
 @app.route('/')
 @app.route("/home")
@@ -65,7 +65,24 @@ def excluir_cliente():
     db.session.commit()
     return redirect(url_for('client_page'))
 
-@app.route('/clientes/cadastro')
+@app.route('/clientes/cadastro', methods = ["GET", "POST"])
 @login_required
 def cadastro_cliente():
-    return render_template("add-client.html")
+    form = AddClientForm()
+    form = form
+    if form.validate_on_submit():
+        client_to_create = Cliente(name=form.name.data,
+                              cpf_cnpj=form.cpf_cnpj.data,
+                              endereco=form.endereco.data,
+                              bairro=form.bairro.data
+                              )
+        db.session.add(client_to_create)
+        db.session.commit()
+        flash(f"Cliente '{client_to_create.name}' criado com sucesso!", category="success")
+        return redirect(url_for('client_page'))
+    
+    if form.errors != {}:
+        for err_msg in form.errors.values():
+            flash(f"Erro no registro de cliente: {err_msg[0]}", category="danger")
+    
+    return render_template("add-client.html", form=form)

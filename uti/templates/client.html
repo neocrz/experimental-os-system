@@ -28,7 +28,9 @@ Clientes
         <h2>Informações do Cliente</h2>
         {% if client_data %}
             <p><strong>ID:</strong> <span class="cliente-id">{{ client_data.id }}</span></p>
-            <p><strong>Endereço:</strong> <span class="cliente-endereco"></span></p>
+            <p><strong>Nome:</strong> <span class="cliente-nome">{{ client_data.name }}</span></p>
+            <p><strong>Endereço:</strong> <span class="cliente-endereco">{{ client_data.endereco }}</span></p>
+            <p><strong>Bairro:</strong> <span class="cliente-bairro">{{ client_data.bairro }}</span></p>
             <p><strong>E-mail:</strong> <span class="cliente-email"></span></p>
             <p><strong>Telefone:</strong> <span class="cliente-telefone"></span></p>
         {% else %}

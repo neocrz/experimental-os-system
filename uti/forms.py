@@ -14,3 +14,37 @@ class LoginForm(FlaskForm):
         validators=[DataRequired()]
     )
     submit = SubmitField(label="Acessar")
+
+class AddClientForm(FlaskForm):
+    name = StringField(
+        label="Nome",
+        validators=[
+            DataRequired(),
+            Length( max=64, message="Nome de identificação" )
+            ]
+    )
+
+    cpf_cnpj = StringField(
+        label="Nome",
+        validators=[
+            DataRequired(),
+            Length( max=14, message="CPF/CNPJ" )
+            ]
+    )
+
+    endereco = StringField(
+        label="Endereço",
+        validators=[
+            DataRequired(),
+            Length( max=64, message="CPF/CNPJ" )
+            ]
+    )
+
+    bairro = StringField(
+        label="Bairro",
+        validators=[
+            Length( max=64, message="Bairro" )
+            ]
+    )
+
+    submit = SubmitField(label="Criar Cliente")

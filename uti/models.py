@@ -11,7 +11,7 @@ class Base():
     name = db.Column(db.String(length=64), nullable=False, unique=True, index=True)
 
 class Empresa(Base):
-    cpf_cnpg = db.Column(db.String(length=14), nullable=True, unique=True)
+    cpf_cnpj = db.Column(db.String(length=14), nullable=True, unique=True)
     endereco = db.Column(db.String(length=64), nullable=True, unique=False)
     bairro = db.Column(db.String(length=64), nullable=True, unique=False)
     cidade = db.Column(db.String(length=32), nullable=True, unique=False)

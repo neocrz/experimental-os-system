@@ -5,10 +5,24 @@ Sistema
 {% endblock%}
 
 {% block content %}
-<main class="system">
-    <div class="container system-container">
-        <h1>Sistema OS</h1>
-        <h2>Sistema de Ordem de Serviço experimental criado utilizando <strong>Flask</strong> e <strong>sqlite</strong>.</h2>
+<main class="addclient">
+    <div class="container addclient-container">
+        <h1>Adicionar Client</h1>
+        <form action="" method="POST" class="form-addclient">
+            {{ form.hidden_tag() }} <!-- para prevenir Cross Site Request Forgery -->
+            {{ form.name.label() }}
+            {{ form.name(class="form-control", placeholder="Nome de Cliente") }}
+            {{ form.cpf_cnpj.label() }}
+            {{ form.cpf_cnpj(class="form-control", placeholder="CPF/CNPJ") }}
+
+            {{ form.endereco.label() }}
+            {{ form.endereco(class="form-control", placeholder="Endereço") }}
+
+            {{ form.bairro.label() }}
+            {{ form.bairro(class="form-control", placeholder="Bairro") }}
+
+            {{form.submit(class="btn btn-lg btn-block btn-primary")}}
+        </form>
     </div>
 </main>
 {% endblock %}
