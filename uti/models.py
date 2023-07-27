@@ -11,17 +11,21 @@ class Base():
     name = db.Column(db.String(length=64), nullable=False, unique=True, index=True)
 
 class Empresa(Base):
-    cpf_cnpj = db.Column(db.String(length=14), nullable=True, unique=True)
+    
     endereco = db.Column(db.String(length=64), nullable=True, unique=False)
     bairro = db.Column(db.String(length=64), nullable=True, unique=False)
     cidade = db.Column(db.String(length=32), nullable=True, unique=False)
     estado = db.Column(db.String(length=32), nullable=True, unique=False)
-    cep = db.Column(db.String(length=8), nullable=True, unique=False)
+    cep = db.Column(db.String(length=32), nullable=True, unique=False)
     telefone = db.Column(db.String(length=32), nullable=True, unique=False)
     telefone2 = db.Column(db.String(length=32), nullable=True, unique=False)
-    razao_social = db.Column(db.String(length=64), nullable=True, unique=True)
-    email = db.Column(db.String(length=64), nullable=True, unique=True)
-    insc_estadual = db.Column(db.String(length=32), nullable=True, unique=True)
+    email = db.Column(db.String(length=64), nullable=True, unique=False)
+    razao_social = db.Column(db.String(length=64), nullable=True, unique=False)
+    insc_estadual = db.Column(db.String(length=32), nullable=True, unique=False)
+    insc_municipal = db.Column(db.String(length=32), nullable=True, unique=False)
+    cpf = db.Column(db.String(length=32), nullable=True, unique=False)
+    cnpj = db.Column(db.String(length=32), nullable=True, unique=False)
+    rg = db.Column(db.String(length=32), nullable=True, unique=False)
 
 class System(Empresa, db.Model):
     # empresa responsável pelo sistema

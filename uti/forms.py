@@ -17,33 +17,108 @@ class LoginForm(FlaskForm):
 
 class AddClientForm(FlaskForm):
     name = StringField(
-        label="Nome",
+        label="Nome:",
         validators=[
             DataRequired(),
-            Length( max=64, message="Nome de identificação" )
+            Length( max=64, message="No máximo 64 caracteres" )
             ]
     )
 
-    cpf_cnpj = StringField(
-        label="Nome",
+    cpf = StringField(
+        label="CPF:",
         validators=[
-            DataRequired(),
-            Length( max=14, message="CPF/CNPJ" )
+            Length( max=32, message="No máximo 32 caracteres para CPF" )
+            ]
+    )
+
+    cnpj = StringField(
+        label="CNPJ:",
+        validators=[
+            Length( max=32, message="No máximo 32 caracteres para CNPJ" )
+            ]
+    )
+
+    rg = StringField(
+        label="RG:",
+        validators=[
+            Length( max=32, message="No máximo 32 caracteres para RG" )
             ]
     )
 
     endereco = StringField(
-        label="Endereço",
+        label="Endereço:",
         validators=[
-            DataRequired(),
-            Length( max=64, message="CPF/CNPJ" )
+            Length( max=64, message="No máximo 64 caracteres" )
             ]
     )
 
     bairro = StringField(
-        label="Bairro",
+        label="Bairro:",
         validators=[
-            Length( max=64, message="Bairro" )
+            Length( max=64, message="No máximo 64 caracteres" )
+            ]
+    )
+
+    cidade = StringField(
+        label="Cidade:",
+        validators=[
+            Length( max=64, message="No máximo 64 caracteres" )
+            ]
+    )
+
+    estado = StringField(
+        label="Estado:",
+        validators=[
+            Length( max=64, message="No máximo 64 caracteres" )
+            ]
+    )
+
+    cep = StringField(
+        label="CEP:",
+        validators=[
+            Length( max=32, message="No máximo 32 caracteres para CEP" )
+            ]
+    )
+
+    telefone = StringField(
+        label="Telefone:",
+        validators=[
+            Length( max=32, message="No máximo 32 caracteres para Telefone" )
+            ]
+    )
+
+    telefone2 = StringField(
+        label="Telefone 2:",
+        validators=[
+            Length( max=32, message="No máximo 32 caracteres para Telefone" )
+            ]
+    )
+
+    razao_social = StringField(
+        label="Razão Social:",
+        validators=[
+            Length( max=64, message="No máximo 32 caracteres" )
+            ]
+    )
+
+    email = StringField(
+        label="Email:",
+        validators=[
+            Length( max=64, message="No máximo 64 caracteres" )
+            ]
+    )
+
+    insc_estadual = StringField(
+        label="Inscrição Estadual:",
+        validators=[
+            Length( max=32, message="No máximo 64 caracteres" )
+            ]
+    )
+
+    insc_municipal = StringField(
+        label="Inscrição Municipal:",
+        validators=[
+            Length( max=32, message="No máximo 64 caracteres" )
             ]
     )
 

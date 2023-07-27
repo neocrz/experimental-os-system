@@ -72,9 +72,19 @@ def cadastro_cliente():
     form = form
     if form.validate_on_submit():
         client_to_create = Cliente(name=form.name.data,
-                              cpf_cnpj=form.cpf_cnpj.data,
+                              cpf=form.cpf.data,
+                              cnpj=form.cnpj.data,
+                              rg=form.rg.data,
                               endereco=form.endereco.data,
-                              bairro=form.bairro.data
+                              bairro=form.bairro.data,
+                              cidade=form.cidade.data,
+                              estado=form.estado.data,
+                              cep=form.cep.data,
+                              telefone=form.telefone.data,
+                              telefone2=form.telefone2.data,
+                              email=form.email.data,
+                              insc_estadual=form.insc_estadual.data,
+                              insc_municipal=form.insc_municipal.data,
                               )
         db.session.add(client_to_create)
         db.session.commit()

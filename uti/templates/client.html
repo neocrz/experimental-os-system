@@ -27,17 +27,23 @@ Clientes
     <div class="info-cliente">
         <h2>Informações do Cliente</h2>
         {% if client_data %}
-            <p><strong>ID:</strong> <span class="cliente-id">{{ client_data.id }}</span></p>
-            <p><strong>Nome:</strong> <span class="cliente-nome">{{ client_data.name }}</span></p>
-            <p><strong>Endereço:</strong> <span class="cliente-endereco">{{ client_data.endereco }}</span></p>
-            <p><strong>Bairro:</strong> <span class="cliente-bairro">{{ client_data.bairro }}</span></p>
-            <p><strong>E-mail:</strong> <span class="cliente-email"></span></p>
-            <p><strong>Telefone:</strong> <span class="cliente-telefone"></span></p>
+        <div class="client-data-container">
+            <p><strong>ID:</strong> <span class="cliente-data">{{ client_data.id}}</span></p>
+            <p><strong>Nome:</strong> <span class="cliente-data">{{ client_data.name }}</span></p>
+            <p><strong>Endereço:</strong> <span class="cliente-data">{{ client_data.endereco or ' '}}</span></p>
+            <p><strong>Bairro:</strong> <span class="cliente-data">{{ client_data.bairro or ' '}}</span></p>
+            <p><strong>Cidade:</strong> <span class="cliente-data">{{ client_data.cidade or ' '}}</span></p>
+            <p><strong>Estado:</strong> <span class="cliente-data">{{ client_data.estado or ' '}}</span></p>
+            <p><strong>CEP:</strong> <span class="cliente-data"></span>{{ client_data.cep or ' '}}</p>
+            <p><strong>Telefone:</strong> <span class="cliente-data"></span>{{ client_data.telefone or ' '}}</p>
+            <p><strong>Telefone 2:</strong> <span class="cliente-data"></span>{{ client_data.telefone2 or ' '}}</p>
+            <p><strong>Razão Social:</strong> <span class="cliente-data"></span>{{ client_data.razao_social or ' '}}</p>
+            <p><strong>Email:</strong> <span class="cliente-data"></span>{{ client_data.email or ' '}}</p>
+            <p><strong>Inscrição Estadual:</strong> <span class="cliente-data"></span>{{ client_data.insc_estadual or ' '}}</p>
+            <p><strong>Inscrição Municipal:</strong> <span class="cliente-data"></span>{{ client_data.insc_municipal or ' '}}</p>
+        </div>
         {% else %}
-            <p><strong>ID:</strong> <span class="cliente-id"></span></p>
-            <p><strong>Endereço:</strong> <span class="cliente-endereco"></span></p>
-            <p><strong>E-mail:</strong> <span class="cliente-email"></span></p>
-            <p><strong>Telefone:</strong> <span class="cliente-telefone"></span></p>
+            
         {% endif %}
     </div>
     <a href="{{ url_for('cadastro_cliente') }}">Adicionar Cliente</a>
