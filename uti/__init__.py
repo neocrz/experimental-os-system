@@ -3,11 +3,21 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
 from flask_login import LoginManager
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 app = Flask(__name__)
-basedir = os.path.abspath(os.path.dirname(__file__))
-app.config["SQLALCHEMY_DATABASE_URI"] = 'sqlite:///' + os.path.join(basedir, 'data.sqlite')
-app.config["SECRET_KEY"] = "92797c0346bdf993c1de5eee"
+# LOCAL DB
+# basedir = os.path.abspath(os.path.dirname(__file__))
+# app.config["SQLALCHEMY_DATABASE_URI"] = 'sqlite:///' + os.path.join(basedir, 'data.sqlite')
+# EXTERNAL DB
+
+db_uri = os.environ.get('DB_URI')
+secret_key = os.environ.get('SECRET_KEY')
+
+app.config["SQLALCHEMY_DATABASE_URI"] = db_uri
+app.config["SECRET_KEY"] = secret_key
 db = SQLAlchemy(app)
 bcrypt = Bcrypt(app)
 login_manager = LoginManager(app)

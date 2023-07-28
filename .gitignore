@@ -1,2 +1,4 @@
 .venv
 uti/__pycache__
+.env
+data.sqlite
