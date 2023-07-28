@@ -83,6 +83,26 @@ def modificar_cliente():
     client_id = request.args.get('client_id')
     cliente = Cliente.query.get(client_id)
     form = ModClienteForm()
+
+    if form.validate_on_submit():
+        cliente.name=form.name.data
+        cliente.cpf=form.cpf.data
+        cliente.cnpj=form.cnpj.data
+        cliente.rg=form.rg.data
+        cliente.endereco=form.endereco.data
+        cliente.bairro=form.bairro.data
+        cliente.cidade=form.cidade.data
+        cliente.estado=form.estado.data
+        cliente.cep=form.cep.data
+        cliente.telefone=form.telefone.data
+        cliente.telefone2=form.telefone2.data
+        cliente.email=form.email.data
+        cliente.insc_estadual=form.insc_estadual.data
+        cliente.insc_municipal=form.insc_municipal.data
+        cliente.razao_social=form.razao_social.data
+        db.session.commit()
+        return redirect(url_for('client_page'))
+
     return render_template('mod-client.html', cliente=cliente, form=form)
 
 @app.route('/clientes/cadastro', methods = ["GET", "POST"])

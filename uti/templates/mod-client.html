@@ -9,7 +9,7 @@ Modificar cliente
     <div class="container addclient-container">
         <h1>Modificar Cliente</h1>
         <form action="" method="POST" class="form-addclient">
-            <input type="hidden" name="client-id" value="{{ cliente.id }}" /> 
+            <input type="hidden" name="client_id" value="{{ cliente.id }}" /> 
             {{ form.hidden_tag() }} <!-- para prevenir Cross Site Request Forgery -->
             <div class="form-item">
             {{ form.name.label() }}
