@@ -15,6 +15,12 @@ def css():
     resp.headers['Content-type'] = 'text/css'
     return resp
 
+@app.route('/script.css')
+def script():
+    resp = make_response(render_template("script.js"))
+    resp.headers['Content-type'] = 'text/javascript'
+    return resp
+
 @app.route("/login", methods=["GET", "POST"])
 def login_page():
     form = LoginForm()
