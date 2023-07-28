@@ -8,17 +8,23 @@ from dotenv import load_dotenv
 load_dotenv()
 
 app = Flask(__name__)
-# LOCAL DB
-# basedir = os.path.abspath(os.path.dirname(__file__))
-# app.config["SQLALCHEMY_DATABASE_URI"] = 'sqlite:///' + os.path.join(basedir, 'data.sqlite')
-# EXTERNAL DB
 
-db_uri = os.environ.get('DB_URI')
-secret_key = os.environ.get('SECRET_KEY')
+basedir = os.path.abspath(os.path.dirname(__file__))
 
-app.config["SQLALCHEMY_DATABASE_URI"] = db_uri
-app.config["SECRET_KEY"] = secret_key
+DB_URI = os.environ.get('DB_URI')
+SECRET_KEY = os.environ.get('SECRET_KEY')
+DB_EXT = os.environ.get("DB_EXT")
+
+if DB_EXT == "TRUE":
+    app.config["SQLALCHEMY_DATABASE_URI"] = DB_URI
+else:
+    # LOCAL DB
+    app.config["SQLALCHEMY_DATABASE_URI"] = 'sqlite:///' + os.path.join(basedir, 'data.sqlite')
+
+app.config["SECRET_KEY"] = SECRET_KEY
+
 db = SQLAlchemy(app)
+
 bcrypt = Bcrypt(app)
 login_manager = LoginManager(app)
 login_manager.login_view = "login_page"
