@@ -6,9 +6,12 @@ from flask_login import UserMixin
 def load_user(user_id):
     return User.query.get(int(user_id))
 
-class Base():
+class Base(db.Model):
+    __abstract__ = True
     id = db.Column(db.Integer(), primary_key=True)
-    name = db.Column(db.String(length=64), nullable=False, unique=True, index=True)
+    name = db.Column(db.String(length=64), nullable=False, unique=True)
+    def __repr__(self):
+        return f'Item {self.name}'
 
 class Empresa(Base):
     
@@ -27,21 +30,22 @@ class Empresa(Base):
     cnpj = db.Column(db.String(length=32), nullable=True, unique=False)
     rg = db.Column(db.String(length=32), nullable=True, unique=False)
 
-class System(Empresa, db.Model):
+class System(Empresa):
     # empresa responsável pelo sistema
     logo_location = db.Column(db.String(length=64), nullable=True, unique=False)
     pass
 
-class Fornecedor(Empresa, db.Model):
+class Fornecedor(Empresa):
     # empresas fornecedoras
+    tipo_fornecedor = db.Column(db.String(length=10), nullable=False, default="Física") #Física ou Jurídica
     __tablename__ = 'fornecedores'    
 
-class Cliente(Empresa, db.Model):
+class Cliente(Empresa):
     # empresas clientes
     __tablename__ = 'clientes'
     tipo_cliente = db.Column(db.String(length=10), nullable=False, default="Física") #Física ou Jurídica
     
-class Role(Base, db.Model):
+class Role(Base):
     # roles de usuários do sistema
     __tablename__ = 'roles'
 
@@ -49,7 +53,7 @@ class Role(Base, db.Model):
         return f'<Role {self.name}>'
     users = db.relationship('User', backref='role')
 
-class User(Base, db.Model, UserMixin):
+class User(Base, UserMixin):
     # usuários do sistema
     __tablename__ = 'users'
     username = db.Column(db.String(length=64), nullable=False, unique=True)

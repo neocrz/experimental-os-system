@@ -52,10 +52,15 @@ def logout_page():
     flash("Deslogado com sucesso.", category="info")
     return redirect(url_for("index"))
 
+
+
 @app.route("/clientes", methods=["GET", "POST"])
 @login_required
 def client_page():
-    clientes = Cliente.query.all()
+    # clientes = Cliente.query.all()
+    clientes = Cliente.query.order_by(Cliente.name).all()
+    
+
     if request.method == "POST":
         if request.form.get('client-id'):
             c_id = request.form['client-id']
@@ -66,10 +71,8 @@ def client_page():
             client_data = Cliente.query.filter_by(name=c_name).first()
             return render_template("client.html", clientes=clientes, client_data=client_data)
     
-        return render_template("client.html", clientes=clientes)
 
     if request.method == "GET":
-          # Consulta todos os clientes do banco de dados
         return render_template("client.html", clientes=clientes)
 
 @app.route('/clientes/excluir')
