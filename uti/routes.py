@@ -57,12 +57,16 @@ def logout_page():
 def client_page():
     clientes = Cliente.query.all()
     if request.method == "POST":
-        if request.form['client-id']:
+        if request.form.get('client-id'):
             c_id = request.form['client-id']
-            client_data = Cliente.query.filter_by(id=c_id).first()
+            client_data = Cliente.query.get(c_id)
             return render_template("client.html", clientes=clientes, client_data=client_data)
-        else:
-            return render_template("client.html", clientes=clientes)
+        if request.form.get('client-name'):
+            c_name = request.form["client-name"]
+            client_data = Cliente.query.filter_by(name=c_name).first()
+            return render_template("client.html", clientes=clientes, client_data=client_data)
+    
+        return render_template("client.html", clientes=clientes)
 
     if request.method == "GET":
           # Consulta todos os clientes do banco de dados
