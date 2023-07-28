@@ -16,6 +16,7 @@ Clientes
                 <form method="post" action="{{url_for('client_page')}}">
                     <input type="hidden" name="client-id" value="{{ cliente.id }}" /> 
                     <span class="cliente-nome">{{ cliente.name }}</span> <a href="#" class="exibir-info" onclick="this.parentNode.submit();">Info</a>
+                    <a href="{{ url_for('modificar_cliente', client_id=cliente.id) }}">Modificar</a>
                     <a href="{{ url_for('excluir_cliente', client_id=cliente.id) }}">Excluir</a>
                 </form>                  
                   

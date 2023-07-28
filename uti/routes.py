@@ -1,7 +1,7 @@
 from flask import render_template, redirect, url_for, flash, request, make_response
 from uti import app, db
 from flask_login import login_user, logout_user, login_required, current_user
-from uti.forms import LoginForm, AddClientForm
+from uti.forms import LoginForm, AddClientForm, ModClienteForm
 from uti.models import User, Cliente
 @app.route('/')
 @app.route("/home")
@@ -71,11 +71,18 @@ def excluir_cliente():
     db.session.commit()
     return redirect(url_for('client_page'))
 
+@app.route('/clientes/modificar')
+@login_required
+def modificar_cliente():
+    client_id = request.args.get('client_id')
+    cliente = Cliente.query.get(client_id)
+    form = ModClienteForm()
+    return render_template('mod-client.html', cliente=cliente, form=form)
+
 @app.route('/clientes/cadastro', methods = ["GET", "POST"])
 @login_required
 def cadastro_cliente():
     form = AddClientForm()
-    form = form
     if form.validate_on_submit():
         client_to_create = Cliente(name=form.name.data,
                               cpf=form.cpf.data,
@@ -91,6 +98,7 @@ def cadastro_cliente():
                               email=form.email.data,
                               insc_estadual=form.insc_estadual.data,
                               insc_municipal=form.insc_municipal.data,
+                              razao_social=form.razao_social.data
                               )
         db.session.add(client_to_create)
         db.session.commit()

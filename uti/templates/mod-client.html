@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Modificar cliente
+{% endblock%}
+
+{% block content %}
+<main class="addclient">
+    <div class="container addclient-container">
+        <h1>Modificar Cliente</h1>
+        <form action="" method="POST" class="form-addclient">
+            <input type="hidden" name="client-id" value="{{ cliente.id }}" /> 
+            {{ form.hidden_tag() }} <!-- para prevenir Cross Site Request Forgery -->
+            <div class="form-item">
+            {{ form.name.label() }}
+            {{ form.name(class="form-control", placeholder="Nome de Cliente", value=cliente.name) }}
+            </div>
+            <div class="form-item">
+            {{ form.cpf.label() }}
+            {{ form.cpf(class="form-control", value=cliente.cpf, onkeyup="formataValorCpf(this)", onpaste="TrataPaste(this, event, 'cpf')", placeholder="CPF") }}
+            </div>
+            <div class="form-item">
+            {{ form.cnpj.label() }}
+            {{ form.cnpj(class="form-control", value=cliente.cnpj, onkeyup="formataValorCnpj(this)", onpaste="TrataPaste(this, event, 'cnpj')", placeholder="CNPJ") }}
+            </div>
+            <div class="form-item">
+            {{ form.rg.label() }}
+            {{ form.rg(class="form-control", value=cliente.rg, onkeyup="formataValorRg(this)", onpaste="TrataPaste(this, event, 'rg')", placeholder="RG") }}
+            </div>
+            <div class="form-item">
+            {{ form.endereco.label() }}
+            {{ form.endereco(class="form-control", value=cliente.endereco, placeholder="Endereço") }}
+            </div>
+            <div class="form-item">
+            {{ form.bairro.label() }}
+            {{ form.bairro(class="form-control", value=cliente.bairro, placeholder="Bairro") }}
+            </div>
+            <div class="form-item">
+            {{ form.cidade.label() }}
+            {{ form.cidade(class="form-control", value=cliente.cidade, placeholder="Cidade") }}
+            </div>
+            <div class="form-item">
+            {{ form.estado.label() }}
+            {{ form.estado(class="form-control", value=cliente.estado, placeholder="Estado") }}
+            </div>
+            <div class="form-item">
+            {{ form.cep.label() }}
+            {{ form.cep(class="form-control", value=cliente.cep, onkeyup="formataValorCep(this)", onpaste="TrataPaste(this, event, 'cep')", placeholder="CEP") }}
+            </div>
+            <div class="form-item">
+            {{ form.telefone.label() }}
+            {{ form.telefone(class="form-control", value=cliente.telefone, onkeyup="formataTelefone(this)", onpaste="TrataPaste(this, event, 'tel')", placeholder="Telefone",) }}
+            </div>
+            <div class="form-item">
+            {{ form.telefone2.label() }}
+            {{ form.telefone2(class="form-control", value=cliente.telefone2, onkeyup="formataTelefone(this)", onpaste="TrataPaste(this, event, 'tel')", placeholder="Telefone 2") }}
+            </div>
+            <div class="form-item">
+            {{ form.razao_social.label() }}
+            {{ form.razao_social(class="form-control", value=cliente.razao_social, placeholder="Razão Social") }}
+            </div>
+            <div class="form-item">
+            {{ form.email.label() }}
+            {{ form.email(class="form-control", value=cliente.email, placeholder="Email") }}
+            </div>
+            <div class="form-item">
+            {{ form.insc_estadual.label() }}
+            {{ form.insc_estadual(class="form-control", value=cliente.insc_estadual, placeholder="Inscrição Estadual") }}
+            </div>
+            <div class="form-item">
+            {{ form.insc_municipal.label() }}
+            {{ form.insc_municipal(class="form-control", value=cliente.insc_municipal, placeholder="Inscrição Municipal") }}
+            </div>
+            {{form.submit(class="btn btn-primary form-item")}}
+            <a href="{{ url_for('client_page') }}" class="btn btn-less">Voltar</a>
+        </form>
+    </div>
+</main>
+<script src="{{ url_for('static', filename='./script/add-client.js', _external=True) }}">
+    
+</script>
+{% endblock %}

@@ -15,7 +15,7 @@ class LoginForm(FlaskForm):
     )
     submit = SubmitField(label="Acessar")
 
-class AddClientForm(FlaskForm):
+class ClienteForm(FlaskForm):
     name = StringField(
         label="Nome:",
         validators=[
@@ -122,4 +122,9 @@ class AddClientForm(FlaskForm):
             ]
     )
 
+class AddClientForm(ClienteForm):
+
     submit = SubmitField(label="Criar Cliente")
+
+class ModClienteForm(ClienteForm):
+    submit = SubmitField(label="Modificar Cliente")

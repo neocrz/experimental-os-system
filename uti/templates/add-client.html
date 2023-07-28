@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block title %}
-Sistema
+Adicionar Cliente
 {% endblock%}
 
 {% block content %}
@@ -71,6 +71,7 @@ Sistema
             {{ form.insc_municipal(class="form-control", placeholder="Inscrição Municipal") }}
             </div>
             {{form.submit(class="btn btn-primary form-item")}}
+            <a href="{{ url_for('client_page') }}" class="btn btn-less">Voltar</a>
         </form>
     </div>
 </main>

@@ -47,18 +47,25 @@ img {
 
 .btn {
     font-family: 'Roboto', Arial, Helvetica, sans-serif;
+    font-size: 1rem;
     background-color: var(--g13);
     color: #141414;
     display: inline-block;
     padding: 10px 20px;
     margin: auto;
     border: none;
+    border-radius: 5px;
     text-align: center;
     text-decoration: none;
     text-transform: uppercase;
     font-weight: bold;
     letter-spacing: 1px;
     cursor: pointer;
+}
+
+.btn-less {
+    font-size: 0.8rem;
+    background-color: var(--g13);
 }
 
 .alert {
