@@ -23,7 +23,7 @@
   width: 100%;
 }
 .client .autocomplete input[type=submit] {
-  background-color: DodgerBlue;
+  background-color: var(--g6);
   color: #fff;
 }
 .client .autocomplete .autocomplete-items {
@@ -32,33 +32,37 @@
   border-bottom: none;
   border-top: none;
   z-index: 99;
-  /*position the autocomplete items to be the same width as the container:*/
+  
   top: 100%;
   left: 0;
   right: 0;
 }
+
 .client .autocomplete .autocomplete-items div {
   padding: 10px;
   cursor: pointer;
-  background-color: #fff;
-  border-bottom: 1px solid #d4d4d4;
-}
-.client .autocomplete .autocomplete-items div:hover {
-  /*when hovering an item:*/
-  background-color: #e9e9e9;
-}
-.client .autocomplete .autocomplete-active {
-  /*when navigating through the items using the arrow keys:*/
-  background-color: DodgerBlue !important;
-  color: #ffffff;
+  background-color: var(--g13);
+  border-bottom: 1px solid var(--g8);
 }
 
-/* Estilo da caixa que contém a lista de clientes */
+.client .autocomplete .autocomplete-items div:hover {
+  /*when hovering an item:*/
+  background-color: var(--g12);
+}
+
+.client .autocomplete .autocomplete-active {
+  /*when navigating through the items using the arrow keys:*/
+  background-color: var(--g7) !important;
+  color: var(--g13);
+}
+
 .client .clientes-box {
     max-height: 300px; /* Altura máxima da caixa */
-    overflow-y: auto; /* Adiciona o scroll vertical caso o conteúdo ultrapasse a altura máxima */
-    border: 1px solid #ccc; /* Estilo da borda da caixa */
-    padding: 10px; /* Espaçamento interno da caixa */
+    overflow-y: auto; /* scroll vertical caso o conteúdo ultrapasse a altura máxima */
+    border: 1px solid var(--g10); 
+    padding: 40px 20px; 
+    background-color: var(--g13);
+    border-radius: 10px;
 }
 /* Estilo da lista de clientes */
 .client .clientes-list {
@@ -67,7 +71,7 @@
 }
 /* Estilo dos itens da lista */
 .client .clientes-item {
-    margin-bottom: 5px;
+    margin-bottom: 10px;
 }
 
 .client .info-cliente {
@@ -78,6 +82,9 @@
 .info-cliente .client-data-container {
     display: grid;
     gap: 10px;
+    padding: 20px;
+    background-color: var(--g11);
+    border-radius: 10px;
 }
 .info-cliente .client-data-container span {
     padding-left: 5px;
@@ -119,9 +126,19 @@
 .client-box-header {
     display: grid;
     grid-template-rows: 2fr 1fr;
-    gap: 20px;
+    gap: 0px 20px;
+    padding: 20px 0px;
 }
 .client-search .client-box-header .add-client {
     grid-row: 1;
     grid-column: 2;
+}
+
+
+.client .cliente-nome {
+    font-family: 'Roboto', Arial, Helvetica, sans-serif;
+    text-decoration: none;
+    color: var(--g1);
+    font-size: 1.128rem;
+    border-bottom: 1px solid var(--g11);
 }

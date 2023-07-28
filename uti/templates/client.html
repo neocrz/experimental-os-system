@@ -25,7 +25,7 @@ Clientes
                         
                         <form method="post" action="{{url_for('client_page')}}">
                             <input type="hidden" name="client-id" value="{{ cliente.id }}" /> 
-                            <span class="cliente-nome">{{ cliente.name }}</span> <a href="#" class="exibir-info" onclick="this.parentNode.submit();">Info</a>
+                            <a href="#" class="cliente-nome exibir-info" onclick="this.parentNode.submit();">{{ cliente.name }}</a>
                             
                         </form>                  
                         
