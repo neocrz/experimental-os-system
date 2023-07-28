@@ -77,7 +77,7 @@ def excluir_cliente():
     db.session.commit()
     return redirect(url_for('client_page'))
 
-@app.route('/clientes/modificar')
+@app.route('/clientes/modificar', methods=["GET", "POST"])
 @login_required
 def modificar_cliente():
     client_id = request.args.get('client_id')
