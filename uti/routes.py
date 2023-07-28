@@ -5,7 +5,7 @@ from uti.forms import LoginForm, AddClientForm
 from uti.models import User, Cliente
 @app.route('/')
 @app.route("/home")
-def home_page():
+def index():
     return render_template("index.html")
 
 
@@ -38,7 +38,7 @@ def system_page():
 def logout_page():
     logout_user()
     flash("Deslogado com sucesso.", category="info")
-    return redirect(url_for("home_page"))
+    return redirect(url_for("index"))
 
 @app.route("/clientes", methods=["GET", "POST"])
 @login_required
