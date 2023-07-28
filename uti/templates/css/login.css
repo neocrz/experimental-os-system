@@ -1,0 +1,12 @@
+.login-container {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 64px;
+}
+
+.login-form label {
+    color: var(--g3);
+}
+.login-form .btn {
+    margin-top: 40px;
+}

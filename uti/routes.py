@@ -1,4 +1,4 @@
-from flask import render_template, redirect, url_for, flash, request
+from flask import render_template, redirect, url_for, flash, request, make_response
 from uti import app, db
 from flask_login import login_user, logout_user, login_required, current_user
 from uti.forms import LoginForm, AddClientForm
@@ -8,6 +8,11 @@ from uti.models import User, Cliente
 def index():
     return render_template("index.html")
 
+@app.route('/style.css')
+def css():
+    resp = make_response(render_template("style.css"))
+    resp.headers['Content-type'] = 'text/css'
+    return resp
 
 @app.route("/login", methods=["GET", "POST"])
 def login_page():
