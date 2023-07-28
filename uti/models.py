@@ -39,7 +39,7 @@ class Fornecedor(Empresa, db.Model):
 class Cliente(Empresa, db.Model):
     # empresas clientes
     __tablename__ = 'clientes'
-    tipo_cliente = db.Column(db.String(length=10), nullable=False, default="físico") #físico ou jurídico
+    tipo_cliente = db.Column(db.String(length=10), nullable=False, default="Física") #Física ou Jurídica
     
 class Role(Base, db.Model):
     # roles de usuários do sistema

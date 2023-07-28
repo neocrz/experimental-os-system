@@ -11,6 +11,10 @@ Adicionar Cliente
         <form action="" method="POST" class="form-addclient">
             {{ form.hidden_tag() }} <!-- para prevenir Cross Site Request Forgery -->
             <div class="form-item">
+                {{ form.tipo_cliente.label() }}
+                {{ form.tipo_cliente(class="form-control", placeholder="Pessoa :") }}
+            </div>
+            <div class="form-item">
             {{ form.name.label() }}
             {{ form.name(class="form-control", placeholder="Nome de Cliente") }}
             </div>

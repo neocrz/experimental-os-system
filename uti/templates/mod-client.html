@@ -12,6 +12,10 @@ Modificar cliente
             <input type="hidden" name="client_id" value="{{ cliente.id }}" /> 
             {{ form.hidden_tag() }} <!-- para prevenir Cross Site Request Forgery -->
             <div class="form-item">
+                {{ form.tipo_cliente.label() }}
+                {{ form.tipo_cliente(class="form-control", placeholder="Pessoa :") }}
+            </div>
+            <div class="form-item">
             {{ form.name.label() }}
             {{ form.name(class="form-control", placeholder="Nome de Cliente", value=cliente.name) }}
             </div>

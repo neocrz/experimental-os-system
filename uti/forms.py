@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField
+from wtforms import StringField, PasswordField, SubmitField, SelectField
 from uti import app
 from wtforms.validators import Length, EqualTo, Email, DataRequired, ValidationError
 from uti.models import User
@@ -23,6 +23,11 @@ class ClienteForm(FlaskForm):
             Length( max=64, message="No máximo 64 caracteres" )
             ]
     )
+
+    tipo_cliente = SelectField(
+        u'Tipo', 
+        choices=[('Física', 'Física'), ('Jurídica', 'Jurídica')]
+        )
 
     cpf = StringField(
         label="CPF:",

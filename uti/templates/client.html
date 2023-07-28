@@ -30,6 +30,7 @@ Clientes
         {% if client_data %}
         <div class="client-data-container">
             <p><strong>ID:</strong> <span class="cliente-data">{{ client_data.id}}</span></p>
+            <p><strong>Tipo Cliente:</strong> <span class="cliente-data">{{ client_data.tipo_cliente}}</span></p>
             <p><strong>Nome:</strong> <span class="cliente-data">{{ client_data.name }}</span></p>
             <p><strong>Endereço:</strong> <span class="cliente-data">{{ client_data.endereco or ' '}}</span></p>
             <p><strong>Bairro:</strong> <span class="cliente-data">{{ client_data.bairro or ' '}}</span></p>
