@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Ordem
+{% endblock %}
+
+{% block content %}
+<main class="ordem">
+    <div class="container ordem-container">
+        <h1>Lista de Ordens de serviço</h1>
+        <div class="ordem-search">
+            <div class="ordem-search-header">
+                <form method="post" class="ordem-search-header-form" autocomplete="off"  action="{{url_for('ordem_page')}}">
+                    <div class="autocomplete">
+                        <input id="myInput" type="text" name="client-name" placeholder="Pesquisar Ordem">
+                        <input type="submit">
+                    </div>
+                </form>
+                <a href="{{ url_for('add_ordem') }}" class="btn btn-less add-client">Adicionar Ordem</a>
+            </div>
+            <div class="ordem-search-box">
+                <ul class="ordem-list">
+                    {% for ordem in ordens %}
+                    <li class="ordem-item">
+                        <form method="post" action="{{url_for('ordem_page')}}">
+                            <input type="hidden" name="ordem-id" value="{{ ordem.id }}" /> 
+                            <a href="#" onclick="this.parentNode.submit();">{{ ordem.id }} | {{ ordem.cliente.name }}</a>
+                        </form>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</main>
+
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Adicionar Cliente
+{% endblock%}
+
+{% block content %}
+<main class="add-ordem">
+    <div class="container add-ordem-container">
+        <h1>Adicionar Cliente</h1>
+        <form action="" method="POST" class="form-add-ordem">
+            {{ form.hidden_tag() }} <!-- para prevenir Cross Site Request Forgery -->
+            <div class="form-item">
+            {{ form.desc.label() }}
+            {{ form.desc(class="form-control", placeholder="Descrição do Serviço") }}
+            </div>
+            {{form.submit(class="btn btn-primary form-item")}}
+            <a href="{{ url_for('ordem_page') }}" class="btn btn-less">Voltar</a>
+        </form>
+    </div>
+</main>
+
+{% endblock %}

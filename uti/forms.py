@@ -56,6 +56,12 @@ class ClienteForm(FlaskForm):
             Length( max=64, message="No máximo 64 caracteres" )
             ]
     )
+    num_endereco = StringField(
+        label="Nº:",
+        validators=[
+            Length( max=16, message="No máximo 16 caracteres" )
+            ]
+    )
 
     bairro = StringField(
         label="Bairro:",
@@ -133,3 +139,17 @@ class AddClientForm(ClienteForm):
 
 class ModClienteForm(ClienteForm):
     submit = SubmitField(label="Modificar Cliente")
+
+class OrdemForm(FlaskForm):
+    desc = StringField(
+        label="Descrição:",
+        validators=[
+            Length( max=256, message="No máximo 256 caracteres para a descrição" )
+            ]
+    )
+
+class AddOrdemForm(OrdemForm):
+    submit = SubmitField(label="Criar Ordem")
+
+class ModOrdemForm(OrdemForm):
+    submit = SubmitField(label="Modificar Ordem")

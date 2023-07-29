@@ -35,6 +35,10 @@ Adicionar Cliente
             {{ form.endereco(class="form-control", placeholder="Endereço") }}
             </div>
             <div class="form-item">
+            {{ form.num_endereco.label() }}
+            {{ form.num_endereco(class="form-control", placeholder="Número") }}
+            </div>
+            <div class="form-item">
             {{ form.bairro.label() }}
             {{ form.bairro(class="form-control", placeholder="Bairro") }}
             </div>

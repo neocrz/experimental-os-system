@@ -17,7 +17,7 @@
             
                 {% if current_user.is_authenticated %}
                 <ul class="header-tools-container">
-                    <li><a href="#"><img src="{{ url_for('static', filename='./img/ordem.svg', _external=True) }}" alt="order ico"></a></li>
+                    <li><a href="{{ url_for('ordem_page') }}"><img src="{{ url_for('static', filename='./img/ordem.svg', _external=True) }}" alt="order ico"></a></li>
                     <li><a href="{{ url_for('client_page') }}"><img src="{{ url_for('static', filename='./img/client.svg', _external=True) }}" alt="client ico"></a></li>
                     <li><a href="#"><img src="{{ url_for('static', filename='./img/equipamento.svg', _external=True) }}" alt="equip ico"></a></li>
                     <li><a href="#"><img src="{{ url_for('static', filename='./img/peca.svg', _external=True) }}" alt="peca ico"></a></li>

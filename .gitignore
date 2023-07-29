@@ -2,3 +2,4 @@
 uti/__pycache__
 .env
 uti/data.sqlite
+fast.py

@@ -1,0 +1,51 @@
+.ordem .ordem-container {
+    grid-template-columns: 1fr 1fr;
+    gap: 20px 20px;
+}
+
+.ordem h1 {
+    grid-column: 1 / -1;
+    margin-bottom: 40px;
+}
+
+.ordem .ordem-search {
+    grid-column: 1;
+    display: grid;
+    gap: 40px 0px;
+}
+
+.ordem .ordem-search-header {
+    display: flex;
+    gap: 0px 20px;
+}
+
+.ordem .ordem-search-header-form {
+    margin: 0px;
+    padding: 0px;
+}
+
+.ordem .ordem-search-box {
+    max-height: 300px; /* Altura máxima da caixa */
+    overflow-y: auto; /* scroll vertical caso o conteúdo ultrapasse a altura máxima */
+    border: 1px solid var(--g10); 
+    padding: 40px 20px; 
+    background-color: var(--g13);
+    border-radius: 10px;
+}
+
+.ordem .ordem-search-box .ordem-list {
+    list-style: none; /* Remove os bullets padrão da lista */
+    padding: 0;
+}
+
+.ordem .ordem-search-box .ordem-item {
+    margin-bottom: 10px;
+}
+
+.ordem .ordem-search-box .ordem-item a{
+    font-family: 'Roboto', Arial, Helvetica, sans-serif;
+    text-decoration: none;
+    color: var(--g1);
+    font-size: 1.128rem;
+    border-bottom: 1px solid var(--g11);
+}

@@ -1,8 +1,9 @@
 from flask import render_template, redirect, url_for, flash, request, make_response
 from uti import app, db
 from flask_login import login_user, logout_user, login_required, current_user
-from uti.forms import LoginForm, AddClientForm, ModClienteForm
-from uti.models import User, Cliente
+from uti.forms import LoginForm, AddClientForm, ModClienteForm, AddOrdemForm
+from uti.models import User, Cliente, Ordem
+
 @app.route('/')
 @app.route("/home")
 def index():
@@ -52,8 +53,6 @@ def logout_page():
     flash("Deslogado com sucesso.", category="info")
     return redirect(url_for("index"))
 
-
-
 @app.route("/clientes", methods=["GET", "POST"])
 @login_required
 def client_page():
@@ -99,6 +98,7 @@ def modificar_cliente():
         cliente.cnpj=form.cnpj.data
         cliente.rg=form.rg.data
         cliente.endereco=form.endereco.data
+        cliente.num_endereco=form.num_endereco.data
         cliente.bairro=form.bairro.data
         cliente.cidade=form.cidade.data
         cliente.estado=form.estado.data
@@ -127,6 +127,7 @@ def cadastro_cliente():
                               cnpj=form.cnpj.data,
                               rg=form.rg.data,
                               endereco=form.endereco.data,
+                              num_endereco=form.num_endereco.data,
                               bairro=form.bairro.data,
                               cidade=form.cidade.data,
                               estado=form.estado.data,
@@ -148,3 +149,19 @@ def cadastro_cliente():
             flash(f"Erro no registro de cliente: {err_msg[0]}", category="danger")
     
     return render_template("add-client.html", form=form)
+
+@app.route('/ordem', methods = ["GET", "POST"])
+@login_required
+def ordem_page():
+    return render_template("ordem.html")
+
+@app.route('/ordem/adicionar', methods = ["GET", "POST"])
+@login_required
+def add_ordem():
+    form = AddOrdemForm()
+    if form.validate_on_submit():
+        ordem_to_create = Ordem(desc=form.desc.data)
+        db.session.add(ordem_to_create)
+        db.session.commit()
+
+    return render_template("add-ordem.html", form=form)
