@@ -148,6 +148,11 @@ class OrdemForm(FlaskForm):
             ]
     )
 
+    tipo_ordem = SelectField(
+        u'Tipo de Ordem:', 
+        choices=[('Ordem de Serviço', 'Ordem de Serviço'), ('Orçamento', 'Orçamento')]
+        )
+
 class AddOrdemForm(OrdemForm):
     submit = SubmitField(label="Criar Ordem")
 

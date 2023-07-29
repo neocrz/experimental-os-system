@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% from "_formhelpers.html" import render_field %}
 {% block title %}
 Adicionar Cliente
 {% endblock%}
@@ -7,14 +7,13 @@ Adicionar Cliente
 {% block content %}
 <main class="add-ordem">
     <div class="container add-ordem-container">
-        <h1>Adicionar Cliente</h1>
+        <h1>Adicionar Ordem</h1>
         <form action="" method="POST" class="form-add-ordem">
             {{ form.hidden_tag() }} <!-- para prevenir Cross Site Request Forgery -->
-            <div class="form-item">
-            {{ form.desc.label() }}
-            {{ form.desc(class="form-control", placeholder="Descrição do Serviço") }}
-            </div>
-            {{form.submit(class="btn btn-primary form-item")}}
+            {{ render_field(form.desc, placeholder="Descrição da OS") }}
+            {{ render_field(form.tipo_ordem, placeholder="Tipo de Ordem") }}
+            
+            {{form.submit(class="btn btn-less form-item")}}
             <a href="{{ url_for('ordem_page') }}" class="btn btn-less">Voltar</a>
         </form>
     </div>

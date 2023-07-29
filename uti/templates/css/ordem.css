@@ -15,13 +15,69 @@
 }
 
 .ordem .ordem-search-header {
-    display: flex;
-    gap: 0px 20px;
+    display: grid;
+    gap: 20px;
+    padding: 20px;
 }
 
 .ordem .ordem-search-header-form {
     margin: 0px;
     padding: 0px;
+    grid-column: 1;
+}
+
+.ordem .ordem-search-header .btn{
+    grid-column: 2;
+}
+.ordem .ordem-search-header-form .autocomplete {
+    position: relative;
+    display: flex;
+}
+
+.ordem .ordem-search-header-form .autocomplete input {
+    border: 1px solid transparent;
+    background-color: #f1f1f1;
+    padding: 10px;
+    font-size: 16px;
+}
+
+.ordem .ordem-search-header-form .autocomplete input[type=text] {
+    background-color: #f1f1f1;
+    width: 100%;
+}
+.ordem .ordem-search-header-form .autocomplete input[type=submit] {
+    background-color: var(--g6);
+    color: #fff;
+}
+
+.ordem .ordem-search-header-form .autocomplete .autocomplete-items {
+    position: absolute;
+    border: 1px solid #d4d4d4;
+    border-bottom: none;
+    border-top: none;
+    z-index: 99;
+    
+    top: 100%;
+    left: 0;
+    right: 0;
+}
+  
+  .ordem .ordem-search-header-form .autocomplete .autocomplete-items div {
+    padding: 10px;
+    cursor: pointer;
+    background-color: var(--g13);
+    border-bottom: 1px solid var(--g8);
+}
+  
+.ordem .ordem-search-header-form .autocomplete .autocomplete-items div:hover {
+    /*when hovering an item:*/
+    background-color: var(--g12);
+}
+  
+.ordem .ordem-search-header-form .autocomplete .autocomplete-active {
+    /*when navigating through the items using the arrow keys:*/
+    background-color: var(--g7) !important;
+    color: var(--g13);
 }
 
 .ordem .ordem-search-box {
@@ -48,4 +104,23 @@
     color: var(--g1);
     font-size: 1.128rem;
     border-bottom: 1px solid var(--g11);
+}
+
+.ordem .info-ordem {
+    grid-column: 2;
+    display: grid;
+    gap: 20px 0px;
+    grid-template-rows: 1fr 1fr 4fr;
+}
+.ordem .info-ordem .operacoes-ordem {
+    display: flex;
+    padding: 0px 60px;
+}
+
+.ordem .info-ordem .ordem-data-box {
+    display: grid;
+    gap: 10px;
+    padding: 20px;
+    background-color: var(--g11);
+    border-radius: 10px;
 }

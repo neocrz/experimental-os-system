@@ -153,15 +153,45 @@ def cadastro_cliente():
 @app.route('/ordem', methods = ["GET", "POST"])
 @login_required
 def ordem_page():
-    return render_template("ordem.html")
+    ordens = Ordem.query.all()
+
+    if request.method == "POST":
+        if request.form.get('ordem-id'):
+            o_id = request.form['ordem-id']
+            ordem_data = Ordem.query.get(o_id)
+            return render_template("ordem.html", ordens=ordens, ordem_data=ordem_data)
+        
+    if request.method == "GET":
+        return render_template("ordem.html", ordens=ordens)
+    
 
 @app.route('/ordem/adicionar', methods = ["GET", "POST"])
 @login_required
 def add_ordem():
+    
     form = AddOrdemForm()
     if form.validate_on_submit():
-        ordem_to_create = Ordem(desc=form.desc.data)
+        ordem_to_create = Ordem(
+            desc=form.desc.data, 
+            tipo_ordem=form.desc.data
+            )
         db.session.add(ordem_to_create)
         db.session.commit()
+        flash(f"Ordem '{ordem_to_create.id}' criada com sucesso!", category="success")
+        return redirect(url_for('ordem_page'))
 
     return render_template("add-ordem.html", form=form)
+
+@app.route('/ordem/modificar', methods = ["GET", "POST"])
+@login_required
+def mod_ordem():
+    pass
+
+@app.route('/ordem/remover', methods = ["GET", "POST"])
+@login_required
+def rm_ordem():
+    ordem_id = request.args.get('ordem_id')
+    ordem = Ordem.query.get(ordem_id)
+    db.session.delete(ordem)
+    db.session.commit()
+    return redirect(url_for('ordem_page'))

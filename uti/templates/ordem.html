@@ -12,7 +12,7 @@ Ordem
             <div class="ordem-search-header">
                 <form method="post" class="ordem-search-header-form" autocomplete="off"  action="{{url_for('ordem_page')}}">
                     <div class="autocomplete">
-                        <input id="myInput" type="text" name="client-name" placeholder="Pesquisar Ordem">
+                        <input id="search-input" type="text" name="ordem-id" placeholder="Pesquisar Ordem">
                         <input type="submit">
                     </div>
                 </form>
@@ -24,14 +24,34 @@ Ordem
                     <li class="ordem-item">
                         <form method="post" action="{{url_for('ordem_page')}}">
                             <input type="hidden" name="ordem-id" value="{{ ordem.id }}" /> 
-                            <a href="#" onclick="this.parentNode.submit();">{{ ordem.id }} | {{ ordem.cliente.name }}</a>
+                            <a href="#" onclick="this.parentNode.submit();">{{ ordem.id }} | {{ ordem.desc }}</a>
                         </form>
                     </li>
                     {% endfor %}
                 </ul>
             </div>
         </div>
+        <div class="info-ordem">
+            <h2>Informações da Ordem</h2>
+            {% if ordem_data %}
+                <div class="operacoes-ordem">
+                    <a href="{{ url_for('mod_ordem', ordem_id=ordem_data.id) }}" class="btn btn-less">Modificar</a>
+                    <a href="{{ url_for('rm_ordem', ordem_id=ordem_data.id) }}" class="btn btn-less">Excluir</a>
+                </div>
+
+                <div class="ordem-data-box">
+                    <p><strong>ID:</strong> <span class="cliente-data">{{ ordem_data.id}}</span></p>
+                </div>
+            {% endif %}
+        </div>
     </div>
 </main>
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+var ordens = [{% for ordem in ordens %} "{{ ordem.id }}", {% endfor %}];
+
+{% include './script/autocomplete.js' %}
+autocomplete(document.getElementById("search-input"), ordens);
+</script>
 {% endblock %}
