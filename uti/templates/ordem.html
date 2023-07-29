@@ -40,7 +40,27 @@ Ordem
                 </div>
 
                 <div class="ordem-data-box">
-                    <p><strong>ID:</strong> <span class="cliente-data">{{ ordem_data.id}}</span></p>
+                    <p><strong>ID:</strong> <span class="ordem-data">{{ ordem_data.id}}</span></p>
+                    <p><strong>Cliente:</strong> <span class="ordem-data">
+                        {% if ordem_data.cliente %}
+                            {{ ordem_data.cliente.id }} | {{ ordem_data.cliente.name }} 
+                        {% endif %}
+                    </span></p>
+                    <p><strong>Descrição:</strong> <span class="ordem-data">{{ ordem_data.desc or ''}}</span></p>
+                    <p><strong>Tipo de Ordem:</strong> <span class="ordem-data">{{ ordem_data.tipo_ordem or ''}}</span></p>
+                    <p><strong>Data da OS:</strong> <span class="ordem-data">{{ ordem_data.data_os or ''}}</span></p>
+                    <p><strong>Data do Chamado:</strong> <span class="ordem-data">{{ ordem_data.data_chamado or ''}}</span></p>
+                    <p><strong>Motivo do Chamado:</strong> <span class="ordem-data">{{ ordem_data.motivo_chamado or ''}}</span></p>
+                    <p><strong>Status do Serviço:</strong> <span class="ordem-data">{{ ordem_data.status_serviço or ''}}</span></p>
+                    <p><strong>Observações:</strong> <span class="ordem-data">{{ ordem_data.observacao or ''}}</span></p>
+                    <p><strong>Serviço Executado:</strong> <span class="ordem-data">{{ ordem_data.serv_executado or ''}}</span></p>
+                    <p><strong>Material Utilizado:</strong> <span class="ordem-data">{{ ordem_data.material or ''}}</span></p>
+                    <p><strong>Valor da Visita:</strong> <span class="ordem-data">{{ ordem_data.valor_visita or ''}}</span></p>
+                    <p><strong>Valor da Km:</strong> <span class="ordem-data">{{ ordem_data.valor_km or ''}}</span></p>
+                    <p><strong>Valor do Material:</strong> <span class="ordem-data">{{ ordem_data.valor_material or ''}}</span></p>
+                    <p><strong>Km Inicial:</strong> <span class="ordem-data">{{ ordem_data.km_inicial or ''}}</span></p>
+                    <p><strong>Km Final:</strong> <span class="ordem-data">{{ ordem_data.km_final or ''}}</span></p>
+                    <p><strong>Valor Final:</strong> <span class="ordem-data">{{ ordem_data.valor_final or ''}}</span></p>
                 </div>
             {% endif %}
         </div>

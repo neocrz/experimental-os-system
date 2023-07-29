@@ -25,7 +25,7 @@ class Ordem(db.Model):
     valor_material = db.Column(db.String(length=16), nullable=True, unique=False)
     km_inicial = db.Column(db.String(length=16), nullable=True, unique=False)
     km_final = db.Column(db.String(length=16), nullable=True, unique=False)
-    
+    valor_final = db.Column(db.String(length=16), nullable=True, unique=False)
     
     cliente_id = db.Column(db.Integer, db.ForeignKey('clientes.id'))
     

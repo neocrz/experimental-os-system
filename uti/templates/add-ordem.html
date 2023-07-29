@@ -6,17 +6,52 @@ Adicionar Cliente
 
 {% block content %}
 <main class="add-ordem">
+
+    
     <div class="container add-ordem-container">
         <h1>Adicionar Ordem</h1>
         <form action="" method="POST" class="form-add-ordem">
+            <div class="form-add-ordem-elements">
             {{ form.hidden_tag() }} <!-- para prevenir Cross Site Request Forgery -->
-            {{ render_field(form.desc, placeholder="Descrição da OS") }}
             {{ render_field(form.tipo_ordem, placeholder="Tipo de Ordem") }}
-            
+            <div class="form-item">
+                <label for="search-cliente">Id do Cliente:</label>
+                <div class="autocomplete">
+                    <input id="search-cliente" type="text" name="cliente-id" autocomplete="off" placeholder="Nome ou ID">
+                </div>
+            </div>
+            {{ render_field(form.desc, placeholder="Descrição da OS") }}
+            {{ render_field(form.data_os, placeholder="Data da OS") }}
+            {{ render_field(form.data_chamado, placeholder="Data do Chamado") }}
+            {{ render_field(form.motivo_chamado, placeholder="Motivo do Chamado") }}
+            {{ render_field(form.status_serviço, placeholder="Status do Serviço") }}
+            {{ render_field(form.observacao, placeholder="Observações") }}
+            {{ render_field(form.serv_executado, placeholder="Serviço Executado") }}
+            {{ render_field(form.material, placeholder="Material Utilizado") }}
+            {{ render_field(form.valor_visita, placeholder="Valor da Visita") }}
+            {{ render_field(form.maod_obra, placeholder="Mão de Obra") }}
+            {{ render_field(form.valor_km, placeholder="Valor da Km") }}
+            {{ render_field(form.valor_material, placeholder="Valor do Material") }}
+            {{ render_field(form.km_inicial, placeholder="Km Inicial") }}
+            {{ render_field(form.km_final, placeholder="Km Final") }}
+            </div>
+
+            <div class="form-add-ordem-options">
             {{form.submit(class="btn btn-less form-item")}}
             <a href="{{ url_for('ordem_page') }}" class="btn btn-less">Voltar</a>
+            </div>
         </form>
     </div>
 </main>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+var cli = [{% for cliente in clientes %} "{{ cliente.name }} | {{ cliente.id }}", {% endfor %}];
+var cli2 = [{% for cliente in clientes %} "{{ cliente.id }} | {{ cliente.name }}", {% endfor %}];
+var id = [{% for cliente in clientes %} "{{ cliente.id }}", {% endfor %}];
+
+{% include './script/autocomplete.js' %}
+autocompletetwo(document.getElementById("search-cliente"), cli, cli2, id);
+</script>
 
 {% endblock %}

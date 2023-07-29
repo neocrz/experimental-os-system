@@ -168,19 +168,36 @@ def ordem_page():
 @app.route('/ordem/adicionar', methods = ["GET", "POST"])
 @login_required
 def add_ordem():
-    
+    clientes = Cliente.query.all()
     form = AddOrdemForm()
     if form.validate_on_submit():
+        cliente_id = request.form.get('cliente-id')
+        cliente = Cliente.query.get(cliente_id)
+
         ordem_to_create = Ordem(
-            desc=form.desc.data, 
-            tipo_ordem=form.desc.data
+            desc=form.desc.data,
+            cliente_id=cliente.id,
+            tipo_ordem=form.tipo_ordem.data,
+            data_os=form.data_os.data,
+            data_chamado=form.data_chamado.data,
+            motivo_chamado=form.motivo_chamado.data,
+            status_serviço=form.status_serviço.data,
+            observacao=form.observacao.data,
+            serv_executado=form.serv_executado.data,
+            material=form.material.data,
+            valor_visita=form.valor_visita.data,
+            maod_obra=form.maod_obra.data,
+            valor_km=form.valor_km.data,
+            valor_material=form.valor_material.data,
+            km_inicial=form.km_inicial.data,
+            km_final=form.km_final.data,
             )
         db.session.add(ordem_to_create)
         db.session.commit()
         flash(f"Ordem '{ordem_to_create.id}' criada com sucesso!", category="success")
         return redirect(url_for('ordem_page'))
 
-    return render_template("add-ordem.html", form=form)
+    return render_template("add-ordem.html", form=form, clientes=clientes)
 
 @app.route('/ordem/modificar', methods = ["GET", "POST"])
 @login_required

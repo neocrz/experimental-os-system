@@ -144,7 +144,7 @@ class OrdemForm(FlaskForm):
     desc = StringField(
         label="Descrição:",
         validators=[
-            Length( max=256, message="No máximo 256 caracteres para a descrição" )
+            Length( max=256, message="No máximo 256 caracteres para 'Descrição'" )
             ]
     )
 
@@ -152,6 +152,99 @@ class OrdemForm(FlaskForm):
         u'Tipo de Ordem:', 
         choices=[('Ordem de Serviço', 'Ordem de Serviço'), ('Orçamento', 'Orçamento')]
         )
+    
+    
+    data_os = StringField(
+        label="Data da OS:",
+        validators=[
+            Length( max=32, message="No máximo 32 caracteres para 'Data da OS'" )
+            ]
+    )
+
+    data_chamado = StringField(
+        label="Data do Chamado:",
+        validators=[
+            Length( max=32, message="No máximo 32 caracteres para 'Data do Chamado'" )
+            ]
+    )
+
+    motivo_chamado = StringField(
+        label="Motivo do Chamado:",
+        validators=[
+            Length( max=512, message="No máximo 512 caracteres para 'Motivo do Chamado'" )
+            ]
+    )
+
+    status_serviço = SelectField(
+        u'Status do Serviço:', 
+        choices=[('Concluído', 'Concluído'), ('Não Concluido', 'Não Concluido'), ('A Continuar', 'A Continuar')]
+    )
+
+    observacao = StringField(
+        label="Observações:",
+        validators=[
+            Length( max=512, message="No máximo 512 caracteres para 'Observações'" )
+            ]
+    )
+
+    serv_executado = StringField(
+        label="Serviço Executado:",
+        validators=[
+            Length( max=512, message="No máximo 512 caracteres para 'Serviço Executado'" )
+            ]
+    )
+
+    material = StringField(
+        label="Material Utilizado:",
+        validators=[
+            Length( max=512, message="No máximo 512 caracteres para 'Material Utilizado'" )
+            ]
+    )
+
+    valor_visita = StringField(
+        label="Valor da Visita:",
+        validators=[
+            Length( max=16, message="No máximo 16 caracteres para 'Valor da Visita'" )
+            ]
+    )
+
+    maod_obra = StringField(
+        label="Mão de Obra:",
+        validators=[
+            Length( max=16, message="No máximo 16 caracteres para 'Mão de Obra'" )
+            ]
+    )
+
+    valor_km = StringField(
+        label="Valor da Km:",
+        validators=[
+            Length( max=16, message="No máximo 16 caracteres para 'Valor da Km'" )
+            ]
+    )
+
+    valor_material = StringField(
+        label="Valor do Material:",
+        validators=[
+            Length( max=16, message="No máximo 16 caracteres para 'Valor do Material'" )
+            ]
+    )
+
+    km_inicial = StringField(
+        label="Km Inicial:",
+        validators=[
+            Length( max=16, message="No máximo 16 caracteres para 'Km Inicial'" )
+            ]
+    )
+
+    km_final = StringField(
+        label="Km Final:",
+        validators=[
+            Length( max=16, message="No máximo 16 caracteres para 'Km Final'" )
+            ]
+    )
+
+
+
 
 class AddOrdemForm(OrdemForm):
     submit = SubmitField(label="Criar Ordem")
