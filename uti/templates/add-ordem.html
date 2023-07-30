@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% from "_formhelpers.html" import render_field %}
 {% block title %}
-Adicionar Cliente
+Adicionar Ordem
 {% endblock%}
 
 {% block content %}
@@ -17,7 +17,7 @@ Adicionar Cliente
             <div class="form-item">
                 <label for="search-cliente">Id do Cliente:</label>
                 <div class="autocomplete">
-                    <input id="search-cliente" type="text" name="cliente-id" autocomplete="off" placeholder="Nome ou ID">
+                    <input id="search-cliente" type="text" name="cliente_id" autocomplete="off" placeholder="Nome ou ID">
                 </div>
             </div>
             {{ render_field(form.desc, placeholder="Descrição da OS") }}

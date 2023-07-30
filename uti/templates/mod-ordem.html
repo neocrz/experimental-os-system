@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% from "_formhelpers.html" import render_field %}
+{% block title %}
+Modificar Ordem
+{% endblock%}
+
+{% block content %}
+<main class="add-ordem">
+    <div class="container add-ordem-container">
+        <h1>Modificar Ordem</h1>
+        <form action="" method="POST" class="form-add-ordem">
+            <div class="form-add-ordem-elements">
+            {{ form.hidden_tag() }} <!-- para prevenir Cross Site Request Forgery -->
+            {{ render_field(form.tipo_ordem, placeholder="Tipo de Ordem") }}
+            <div class="form-item">
+                <label for="search-cliente">Id do Cliente:</label>
+                <div class="autocomplete">
+                    <input id="search-cliente" type="text" name="cliente_id" autocomplete="off" placeholder="Nome ou ID" value="{{ ordem.cliente.id}}">
+                </div>
+            </div>
+            {{ render_field(form.desc, placeholder="Descrição da OS", value=ordem.desc) }}
+            {{ render_field(form.data_os, placeholder="Data da OS", value=ordem.data_os) }}
+            {{ render_field(form.data_chamado, placeholder="Data do Chamado", value=ordem.data_chamado) }}
+            {{ render_field(form.motivo_chamado, placeholder="Motivo do Chamado", value=ordem.motivo_chamado) }}
+            {{ render_field(form.status_serviço, placeholder="Status do Serviço", value=ordem.status_serviço) }}
+            {{ render_field(form.observacao, placeholder="Observações", value=ordem.observacao) }}
+            {{ render_field(form.serv_executado, placeholder="Serviço Executado", value=ordem.serv_executado) }}
+            {{ render_field(form.material, placeholder="Material Utilizado", value=ordem.material) }}
+            {{ render_field(form.valor_visita, placeholder="Valor da Visita", value=ordem.valor_visita) }}
+            {{ render_field(form.maod_obra, placeholder="Mão de Obra", value=ordem.maod_obra) }}
+            {{ render_field(form.valor_km, placeholder="Valor da Km", value=ordem.valor_km) }}
+            {{ render_field(form.valor_material, placeholder="Valor do Material", value=ordem.valor_material) }}
+            {{ render_field(form.km_inicial, placeholder="Km Inicial", value=ordem.km_inicial) }}
+            {{ render_field(form.km_final, placeholder="Km Final", value=ordem.km_final) }}
+            </div>
+
+            <div class="form-add-ordem-options">
+            {{form.submit(class="btn btn-less form-item")}}
+            <a href="{{ url_for('ordem_page') }}" class="btn btn-less">Voltar</a>
+            </div>
+        </form>
+    </div>
+</main>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+var cli = [{% for cliente in clientes %} "{{ cliente.name }} | {{ cliente.id }}", {% endfor %}];
+var cli2 = [{% for cliente in clientes %} "{{ cliente.id }} | {{ cliente.name }}", {% endfor %}];
+var id = [{% for cliente in clientes %} "{{ cliente.id }}", {% endfor %}];
+
+{% include './script/autocomplete.js' %}
+autocompletetwo(document.getElementById("search-cliente"), cli, cli2, id);
+</script>
+
+{% endblock %}

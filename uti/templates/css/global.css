@@ -30,7 +30,7 @@ body {
     gap: 100px;
 }
 
-h1, h2, h3, p {
+h1, h2, h3, h4, h5, h6, p {
     margin: 0px;
 }
 
@@ -101,4 +101,9 @@ img {
 
 .alert-danger .btn {
     color: #721c24;
+}
+
+.btn-success {
+    background-color: #155724;
+    color: #d4edda; 
 }

@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+{% from "_formhelpers.html" import render_field %}
+
+{% block head %}
+<style>
+@media print {
+    @page {
+    size: A4 portrait; /* Define o tamanho da página como A4 no modo retrato */
+    }
+    body {
+    margin: 1cm;
+    transform: scale(1); /* Escala o body para 50% */
+    transform-origin: top left;
+    }
+}
+</style>
+{% endblock%}
+
+{% block title %}
+Impressão de Ordem
+{% endblock%}
+
+{% block content %}
+<main class="print-ordem">
+    <div class="container print-ordem-container">
+        <h1>Imprimir ordem</h1>
+            <a class="btn" onclick="printDiv('printableArea')">Imprimir</a>
+    </div>
+</main>
+
+<div id="printableArea">
+    <div class="printable-ordem" >
+        <div class="print-header">
+            <img class="logo" src="{{ url_for('static', filename='./img/os_logo.svg', _external=True) }}" alt="logo ico">
+            <div class="print-header-info">
+                <h2>UNIDADE TÉCNICA INTEGRADA</h2>
+                <h5>RUA PAULO AGOSTINHO DA SILVA 303 - VILA ZILDA - GUARUJA-SP - 11436-040</h5>
+                <h5>utiequipamentos@outlook.com  (13)97420-7746 CNPJ 41.730.120/0001-21</h5>
+            </div>
+            <div class="print-header-os">
+                <h2 class="indicator">OS</h2>
+                <h3>Nº: {{ ordem.id }}</h3>
+            </div>
+        </div>
+        <div class="print-cliente">
+            <div class="print-cliente-basico">
+                <p class="item">Nome<span>:</span></p> <p>{{ ordem.cliente.name }}</p>
+                <p class="item">Contato<span>:</span></p> <p>{{ ordem.cliente.name }}</p>
+                <p class="item">Razão Social<span>:</span></p> <p>{{ ordem.cliente.razao_social }}</p>
+                <p class="item">Endereço<span>:</span></p> <p>{{ ordem.cliente.endereco }}</p>
+                <p class="item">Email<span>:</span></p> <p>{{ ordem.cliente.email }}</p>
+                <p class="item">CNPJ<span>:</span></p> <p>{{ ordem.cliente.cnpj }}</p>
+            </div>
+            <div class="print-cliente-basico">
+                
+                <p class="item">Tipo Ordem<span>:</span></p> <p>{{ ordem.tipo_ordem }}</p>
+                <p class="item">Ender. Nº<span>:</span></p> <p>{{ ordem.cliente.num_endereco }}</p>
+                <p class="item">Bairro<span>:</span></p> <p>{{ ordem.cliente.bairro }}</p>
+                <p class="item">Cidade<span>:</span></p> <p>{{ ordem.cliente.cidade }}</p>
+                <p class="item">Estado<span>:</span></p> <p>{{ ordem.cliente.estado }}</p>
+                <p class="item">CEP<span>:</span></p> <p>{{ ordem.cliente.cep }}</p>
+            </div>
+            <div class="print-cliente-basico">
+                <p class="item">Pessoa<span>:</span></p> <p>{{ ordem.cliente.tipo_cliente }}</p>
+                <p class="item">Telefone<span>:</span></p> <p>{{ ordem.cliente.telefone }}</p>
+                <p class="item">Telefone<span>:</span></p> <p>{{ ordem.cliente.telefone2 }}</p>
+                <p class="item">CPF<span>:</span></p> <p>{{ ordem.cliente.cpf }}</p>
+                <p class="item">RG<span>:</span></p> <p>{{ ordem.cliente.rg }}</p>
+            </div>
+            <div class="print-cliente-outros">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div style="height: 200px;"></div>
+
+<script>
+    function printDiv(divName) {
+     var printContents = document.getElementById(divName).innerHTML;
+     var originalContents = document.body.innerHTML;
+
+     document.body.innerHTML = printContents;
+
+     window.print();
+
+     document.body.innerHTML = originalContents;
+}
+</script>
+
+
+{% endblock %}

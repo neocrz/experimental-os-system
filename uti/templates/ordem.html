@@ -36,6 +36,7 @@ Ordem
             {% if ordem_data %}
                 <div class="operacoes-ordem">
                     <a href="{{ url_for('mod_ordem', ordem_id=ordem_data.id) }}" class="btn btn-less">Modificar</a>
+                    <a href="{{ url_for('print_ordem', ordem_id=ordem_data.id) }}" class="btn btn-success btn-less">Imprimir</a>
                     <a href="{{ url_for('rm_ordem', ordem_id=ordem_data.id) }}" class="btn btn-less">Excluir</a>
                 </div>
 
