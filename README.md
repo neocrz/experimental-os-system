@@ -7,6 +7,7 @@ Status: Parcialmente Utilizável
 - Login
 - Criação de Cliente
 - Criação de Ordem de Serviço
+- Impressão de Ordem de Serviço
 - Banco de Dados (local ou externo)
 
 ## Configuração
