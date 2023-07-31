@@ -108,7 +108,7 @@ def modificar_cliente():
         cliente.email=form.email.data
         cliente.insc_estadual=form.insc_estadual.data
         cliente.insc_municipal=form.insc_municipal.data
-        cliente.razao_social=form.razao_social.data
+        cliente.contato=form.contato.data
         db.session.commit()
         return redirect(url_for('client_page'))
 
@@ -137,7 +137,7 @@ def cadastro_cliente():
                               email=form.email.data,
                               insc_estadual=form.insc_estadual.data,
                               insc_municipal=form.insc_municipal.data,
-                              razao_social=form.razao_social.data
+                              contato=form.contato.data
                               )
         db.session.add(client_to_create)
         db.session.commit()

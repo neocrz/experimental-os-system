@@ -64,8 +64,8 @@ Modificar cliente
             {{ form.telefone2(class="form-control", value=cliente.telefone2, onkeyup="formataTelefone(this)", onpaste="TrataPaste(this, event, 'tel')", placeholder="Telefone 2") }}
             </div>
             <div class="form-item">
-            {{ form.razao_social.label() }}
-            {{ form.razao_social(class="form-control", value=cliente.razao_social, placeholder="Razão Social") }}
+            {{ form.contato.label() }}
+            {{ form.contato(class="form-control", value=cliente.contato, placeholder="Contato") }}
             </div>
             <div class="form-item">
             {{ form.email.label() }}

@@ -1,0 +1,103 @@
+<div class="printable-ordem" >
+    <div class="print-header">
+        <img class="logo" src="{{ url_for('static', filename='./img/os_logo.svg', _external=True) }}" alt="logo ico">
+        <div class="print-header-info">
+            <h2>UNIDADE TÉCNICA INTEGRADA</h2>
+            <h5>RUA PAULO AGOSTINHO DA SILVA 303 - VILA ZILDA - GUARUJA-SP - 11436-040</h5>
+            <h5>utiequipamentos@outlook.com  (13)97420-7746 CNPJ 41.730.120/0001-21</h5>
+        </div>
+        <div class="print-header-os">
+            <h2 class="indicator">OS</h2>
+            <h3>Nº: {{ ordem.id }}</h3>
+            <h5>{{ ordem.data_os }}</h5>
+        </div>
+    </div>
+    <div class="print-cliente">
+        <div class="print-cliente-basico">
+            <p class="item">Tipo Ordem<span>:</span></p> <p>{{ ordem.tipo_ordem }}</p>
+            
+            {% if ordem.cliente.tipo_cliente == "Física" %}
+                <p class="item">Nome<span>:</span></p> <p>{{ ordem.cliente.name }}</p>
+            {% else %}
+                <p class="item">Razão Social<span>:</span></p> <p>{{ ordem.cliente.name }}</p>
+            {% endif %}
+            <p class="item">Contato<span>:</span></p> <p>{{ ordem.cliente.contato }}</p>
+            <p class="item">Endereço<span>:</span></p> <p>{{ ordem.cliente.endereco }}</p>
+            <p class="item">Email<span>:</span></p> <p>{{ ordem.cliente.email }}</p>
+            
+        </div>
+        <div class="print-cliente-basico">
+            <p class="item">Ender. Nº<span>:</span></p> <p>{{ ordem.cliente.num_endereco }}</p>
+            <p class="item">Bairro<span>:</span></p> <p>{{ ordem.cliente.bairro }}</p>
+            <p class="item">Cidade<span>:</span></p> <p>{{ ordem.cliente.cidade }}</p>
+            <p class="item">Estado<span>:</span></p> <p>{{ ordem.cliente.estado }}</p>
+            <p class="item">CEP<span>:</span></p> <p>{{ ordem.cliente.cep }}</p>
+        </div>
+        <div class="print-cliente-basico">
+            <p class="item">Pessoa<span>:</span></p> <p>{{ ordem.cliente.tipo_cliente }}</p>
+            {% if ordem.cliente.tipo_cliente == "Física" %}
+                <p class="item">CPF<span>:</span></p> <p>{{ ordem.cliente.cpf }}</p>
+            {% else %}
+                <p class="item">CNPJ<span>:</span></p> <p>{{ ordem.cliente.cnpj }}</p>
+            {% endif %}
+            <p class="item">Telefone<span>:</span></p> <p>{{ ordem.cliente.telefone }}</p>
+            <p class="item">Telefone<span>:</span></p> <p>{{ ordem.cliente.telefone2 }}</p>
+            
+            
+        </div>
+        <div class="print-cliente-outros">
+
+        </div>
+    </div>
+    <div class="print-equipamento">
+        <p><strong>Equipamento:</strong> Equipamento tal de tal</p>
+        <p><strong>Modelo:</strong> Modelo tal</p>
+        <p><strong>Marca:</strong> Marca tal</p>
+
+    </div>
+    <div class="print-servico">
+        <div>
+            <h4>Motivo do Chamado:</h4>
+            <p>{{ ordem.motivo_chamado }}</p>
+        </div>
+        <div>
+            <h4>Descrição do serviço:</h4>
+            <p>{{ ordem.desc }}</p>
+        </div>
+        <div>
+            <h4>Serviço Executado:</h4>
+            <p>{{ ordem.serv_executado }}</p>
+        </div>
+        <div>
+            <h4>Observações:</h4>
+            <p>{{ ordem.observacao }}</p>
+        </div>
+    </div>
+    <div class="print-preco">
+        <div class="print-preco-items">
+            <p><strong>Técnico:</strong> Evandro Nunes Cruz</p>
+            <p><strong>Data do Chamado:</strong> {{ ordem.data_chamado }}</p>
+        </div>
+        <div class="print-preco-items">
+            <p style="padding-bottom: 3px;"><strong>Valor mão de Obra:</strong> R$ {{ ordem.maod_obra }}</p>
+            <p><strong>Valor Deslocamento:</strong> R$ {{ ordem.valor_visita }}</p>
+        </div>
+        <div class="print-preco-items">
+            <p><strong>Valor Material:</strong> R$ {{ ordem.valor_material }}</p>
+            <p class="total"><strong>Valor Total:</strong> R$ 9999</p>
+        </div>
+    </div>
+    <div class="print-footer">
+        <div class="print-footer-top">
+            <p>Nome:</p>
+            <p>Função:</p>
+            <p>data:</p>
+        </div>
+        <div class="print-footer-main">
+            <p>Assinatura do cliente:</p>
+            <p>Assinatura do Técnico:</p>
+            <p class="assinatura"> </p>
+            <p class="assinatura"> </p>
+        </div>
+    </div>
+</div>

@@ -48,7 +48,7 @@ class Cliente(db.Model):
     telefone = db.Column(db.String(length=32), nullable=True, unique=False)
     telefone2 = db.Column(db.String(length=32), nullable=True, unique=False)
     email = db.Column(db.String(length=64), nullable=True, unique=False)
-    razao_social = db.Column(db.String(length=64), nullable=True, unique=False)
+    contato = db.Column(db.String(length=64), nullable=True, unique=False)
     insc_estadual = db.Column(db.String(length=32), nullable=True, unique=False)
     insc_municipal = db.Column(db.String(length=32), nullable=True, unique=False)
     cpf = db.Column(db.String(length=32), nullable=True, unique=False)

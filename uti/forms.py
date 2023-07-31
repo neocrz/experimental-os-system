@@ -105,10 +105,10 @@ class ClienteForm(FlaskForm):
             ]
     )
 
-    razao_social = StringField(
-        label="Razão Social:",
+    contato = StringField(
+        label="Contato:",
         validators=[
-            Length( max=64, message="No máximo 32 caracteres" )
+            Length( max=64, message="No máximo 64 caracteres" )
             ]
     )
 
