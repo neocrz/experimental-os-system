@@ -62,7 +62,7 @@
 
 .printable-ordem .print-cliente {
     display: grid;
-    grid-template-columns: 9fr 7fr 7fr;
+    grid-template-columns: 10fr 6fr 6fr;
     gap: 0 3pt;
     padding: 3pt;
     border-bottom: 1pt solid #000000;
@@ -71,7 +71,7 @@
 
 .printable-ordem .print-cliente-basico {
     display: grid;
-    grid-template-columns: 7fr 13fr;
+    grid-template-columns: 8fr 13fr;
     gap: 3px;
 }
 

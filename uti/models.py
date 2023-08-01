@@ -6,32 +6,6 @@ from flask_login import UserMixin
 def load_user(user_id):
     return User.query.get(int(user_id))
 
-class Ordem(db.Model):
-    __tablename__ = 'ordens'
-    id = db.Column(db.Integer(), primary_key=True)
-    desc = db.Column(db.String(length=256), nullable=True, unique=False)
-    tipo_ordem = db.Column(db.String(length=32), nullable=False, default="Ordem de Serviço") # Ordem de Serviço ou Orçamento
-    data_os = db.Column(db.String(length=32), nullable=True, unique=False) # Data Criação ou Modificação OS
-    data_chamado = db.Column(db.String(length=32), nullable=True, unique=False) # Data Criação ou Modificação OS
-    motivo_chamado = db.Column(db.String(length=512), nullable=True, unique=False)
-    status_serviço = db.Column(db.String(length=32), nullable=False, default="Concluído") # Concluído, Não Concluido, A Continuar
-    observacao = db.Column(db.String(length=512), nullable=True, unique=False) # Observação Serviço
-    serv_executado = db.Column(db.String(length=512), nullable=True, unique=False) # Desc Serviço Executado
-    
-    material = db.Column(db.String(length=512), nullable=True, unique=False) # material usado
-    valor_visita = db.Column(db.String(length=16), nullable=True, unique=False) 
-    maod_obra = db.Column(db.String(length=16), nullable=True, unique=False)
-    valor_km = db.Column(db.String(length=16), nullable=True, unique=False)
-    valor_material = db.Column(db.String(length=16), nullable=True, unique=False)
-    km_inicial = db.Column(db.String(length=16), nullable=True, unique=False)
-    km_final = db.Column(db.String(length=16), nullable=True, unique=False)
-    valor_final = db.Column(db.String(length=16), nullable=True, unique=False)
-    
-    cliente_id = db.Column(db.Integer, db.ForeignKey('clientes.id'))
-    
-
-    def __repr__(self):
-        return f'Ordem {self.id}'
 
 
 class Cliente(db.Model):
@@ -56,7 +30,46 @@ class Cliente(db.Model):
     rg = db.Column(db.String(length=32), nullable=True, unique=False)
     tipo_cliente = db.Column(db.String(length=10), nullable=False, default="Física") #Física ou Jurídica
     ordens = db.relationship('Ordem', backref='cliente')
+
+
+class Equipamento(db.Model):
+
+    __tablename__ = 'equipamentos'
+    id = db.Column(db.Integer(), primary_key=True)
+    name = db.Column(db.String(length=128), nullable=False, unique=True)
+    modelo = db.Column(db.String(length=128), nullable=True, unique=False)
+    marca = db.Column(db.String(length=128), nullable=True, unique=False)
+    ordens = db.relationship('Ordem', backref='equipamento')
+
+class Ordem(db.Model):
+
+    __tablename__ = 'ordens'
+    id = db.Column(db.Integer(), primary_key=True)
+    desc = db.Column(db.String(length=256), nullable=True, unique=False)
+    tipo_ordem = db.Column(db.String(length=32), nullable=False, default="Ordem de Serviço") # Ordem de Serviço ou Orçamento
+    data_os = db.Column(db.String(length=32), nullable=True, unique=False) # Data Criação ou Modificação OS
+    data_chamado = db.Column(db.String(length=32), nullable=True, unique=False) # Data Criação ou Modificação OS
+    motivo_chamado = db.Column(db.String(length=512), nullable=True, unique=False)
+    status_serviço = db.Column(db.String(length=32), nullable=False, default="Concluído") # Concluído, Não Concluido, A Continuar
+    observacao = db.Column(db.String(length=512), nullable=True, unique=False) # Observação Serviço
+    serv_executado = db.Column(db.String(length=512), nullable=True, unique=False) # Desc Serviço Executado
+    material = db.Column(db.String(length=512), nullable=True, unique=False) # material usado
+    valor_visita = db.Column(db.String(length=16), nullable=True, unique=False) 
+    maod_obra = db.Column(db.String(length=16), nullable=True, unique=False)
+    valor_km = db.Column(db.String(length=16), nullable=True, unique=False)
+    valor_material = db.Column(db.String(length=16), nullable=True, unique=False)
+    km_inicial = db.Column(db.String(length=16), nullable=True, unique=False)
+    km_final = db.Column(db.String(length=16), nullable=True, unique=False)
+    valor_final = db.Column(db.String(length=16), nullable=True, unique=False)
     
+    cliente_id = db.Column(db.Integer, db.ForeignKey('clientes.id'))
+    equipamento_id = db.Column(db.Integer, db.ForeignKey('equipamentos.id'))
+    
+
+    def __repr__(self):
+        return f'Ordem {self.id}'
+
+
 class Role(db.Model):
     # roles de usuários do sistema
     __tablename__ = 'roles'

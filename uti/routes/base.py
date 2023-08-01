@@ -1,8 +1,9 @@
 from flask import render_template, redirect, url_for, flash, request, make_response
 from uti import app, db
 from flask_login import login_user, logout_user, login_required, current_user
-from uti.forms import LoginForm, AddClientForm, ModClienteForm, AddOrdemForm, ModOrdemForm
-from uti.models import User, Cliente, Ordem
+from uti.forms import *
+from uti.models import *
+
 
 @app.route('/')
 @app.route("/home")
@@ -10,13 +11,13 @@ def index():
     return render_template("index.html")
 
 # dinamic css - allow to use jinja syntax in css
-@app.route('/style.css')
+@app.route('/css/base')
 def css():
     resp = make_response(render_template("style.css"))
     resp.headers['Content-type'] = 'text/css'
     return resp
 
-@app.route('/script.css')
+@app.route('/script/base')
 def script():
     resp = make_response(render_template("script.js"))
     resp.headers['Content-type'] = 'text/javascript'
@@ -169,6 +170,7 @@ def ordem_page():
 @login_required
 def add_ordem():
     clientes = Cliente.query.all()
+    equips = Equipamento.query.all()
     form = AddOrdemForm()
     if form.validate_on_submit():
         cliente_id = request.form.get('cliente_id')
@@ -196,7 +198,7 @@ def add_ordem():
         flash(f"Ordem '{ordem_to_create.id}' criada com sucesso!", category="success")
         return redirect(url_for('ordem_page'))
 
-    return render_template("add-ordem.html", form=form, clientes=clientes)
+    return render_template("add-ordem.html", form=form, clientes=clientes, equips=equips)
 
 @app.route('/ordem/modificar', methods = ["GET", "POST"])
 @login_required
@@ -206,12 +208,16 @@ def mod_ordem():
     
     form = ModOrdemForm()
     clientes = Cliente.query.all()
+    equips = Equipamento.query.all()
 
     if form.validate_on_submit():
         cliente_id = request.form['cliente_id']
         cliente = Cliente.query.get(cliente_id)
+        equip_id = request.form['equip_id']
+        equip = Cliente.query.get(equip_id)
         ordem.desc=form.desc.data
         ordem.cliente_id=cliente.id
+        ordem.equipamento_id=equip_id
         ordem.tipo_ordem=form.tipo_ordem.data
         ordem.data_os=form.data_os.data
         ordem.data_chamado=form.data_chamado.data
@@ -236,7 +242,7 @@ def mod_ordem():
     form.status_serviço.default = ordem.status_serviço
     form.process()
 
-    return render_template("mod-ordem.html", form=form, ordem=ordem, clientes=clientes)
+    return render_template("mod-ordem.html", form=form, ordem=ordem, clientes=clientes, equips=equips)
 
 @app.route('/ordem/remover', methods = ["GET", "POST"])
 @login_required
@@ -253,3 +259,6 @@ def print_ordem():
     ordem_id = request.args.get('ordem_id')
     ordem = Ordem.query.get(ordem_id)
     return render_template("print-ordem.html", ordem=ordem)
+
+
+

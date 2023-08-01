@@ -1,0 +1,91 @@
+
+.add .container {
+    padding: 60px;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    gap: 20px 60px
+
+}
+
+.add .form {
+    margin-top: 64px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+
+.add .form input,
+.add .form select{
+    font-size: 0.9rem;
+}
+
+.add .form-elements {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px 40px;
+}
+.add .form-elements .form-item {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    justify-content: end;
+    gap: 10px;
+    align-items: center;
+}
+
+.add .form-elements .form-item input {
+    width: 100%;
+}
+
+.add .form-options {
+    padding: 40px 60px;
+    display: flex;
+    gap: 0px 20px;
+}
+
+
+.add .form-elements .autocomplete {
+    position: relative;
+}
+.add .form-elements .autocomplete input {
+    border: 1px solid var(--g10);
+    background-color: var(--g13);
+    padding: 5px;
+    text-align: center;
+}
+
+.add .form-add-ordem-elements .autocomplete input[type="text"] {
+    background-color: var(--g13);
+    width: 30%;
+}
+
+
+
+.add .form-elements .autocomplete .autocomplete-items {
+    position: absolute;
+    border: 1px solid #d4d4d4;
+    border-bottom: none;
+    border-top: none;
+    z-index: 99;
+    
+    top: 100%;
+    left: 0;
+    right: 0;
+}
+  
+.add .form-elements .autocomplete .autocomplete-items div {
+    padding: 5px;
+    cursor: pointer;
+    background-color: var(--g13);
+    border-bottom: 1px solid var(--g8);
+}
+  
+.add .form-elements .autocomplete .autocomplete-items div:hover {
+    /*when hovering an item:*/
+    background-color: var(--g12);
+}
+  
+.add .form-elements .autocomplete .autocomplete-active {
+    /*when navigating through the items using the arrow keys:*/
+    background-color: var(--g7) !important;
+    color: var(--g13);
+}

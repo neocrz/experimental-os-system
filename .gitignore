@@ -4,3 +4,4 @@ uti/__pycache__
 uti/data.sqlite
 fast.py
 uti/static/img/os_logo.svg
+uti/routes/__pycache__

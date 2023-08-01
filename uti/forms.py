@@ -243,11 +243,36 @@ class OrdemForm(FlaskForm):
             ]
     )
 
-
-
-
 class AddOrdemForm(OrdemForm):
     submit = SubmitField(label="Criar Ordem")
 
 class ModOrdemForm(OrdemForm):
     submit = SubmitField(label="Modificar Ordem")
+
+class EquipForm(FlaskForm):
+    name = StringField(
+        label="Nome:",
+        validators=[
+            DataRequired(),
+            Length( max=128, message="No máximo 128 caracteres para 'Nome'" )
+            ]
+    )
+    
+    modelo = StringField(
+        label="Modelo:",
+        validators=[
+            DataRequired(),
+            Length( max=128, message="No máximo 128 caracteres para 'Modelo'" )
+            ]
+    )
+
+    marca = StringField(
+        label="Marca:",
+        validators=[
+            DataRequired(),
+            Length( max=128, message="No máximo 128 caracteres para 'Marca'" )
+            ]
+    )
+
+class AddEquipForm(EquipForm):
+    submit = SubmitField(label="Adicionar Equipamento")

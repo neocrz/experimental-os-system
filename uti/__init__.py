@@ -30,4 +30,6 @@ login_manager = LoginManager(app)
 login_manager.login_view = "login_page"
 login_manager.login_message = "Você precisa logar primeiro!"
 login_manager.login_message_category = "info"
-from uti import routes
+
+from uti.routes import base
+from uti.routes import equip

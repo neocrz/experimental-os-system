@@ -13,13 +13,19 @@ Adicionar Ordem
         <form action="" method="POST" class="form-add-ordem">
             <div class="form-add-ordem-elements">
             {{ form.hidden_tag() }} <!-- para prevenir Cross Site Request Forgery -->
-            {{ render_field(form.tipo_ordem, placeholder="Tipo de Ordem") }}
             <div class="form-item">
                 <label for="search-cliente">Id do Cliente:</label>
                 <div class="autocomplete">
                     <input id="search-cliente" type="text" name="cliente_id" autocomplete="off" placeholder="Nome ou ID">
                 </div>
             </div>
+            <div class="form-item">
+            <label for="search-equip">Id do Equipamento:</label>
+                <div class="autocomplete">
+                    <input id="search-equip" type="text" name="equip_id" autocomplete="off" placeholder="Nome ou ID">
+                </div>
+            </div>
+            {{ render_field(form.tipo_ordem, placeholder="Tipo de Ordem") }}
             {{ render_field(form.desc, placeholder="Descrição da OS") }}
             {{ render_field(form.data_os, placeholder="Data da OS") }}
             {{ render_field(form.data_chamado, placeholder="Data do Chamado") }}
@@ -46,12 +52,18 @@ Adicionar Ordem
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
+{% include './script/autocomplete.js' %}
+
 var cli = [{% for cliente in clientes %} "{{ cliente.name }} | {{ cliente.id }}", {% endfor %}];
 var cli2 = [{% for cliente in clientes %} "{{ cliente.id }} | {{ cliente.name }}", {% endfor %}];
-var id = [{% for cliente in clientes %} "{{ cliente.id }}", {% endfor %}];
+var cli_id = [{% for cliente in clientes %} "{{ cliente.id }}", {% endfor %}];
+autocompletetwo(document.getElementById("search-cliente"), cli, cli2, cli_id);
 
-{% include './script/autocomplete.js' %}
-autocompletetwo(document.getElementById("search-cliente"), cli, cli2, id);
+var equip = [{% for equip in equips %} "{{ equip.name }} | {{ equip.modelo }} | {{ equip.marca }}", {% endfor %}];
+var equip2 = [{% for equip in equips %} "{{ equip.id }} | {{ equip.name }}", {% endfor %}];
+var equip_id = [{% for equip in equips %} "{{ equip.id }}", {% endfor %}];
+autocompletetwo(document.getElementById("search-equip"), equip, equip2, equip_id);
+
 </script>
 
 {% endblock %}

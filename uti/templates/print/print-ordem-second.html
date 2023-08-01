@@ -20,8 +20,9 @@
                 <p class="item">Nome<span>:</span></p> <p>{{ ordem.cliente.name }}</p>
             {% else %}
                 <p class="item">Razão Social<span>:</span></p> <p>{{ ordem.cliente.name }}</p>
+                <p class="item">Contato<span>:</span></p> <p>{{ ordem.cliente.contato }}</p>
             {% endif %}
-            <p class="item">Contato<span>:</span></p> <p>{{ ordem.cliente.contato }}</p>
+           
             <p class="item">Endereço<span>:</span></p> <p>{{ ordem.cliente.endereco }}</p>
             <p class="item">Email<span>:</span></p> <p>{{ ordem.cliente.email }}</p>
             
@@ -50,9 +51,9 @@
         </div>
     </div>
     <div class="print-equipamento">
-        <p><strong>Equipamento:</strong> Equipamento tal de tal</p>
-        <p><strong>Modelo:</strong> Modelo tal</p>
-        <p><strong>Marca:</strong> Marca tal</p>
+        <p><strong>Equipamento:</strong> {{ ordem.equipamento.name }}</p>
+        <p><strong>Modelo:</strong> {{ ordem.equipamento.modelo }}</p>
+        <p><strong>Marca:</strong> {{ ordem.equipamento.marca }}</p>
 
     </div>
     <div class="print-servico">

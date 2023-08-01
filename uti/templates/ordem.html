@@ -47,6 +47,11 @@ Ordem
                             {{ ordem_data.cliente.id }} | {{ ordem_data.cliente.name }} 
                         {% endif %}
                     </span></p>
+                    <p><strong>Equipamento:</strong> <span class="ordem-data">
+                        {% if ordem_data.equipamento %}
+                            {{ ordem_data.equipamento.id }} | {{ ordem_data.equipamento.name }} 
+                        {% endif %}
+                    </span></p>
                     <p><strong>Descrição:</strong> <span class="ordem-data">{{ ordem_data.desc or ''}}</span></p>
                     <p><strong>Tipo de Ordem:</strong> <span class="ordem-data">{{ ordem_data.tipo_ordem or ''}}</span></p>
                     <p><strong>Data da OS:</strong> <span class="ordem-data">{{ ordem_data.data_os or ''}}</span></p>
