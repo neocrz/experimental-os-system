@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+
+{% from "_formhelpers.html" import render_field %}
+{% block title %}
+Modificar Cliente
+{% endblock%}
+
+{% block content %}
+<main class="add mod-cliente">
+    <div class="container">
+        <h1>Modificar Cliente</h1>
+        <form action="" method="POST" class="form">
+            <div class="form-elements">
+            {{ form.hidden_tag() }} <!-- para prevenir Cross Site Request Forgery -->
+            <input type="hidden" name="cliente_id" value="{{ cliente.id }}" /> 
+            {{ render_field(form.tipo_cliente, value=cliente.tipo_cliente) }}
+            {{ render_field(form.name, placeholder="Nome", value=cliente.name or '') }}
+            {{ render_field(form.cpf, placeholder="CPF", value=cliente.cpf or '') }}
+            {{ render_field(form.cnpj, placeholder="CNPJ", value=cliente.cnpj or '') }}
+            {{ render_field(form.contato, placeholder="Insc. Municipal", value=cliente.contato or '') }}
+            {{ render_field(form.rg, placeholder="RG", value=cliente.rg or '') }}
+            {{ render_field(form.endereco, placeholder="Endereço", value=cliente.endereco or '') }}
+            {{ render_field(form.num_endereco, placeholder="Nº Endereço", value=cliente.num_endereco or '') }}
+            {{ render_field(form.bairro, placeholder="Bairro", value=cliente.bairro or '') }}
+            {{ render_field(form.cidade, placeholder="Cidade", value=cliente.cidade or '') }}
+            {{ render_field(form.estado, placeholder="Estado", value=cliente.estado or '') }}
+            {{ render_field(form.cep, placeholder="CEP", value=cliente.cep or '') }}
+            {{ render_field(form.telefone, placeholder="Telefone", value=cliente.telefone or '') }}
+            {{ render_field(form.telefone2, placeholder="Telefone 2", value=cliente.telefone2 or '') }}
+            {{ render_field(form.email, placeholder="Email", value=cliente.email or '') }}
+            {{ render_field(form.insc_estadual, placeholder="Insc. Estadual", value=cliente.insc_estadual or '') }}
+            {{ render_field(form.insc_municipal, placeholder="Insc. Municipal", value=cliente.insc_municipal or '') }}
+            </div>
+
+            <div class="form-options">
+            {{form.submit(class="btn btn-less form-item")}}
+            <a href="{{ url_for('cliente_page') }}" class="btn btn-less">Voltar</a>
+            </div>
+        </form>
+    </div>
+</main>
+
+
+{% endblock %}

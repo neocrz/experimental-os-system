@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+
+{% from "_formhelpers.html" import render_field %}
+{% block title %}
+Modificar Cliente
+{% endblock%}
+
+{% block content %}
+<main class="add add-cliente">
+    <div class="container">
+        <h1>Modificar Cliente</h1>
+        <form action="" method="POST" class="form">
+            <div class="form-elements">
+            {{ form.hidden_tag() }} <!-- para prevenir Cross Site Request Forgery -->
+            {{ render_field(form.tipo_cliente) }}
+            {{ render_field(form.name, placeholder="Nome") }}
+            {{ render_field(form.cpf, placeholder="CPF") }}
+            {{ render_field(form.cnpj, placeholder="CNPJ") }}
+            {{ render_field(form.contato, placeholder="Insc. Municipal") }}
+            {{ render_field(form.rg, placeholder="RG") }}
+            {{ render_field(form.endereco, placeholder="Endereço") }}
+            {{ render_field(form.num_endereco, placeholder="Nº Endereço") }}
+            {{ render_field(form.bairro, placeholder="Bairro") }}
+            {{ render_field(form.cidade, placeholder="Cidade") }}
+            {{ render_field(form.estado, placeholder="Estado") }}
+            {{ render_field(form.cep, placeholder="CEP") }}
+            {{ render_field(form.telefone, placeholder="Telefone") }}
+            {{ render_field(form.telefone2, placeholder="Telefone 2") }}
+            {{ render_field(form.email, placeholder="Email") }}
+            {{ render_field(form.insc_estadual, placeholder="Insc. Estadual") }}
+            {{ render_field(form.insc_municipal, placeholder="Insc. Municipal") }}
+            </div>
+
+            <div class="form-options">
+            {{form.submit(class="btn btn-less form-item")}}
+            <a href="{{ url_for('cliente_page') }}" class="btn btn-less">Voltar</a>
+            </div>
+        </form>
+    </div>
+</main>
+
+
+{% endblock %}

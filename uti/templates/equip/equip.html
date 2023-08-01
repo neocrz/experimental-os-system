@@ -1,6 +1,8 @@
-{% extends 'equip/base.html' %}
+{% extends 'base.html' %}
 
-
+{% block title %}
+Equipamento
+{% endblock%}
 {% block content %}
 <main class="page ordem">
     <div class="container equip-container">
@@ -21,7 +23,7 @@
                     <li class="item">
                         <form method="post" action="{{url_for('equip_page')}}">
                             <input type="hidden" name="equip-id" value="{{ equip.id }}" /> 
-                            <a href="#" onclick="this.parentNode.submit();">{{ equip.id }} | {{ equip.name }} | {{ equip.modelo }} </a>
+                            <a href="#" onclick="this.parentNode.submit();">{{ equip.id }} | {{ equip.name }} | {{ equip.modelo }} | {{ equip.marca }}</a>
                         </form>
                     </li>
                     {% endfor %}
@@ -29,11 +31,11 @@
             </div>
         </div>
         <div class="info">
-            <h2>Informações da Ordem</h2>
+            <h2>Informações do Equipamento</h2>
             {% if data %}
                 <div class="operacoes">
-                    <a href="{{ url_for('mod_ordem', equip_id=data.id) }}" class="btn btn-less">Modificar</a>
-                    <a href="{{ url_for('rm_ordem', equip_id=data.id) }}" class="btn btn-less">Excluir</a>
+                    <a href="{{ url_for('mod_equip', equip_id=data.id) }}" class="btn btn-less">Modificar</a>
+                    <a href="{{ url_for('rm_equip', equip_id=data.id) }}" class="btn btn-less">Excluir</a>
                 </div>
 
                 <div class="data-box">
@@ -49,7 +51,7 @@
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-var equips = [{% for equip in equips %} "{{ equip.id }}", {% endfor %}];
+var equips = [{% for equip in equips %} "{{ equip.id }} | {{ equip.name }} | {{ equip.modelo }} | {{ equip.marca }}", {% endfor %}];
 
 {% include './script/autocomplete.js' %}
 autocomplete(document.getElementById("search-input"), equips);

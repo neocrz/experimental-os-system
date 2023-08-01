@@ -33,3 +33,5 @@ login_manager.login_message_category = "info"
 
 from uti.routes import base
 from uti.routes import equip
+from uti.routes import cliente
+from uti.routes import ordem

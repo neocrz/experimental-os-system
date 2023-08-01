@@ -276,3 +276,6 @@ class EquipForm(FlaskForm):
 
 class AddEquipForm(EquipForm):
     submit = SubmitField(label="Adicionar Equipamento")
+
+class ModEquipForm(EquipForm):
+    submit = SubmitField(label="Modificar Equipamento")

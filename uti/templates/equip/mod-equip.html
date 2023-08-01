@@ -3,19 +3,20 @@
 
 {% from "_formhelpers.html" import render_field %}
 {% block title %}
-Adicionar Equip
+Modificar Equip
 {% endblock%}
 
 {% block content %}
 <main class="add add-equip">
     <div class="container">
-        <h1>Adicionar Equip</h1>
+        <h1>Modificar Equip</h1>
         <form action="" method="POST" class="form">
             <div class="form-elements">
             {{ form.hidden_tag() }} <!-- para prevenir Cross Site Request Forgery -->
-            {{ render_field(form.name, placeholder="Nome") }}
-            {{ render_field(form.modelo, placeholder="Modelo") }}
-            {{ render_field(form.marca, placeholder="Marca") }}
+            <input type="hidden" name="equip_id" value="{{ equip.id }}" /> 
+            {{ render_field(form.name, placeholder="Nome", value=equip.name) }}
+            {{ render_field(form.modelo, placeholder="Modelo", value=equip.modelo) }}
+            {{ render_field(form.marca, placeholder="Marca", value=equip.marca) }}
             </div>
 
             <div class="form-options">

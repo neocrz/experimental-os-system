@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Cliente
+{% endblock%}
+{% block content %}
+<main class="page ordem">
+    <div class="container cliente-container">
+        <h1>Lista de Clientes</h1>
+        <div class="search">
+            <div class="search-header">
+                <form method="post" class="search-header-form" autocomplete="off"  action="{{url_for('cliente_page')}}">
+                    <div class="autocomplete">
+                        <input id="search-input" type="text" name="cliente-id" placeholder="Pesquisar Cliente">
+                        <input type="submit">
+                    </div>
+                </form>
+                <a href="{{ url_for('add_cliente') }}" class="btn btn-less btn-add">Adicionar Cliente</a>
+            </div>
+            <div class="search-box">
+                <ul class="list">
+                    {% for cliente in clientes %}
+                    <li class="item">
+                        <form method="post" action="{{url_for('cliente_page')}}">
+                            <input type="hidden" name="cliente-id" value="{{ cliente.id }}" /> 
+                            <a href="#" onclick="this.parentNode.submit();">{{ cliente.id }} | {{ cliente.name }}</a>
+                        </form>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        <div class="info">
+            <h2>Informações do Cliente</h2>
+            {% if data %}
+                <div class="operacoes">
+                    <a href="{{ url_for('mod_cliente', cliente_id=data.id) }}" class="btn btn-less">Modificar</a>
+                    <a href="{{ url_for('rm_cliente', cliente_id=data.id) }}" class="btn btn-less">Excluir</a>
+                </div>
+
+                <div class="data-box">
+                    <p><strong>ID:</strong> <span class="data">{{ data.id}}</span></p>
+                    <p><strong>Nome:</strong> <span class="data">{{ data.name }}</span></p>
+                    <p><strong>Tipo Cliente:</strong> <span class="data">{{ data.tipo_cliente}}</span></p>
+                    <p><strong>Contato:</strong> <span class="data"></span>{{ data.contato or ' '}}</p>
+                    <p><strong>Telefone:</strong> <span class="data"></span>{{ data.telefone or ' '}}</p>
+                    <p><strong>Telefone 2:</strong> <span class="data"></span>{{ data.telefone2 or ' '}}</p>
+                    <p><strong>Endereço:</strong> <span class="data">{{ data.endereco or ' '}}</span></p>
+                    <p><strong>Número:</strong> <span class="data">{{ data.num_endereco or ' '}}</span></p>
+                    <p><strong>Bairro:</strong> <span class="data">{{ data.bairro or ' '}}</span></p>
+                    <p><strong>Cidade:</strong> <span class="data">{{ data.cidade or ' '}}</span></p>
+                    <p><strong>Estado:</strong> <span class="data">{{ data.estado or ' '}}</span></p>
+                    <p><strong>Inscrição Estadual:</strong> <span class="data"></span>{{ data.insc_estadual or ' '}}</p>
+                    <p><strong>Inscrição Municipal:</strong> <span class="data"></span>{{ data.insc_municipal or ' '}}</p>
+                    <p><strong>CPF:</strong> <span class="data"></span>{{ data.cpf or ' '}}</p>
+                    <p><strong>RG:</strong> <span class="data"></span>{{ data.rg or ' '}}</p>
+                    <p><strong>CNPJ:</strong> <span class="data"></span>{{ data.cnpj or ' '}}</p>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</main>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+var cli = [{% for cliente in clientes %} "{{ cliente.id }} | {{ cliente.name }}", {% endfor %}];
+var cli2 = [{% for cliente in clientes %} "{{ cliente.name }}", {% endfor %}];
+var id = [{% for cliente in clientes %} "{{ cliente.id }}", {% endfor %}];
+
+{% include './script/autocomplete.js' %}
+autocompletetwo(document.getElementById("search-input"), cli, cli2, id);
+</script>
+{% endblock %}
