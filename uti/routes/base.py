@@ -11,13 +11,13 @@ def index():
     return render_template("index.html")
 
 # dinamic css - allow to use jinja syntax in css
-@app.route('/css/base')
+@app.route('/style.css')
 def css():
     resp = make_response(render_template("style.css"))
     resp.headers['Content-type'] = 'text/css'
     return resp
 
-@app.route('/script/base')
+@app.route('/script.js')
 def script():
     resp = make_response(render_template("script.js"))
     resp.headers['Content-type'] = 'text/javascript'

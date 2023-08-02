@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Cliente
+{% endblock%}
+{% block content %}
+<main class="page ordem">
+    <div class="container ordem-container">
+        <h1>Lista de Ordens de Serviço</h1>
+        <div class="search">
+            <div class="search-header">
+                <form method="post" class="search-header-form" autocomplete="off"  action="{{url_for('ordem_page')}}">
+                    <div class="autocomplete">
+                        <input id="search-input" type="text" name="ordem-id" placeholder="Pesquisar Ordem">
+                        <input type="submit">
+                    </div>
+                </form>
+                <a href="{{ url_for('add_ordem') }}" class="btn btn-less btn-add">Adicionar Ordem</a>
+            </div>
+            <div class="search-box">
+                <ul class="list">
+                    {% for ordem in ordens %}
+                    <li class="item">
+                        <form method="post" action="{{url_for('ordem_page')}}">
+                            <input type="hidden" name="ordem-id" value="{{ ordem.id }}" /> 
+                            <a href="#" onclick="this.parentNode.submit();">{{ ordem.id }} | {{ ordem.desc }}</a>
+                        </form>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        <div class="info">
+            <h2>Informações da Ordem</h2>
+            {% if data %}
+                <div class="operacoes">
+                    <a href="{{ url_for('mod_ordem', ordem_id=data.id) }}" class="btn btn-less">Modificar</a>
+                    <a href="{{ url_for('print_ordem', ordem_id=data.id) }}" class="btn btn-success btn-less">Imprimir</a>
+                    <a href="{{ url_for('rm_ordem', ordem_id=data.id) }}" class="btn btn-less">Excluir</a>
+                </div>
+
+                <div class="data-box">
+                    <p><strong>ID:</strong> <span class="data">{{ data.id}}</span></p>
+                    <p><strong>Cliente:</strong> <span class="data">
+                        {% if data.cliente %}
+                            {{ data.cliente.id }} | {{ data.cliente.name }} 
+                        {% endif %}
+                    </span></p>
+                    <p><strong>Equipamento:</strong> <span class="data">
+                        {% if data.equipamento %}
+                            {{ data.equipamento.id }} | {{ data.equipamento.name }} 
+                        {% endif %}
+                    </span></p>
+                    <p><strong>Descrição:</strong> <span class="data">{{ data.desc or ''}}</span></p>
+                    <p><strong>Tipo de Ordem:</strong> <span class="data">{{ data.tipo_ordem or ''}}</span></p>
+                    <p><strong>Data da OS:</strong> <span class="data">{{ data.data_os or ''}}</span></p>
+                    <p><strong>Data do Chamado:</strong> <span class="data">{{ data.data_chamado or ''}}</span></p>
+                    <p><strong>Motivo do Chamado:</strong> <span class="data">{{ data.motivo_chamado or ''}}</span></p>
+                    <p><strong>Status do Serviço:</strong> <span class="data">{{ data.status_serviço or ''}}</span></p>
+                    <p><strong>Observações:</strong> <span class="data">{{ data.observacao or ''}}</span></p>
+                    <p><strong>Serviço Executado:</strong> <span class="data">{{ data.serv_executado or ''}}</span></p>
+                    <p><strong>Material Utilizado:</strong> <span class="data">{{ data.material or ''}}</span></p>
+                    <p><strong>Valor da Visita:</strong> <span class="data">{{ data.valor_visita or ''}}</span></p>
+                    <p><strong>Valor da Km:</strong> <span class="data">{{ data.valor_km or ''}}</span></p>
+                    <p><strong>Valor do Material:</strong> <span class="data">{{ data.valor_material or ''}}</span></p>
+                    <p><strong>Km Inicial:</strong> <span class="data">{{ data.km_inicial or ''}}</span></p>
+                    <p><strong>Km Final:</strong> <span class="data">{{ data.km_final or ''}}</span></p>
+                    <p><strong>Valor Final:</strong> <span class="data">{{ data.valor_final or ''}}</span></p>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</main>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+
+var ordens = [{% for ordem in ordens %} "{{ ordem.id }}", {% endfor %}];
+
+{% include './script/autocomplete.js' %}
+autocomplete(document.getElementById("search-input"), ordens);
+</script>
+{% endblock %}

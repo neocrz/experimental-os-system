@@ -3,6 +3,8 @@ from uti import app, db
 from flask_login import login_user, logout_user, login_required, current_user
 from uti.forms import AddOrdemForm, ModOrdemForm
 from uti.models import Ordem, Cliente, Equipamento
+from uti.utils import formatar_valor, valor_tostring
+import os
 
 @app.route('/ordem', methods = ["GET", "POST"])
 @login_required
@@ -12,11 +14,11 @@ def ordem_page():
     if request.method == "POST":
         if request.form.get('ordem-id'):
             o_id = request.form['ordem-id']
-            ordem_data = Ordem.query.get(o_id)
-            return render_template("ordem.html", ordens=ordens, ordem_data=ordem_data)
+            data = Ordem.query.get(o_id)
+            return render_template("ordem/ordem.html", ordens=ordens, data=data)
         
     if request.method == "GET":
-        return render_template("ordem.html", ordens=ordens)
+        return render_template("ordem/ordem.html", ordens=ordens)
     
 
 @app.route('/ordem/adicionar', methods = ["GET", "POST"])
@@ -28,9 +30,12 @@ def add_ordem():
     if form.validate_on_submit():
         cliente_id = request.form.get('cliente_id')
         cliente = Cliente.query.get(cliente_id)
+        equip_id = request.form.get('equip_id')
+        equip = Cliente.query.get(equip_id)
         ordem_to_create = Ordem(
             desc=form.desc.data,
             cliente_id=cliente.id,
+            equipamento_id=equip.id,
             tipo_ordem=form.tipo_ordem.data,
             data_os=form.data_os.data,
             data_chamado=form.data_chamado.data,
@@ -45,13 +50,14 @@ def add_ordem():
             valor_material=form.valor_material.data,
             km_inicial=form.km_inicial.data,
             km_final=form.km_final.data,
+            valor_final=valor_tostring( formatar_valor(form.valor_material.data) + formatar_valor(form.valor_visita.data) + formatar_valor(form.maod_obra.data))
             )
         db.session.add(ordem_to_create)
         db.session.commit()
         flash(f"Ordem '{ordem_to_create.id}' criada com sucesso!", category="success")
         return redirect(url_for('ordem_page'))
 
-    return render_template("add-ordem.html", form=form, clientes=clientes, equips=equips)
+    return render_template("ordem/add-ordem.html", form=form, clientes=clientes, equips=equips)
 
 @app.route('/ordem/modificar', methods = ["GET", "POST"])
 @login_required
@@ -67,10 +73,10 @@ def mod_ordem():
         cliente_id = request.form['cliente_id']
         cliente = Cliente.query.get(cliente_id)
         equip_id = request.form['equip_id']
-        equip = Cliente.query.get(equip_id)
+        equip = Equipamento.query.get(equip_id)
         ordem.desc=form.desc.data
         ordem.cliente_id=cliente.id
-        ordem.equipamento_id=equip_id
+        ordem.equipamento_id=equip.id
         ordem.tipo_ordem=form.tipo_ordem.data
         ordem.data_os=form.data_os.data
         ordem.data_chamado=form.data_chamado.data
@@ -85,6 +91,7 @@ def mod_ordem():
         ordem.valor_material=form.valor_material.data
         ordem.km_inicial=form.km_inicial.data
         ordem.km_final=form.km_final.data
+        ordem.valor_final=valor_tostring( formatar_valor(form.valor_material.data) + formatar_valor(form.valor_visita.data) + formatar_valor(form.maod_obra.data))
 
         db.session.add(ordem)
         db.session.commit()
@@ -95,7 +102,7 @@ def mod_ordem():
     form.status_serviço.default = ordem.status_serviço
     form.process()
 
-    return render_template("mod-ordem.html", form=form, ordem=ordem, clientes=clientes, equips=equips)
+    return render_template("ordem/mod-ordem.html", form=form, ordem=ordem, clientes=clientes, equips=equips)
 
 @app.route('/ordem/remover', methods = ["GET", "POST"])
 @login_required
@@ -109,6 +116,17 @@ def rm_ordem():
 @app.route('/ordem/imprimir')
 @login_required
 def print_ordem():
+    sys_name = os.environ.get("OS_OWNER_NAME")
+    sys_info = os.environ.get("OS_OWNER_INFO")
+    sys_info2 = os.environ.get("OS_OWNER_INFO2")
+    sys_logo = os.environ.get("OS_OWNER_LOGO")
     ordem_id = request.args.get('ordem_id')
     ordem = Ordem.query.get(ordem_id)
-    return render_template("print-ordem.html", ordem=ordem)
+    return render_template(
+        "ordem/print-ordem.html", 
+        ordem=ordem, 
+        sys_name=sys_name, 
+        sys_info=sys_info, 
+        sys_info2=sys_info2,
+        sys_logo=sys_logo
+        )

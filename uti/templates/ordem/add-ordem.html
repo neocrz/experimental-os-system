@@ -1,17 +1,16 @@
 {% extends 'base.html' %}
+
 {% from "_formhelpers.html" import render_field %}
 {% block title %}
-Adicionar Ordem
+Adicionar Equip
 {% endblock%}
 
 {% block content %}
-<main class="add-ordem">
-
-    
-    <div class="container add-ordem-container">
-        <h1>Adicionar Ordem</h1>
-        <form action="" method="POST" class="form-add-ordem">
-            <div class="form-add-ordem-elements">
+<main class="add add-ordem">
+    <div class="container">
+        <h1>Adicionar Ordem de Serviço</h1>
+        <form action="" method="POST" class="form">
+            <div class="form-elements">
             {{ form.hidden_tag() }} <!-- para prevenir Cross Site Request Forgery -->
             <div class="form-item">
                 <label for="search-cliente">Id do Cliente:</label>
@@ -27,22 +26,22 @@ Adicionar Ordem
             </div>
             {{ render_field(form.tipo_ordem, placeholder="Tipo de Ordem") }}
             {{ render_field(form.desc, placeholder="Descrição da OS") }}
-            {{ render_field(form.data_os, placeholder="Data da OS") }}
-            {{ render_field(form.data_chamado, placeholder="Data do Chamado") }}
+            {{ render_field(form.data_os, placeholder="Data da OS", onkeyup="formataValorData(this)", onpaste="TrataPaste(this, event, 'data')" ) }}
+            {{ render_field(form.data_chamado, placeholder="Data do Chamado", onkeyup="formataValorData(this)", onpaste="TrataPaste(this, event, 'data')" ) }}
             {{ render_field(form.motivo_chamado, placeholder="Motivo do Chamado") }}
             {{ render_field(form.status_serviço, placeholder="Status do Serviço") }}
             {{ render_field(form.observacao, placeholder="Observações") }}
             {{ render_field(form.serv_executado, placeholder="Serviço Executado") }}
             {{ render_field(form.material, placeholder="Material Utilizado") }}
-            {{ render_field(form.valor_visita, placeholder="Valor da Visita") }}
-            {{ render_field(form.maod_obra, placeholder="Mão de Obra") }}
-            {{ render_field(form.valor_km, placeholder="Valor da Km") }}
-            {{ render_field(form.valor_material, placeholder="Valor do Material") }}
+            {{ render_field(form.valor_visita, placeholder="Valor da Visita", onkeyup="formataValorPreco(this)", onpaste="TrataPaste(this, event, 'preco')" ) }}
+            {{ render_field(form.maod_obra, placeholder="Mão de Obra", onkeyup="formataValorPreco(this)", onpaste="TrataPaste(this, event, 'preco')" ) }}
+            {{ render_field(form.valor_km, placeholder="Valor da Km", onkeyup="formataValorPreco(this)", onpaste="TrataPaste(this, event, 'preco')" ) }}
+            {{ render_field(form.valor_material, placeholder="Valor do Material", onkeyup="formataValorPreco(this)", onpaste="TrataPaste(this, event, 'preco')" ) }}
             {{ render_field(form.km_inicial, placeholder="Km Inicial") }}
             {{ render_field(form.km_final, placeholder="Km Final") }}
             </div>
 
-            <div class="form-add-ordem-options">
+            <div class="form-options">
             {{form.submit(class="btn btn-less form-item")}}
             <a href="{{ url_for('ordem_page') }}" class="btn btn-less">Voltar</a>
             </div>
@@ -53,6 +52,7 @@ Adicionar Ordem
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
 {% include './script/autocomplete.js' %}
+{% include './script/format.js' %}
 
 var cli = [{% for cliente in clientes %} "{{ cliente.name }} | {{ cliente.id }}", {% endfor %}];
 var cli2 = [{% for cliente in clientes %} "{{ cliente.id }} | {{ cliente.name }}", {% endfor %}];

@@ -15,18 +15,18 @@ Modificar Cliente
             {{ form.hidden_tag() }} <!-- para prevenir Cross Site Request Forgery -->
             {{ render_field(form.tipo_cliente) }}
             {{ render_field(form.name, placeholder="Nome") }}
-            {{ render_field(form.cpf, placeholder="CPF") }}
-            {{ render_field(form.cnpj, placeholder="CNPJ") }}
+            {{ render_field(form.cpf, placeholder="CPF", onkeyup="formataValorCpf(this)", onpaste="TrataPaste(this, event, 'cpf')" ) }}
+            {{ render_field(form.cnpj, placeholder="CNPJ", onkeyup="formataValorCnpj(this)", onpaste="TrataPaste(this, event, 'cnpj')" ) }}
             {{ render_field(form.contato, placeholder="Insc. Municipal") }}
-            {{ render_field(form.rg, placeholder="RG") }}
+            {{ render_field(form.rg, placeholder="RG", onkeyup="formataValorRg(this)", onpaste="TrataPaste(this, event, 'rg')" ) }}
             {{ render_field(form.endereco, placeholder="Endereço") }}
             {{ render_field(form.num_endereco, placeholder="Nº Endereço") }}
             {{ render_field(form.bairro, placeholder="Bairro") }}
             {{ render_field(form.cidade, placeholder="Cidade") }}
             {{ render_field(form.estado, placeholder="Estado") }}
-            {{ render_field(form.cep, placeholder="CEP") }}
-            {{ render_field(form.telefone, placeholder="Telefone") }}
-            {{ render_field(form.telefone2, placeholder="Telefone 2") }}
+            {{ render_field(form.cep, placeholder="CEP", onkeyup="formataValorCep(this)", onpaste="TrataPaste(this, event, 'cep')" ) }}
+            {{ render_field(form.telefone, placeholder="Telefone", onkeyup="formataTelefone(this)", onpaste="TrataPaste(this, event, 'tel')" ) }}
+            {{ render_field(form.telefone2, placeholder="Telefone 2", onkeyup="formataTelefone(this)", onpaste="TrataPaste(this, event, 'tel')" ) }}
             {{ render_field(form.email, placeholder="Email") }}
             {{ render_field(form.insc_estadual, placeholder="Insc. Estadual") }}
             {{ render_field(form.insc_municipal, placeholder="Insc. Municipal") }}

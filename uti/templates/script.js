@@ -1,2 +1,2 @@
-{% include './script/add-client.js' %}
+{% include './script/format.js' %}
 {% include './script/autocomplete.js' %}

@@ -16,18 +16,18 @@ Modificar Cliente
             <input type="hidden" name="cliente_id" value="{{ cliente.id }}" /> 
             {{ render_field(form.tipo_cliente, value=cliente.tipo_cliente) }}
             {{ render_field(form.name, placeholder="Nome", value=cliente.name or '') }}
-            {{ render_field(form.cpf, placeholder="CPF", value=cliente.cpf or '') }}
-            {{ render_field(form.cnpj, placeholder="CNPJ", value=cliente.cnpj or '') }}
+            {{ render_field(form.cpf, placeholder="CPF", onkeyup="formataValorCpf(this)", onpaste="TrataPaste(this, event, 'cpf')" , value=cliente.cpf or '') }}
+            {{ render_field(form.cnpj, placeholder="CNPJ", onkeyup="formataValorCnpj(this)", onpaste="TrataPaste(this, event, 'cnpj')" , value=cliente.cnpj or '') }}
             {{ render_field(form.contato, placeholder="Insc. Municipal", value=cliente.contato or '') }}
-            {{ render_field(form.rg, placeholder="RG", value=cliente.rg or '') }}
+            {{ render_field(form.rg, placeholder="RG", onkeyup="formataValorRg(this)", onpaste="TrataPaste(this, event, 'rg')" , value=cliente.rg or '') }}
             {{ render_field(form.endereco, placeholder="Endereço", value=cliente.endereco or '') }}
             {{ render_field(form.num_endereco, placeholder="Nº Endereço", value=cliente.num_endereco or '') }}
             {{ render_field(form.bairro, placeholder="Bairro", value=cliente.bairro or '') }}
             {{ render_field(form.cidade, placeholder="Cidade", value=cliente.cidade or '') }}
             {{ render_field(form.estado, placeholder="Estado", value=cliente.estado or '') }}
-            {{ render_field(form.cep, placeholder="CEP", value=cliente.cep or '') }}
-            {{ render_field(form.telefone, placeholder="Telefone", value=cliente.telefone or '') }}
-            {{ render_field(form.telefone2, placeholder="Telefone 2", value=cliente.telefone2 or '') }}
+            {{ render_field(form.cep, placeholder="CEP", onkeyup="formataValorCep(this)", onpaste="TrataPaste(this, event, 'cep')" , value=cliente.cep or '') }}
+            {{ render_field(form.telefone, placeholder="Telefone", onkeyup="formataTelefone(this)", onpaste="TrataPaste(this, event, 'tel')" , value=cliente.telefone or '') }}
+            {{ render_field(form.telefone2, placeholder="Telefone 2", onkeyup="formataTelefone(this)", onpaste="TrataPaste(this, event, 'tel')" , value=cliente.telefone2 or '') }}
             {{ render_field(form.email, placeholder="Email", value=cliente.email or '') }}
             {{ render_field(form.insc_estadual, placeholder="Insc. Estadual", value=cliente.insc_estadual or '') }}
             {{ render_field(form.insc_municipal, placeholder="Insc. Municipal", value=cliente.insc_municipal or '') }}

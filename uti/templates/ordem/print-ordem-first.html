@@ -1,10 +1,10 @@
 <div class="printable-ordem" >
     <div class="print-header">
-        <img class="logo" src="{{ url_for('static', filename='./img/os_logo.svg', _external=True) }}" alt="logo ico">
+        <img class="logo" src="{{ sys_logo }}" alt="logo ico">
         <div class="print-header-info">
-            <h2>UNIDADE TÉCNICA INTEGRADA</h2>
-            <h5>RUA PAULO AGOSTINHO DA SILVA 303 - VILA ZILDA - GUARUJA-SP - 11436-040</h5>
-            <h5>utiequipamentos@outlook.com  (13)97420-7746 CNPJ 41.730.120/0001-21</h5>
+            <h2>{{ sys_name }}</h2>
+            <h5>{{ sys_info }}</h5>
+            <h5>{{ sys_info2 }}</h5>
         </div>
         <div class="print-header-os">
             <h2 class="indicator">OS</h2>

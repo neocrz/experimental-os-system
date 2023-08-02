@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+
+{% from "_formhelpers.html" import render_field %}
+{% block title %}
+Modificar Equip
+{% endblock%}
+
+{% block content %}
+<main class="add add-equip">
+    <div class="container">
+        <h1>Modificar Equip</h1>
+        <form action="" method="POST" class="form">
+            <div class="form-elements">
+                {{ form.hidden_tag() }} <!-- para prevenir Cross Site Request Forgery -->
+                <div class="form-item">
+                    <label for="search-cliente">Id do Cliente:</label>
+                    <div class="autocomplete">
+                        <input id="search-cliente" type="text" name="cliente_id" autocomplete="off" placeholder="Nome ou ID" value="{{ ordem.cliente.id }}">
+                    </div>
+                </div>
+                <div class="form-item">
+                <label for="search-equip">Id do Equipamento:</label>
+                    <div class="autocomplete">
+                        <input id="search-equip" type="text" name="equip_id" autocomplete="off" placeholder="Nome ou ID" value="{{ ordem.equipamento.id }}">
+                    </div>
+                </div>
+                {{ render_field(form.tipo_ordem, placeholder="Tipo de Ordem") }}
+                {{ render_field(form.desc, placeholder="Descrição da OS", value=ordem.desc) }}
+                {{ render_field(form.data_os, placeholder="Data da OS", onkeyup="formataValorData(this)", onpaste="TrataPaste(this, event, 'data')" , value=ordem.data_os) }}
+                {{ render_field(form.data_chamado, placeholder="Data do Chamado", onkeyup="formataValorData(this)", onpaste="TrataPaste(this, event, 'data')" , value=ordem.data_chamado) }}
+                {{ render_field(form.motivo_chamado, placeholder="Motivo do Chamado", value=ordem.motivo_chamado) }}
+                {{ render_field(form.status_serviço, placeholder="Status do Serviço", value=ordem.status_serviço) }}
+                {{ render_field(form.observacao, placeholder="Observações", value=ordem.observacao) }}
+                {{ render_field(form.serv_executado, placeholder="Serviço Executado", value=ordem.serv_executado) }}
+                {{ render_field(form.material, placeholder="Material Utilizado", value=ordem.material) }}
+                {{ render_field(form.valor_visita, placeholder="Valor da Visita", onkeyup="formataValorPreco(this)", onpaste="TrataPaste(this, event, 'preco')" , value=ordem.valor_visita) }}
+                {{ render_field(form.maod_obra, placeholder="Mão de Obra", onkeyup="formataValorPreco(this)", onpaste="TrataPaste(this, event, 'preco')" , value=ordem.maod_obra) }}
+                {{ render_field(form.valor_km, placeholder="Valor da Km", onkeyup="formataValorPreco(this)", onpaste="TrataPaste(this, event, 'preco')" , value=ordem.valor_km) }}
+                {{ render_field(form.valor_material, placeholder="Valor do Material", onkeyup="formataValorPreco(this)", onpaste="TrataPaste(this, event, 'preco')" , value=ordem.valor_material) }}
+                {{ render_field(form.km_inicial, placeholder="Km Inicial", value=ordem.km_inicial) }}
+                {{ render_field(form.km_final, placeholder="Km Final", value=ordem.km_final) }}
+            </div>
+
+            <div class="form-options">
+            {{form.submit(class="btn btn-less form-item")}}
+            <a href="{{ url_for('ordem_page') }}" class="btn btn-less">Voltar</a>
+            </div>
+        </form>
+    </div>
+</main>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+{% include './script/autocomplete.js' %}
+var cli = [{% for cliente in clientes %} "{{ cliente.name }} | {{ cliente.id }}", {% endfor %}];
+var cli2 = [{% for cliente in clientes %} "{{ cliente.id }} | {{ cliente.name }}", {% endfor %}];
+var id = [{% for cliente in clientes %} "{{ cliente.id }}", {% endfor %}];
+autocompletetwo(document.getElementById("search-cliente"), cli, cli2, id);
+
+var equip = [{% for equip in equips %} "{{ equip.name }} | {{ equip.modelo }} | {{ equip.marca }}", {% endfor %}];
+var equip2 = [{% for equip in equips %} "{{ equip.id }} | {{ equip.name }}", {% endfor %}];
+var equip_id = [{% for equip in equips %} "{{ equip.id }}", {% endfor %}];
+autocompletetwo(document.getElementById("search-equip"), equip, equip2, equip_id);
+</script>
+
+{% endblock %}

@@ -54,26 +54,57 @@ function formataValorCpf(campo) {
     };
 
     function formataValorCnpj(campo) {
-    var vr = campo.value;
-    vr = vr.replace(/\D/g, ''); // Remove todos os caracteres não numéricos
+        var vr = campo.value;
+        vr = vr.replace(/\D/g, ''); // Remove todos os caracteres não numéricos
 
-    var tam = vr.length;
-    if (tam <= 2) {
-        campo.value = vr;
-    } else if (tam > 2 && tam <= 5) {
-        campo.value = vr.substr(0, 2) + '.' + vr.substr(2, tam - 2);
-    } else if (tam > 5 && tam <= 8) {
-        campo.value = vr.substr(0, 2) + '.' + vr.substr(2, 3) + '.' + vr.substr(5, tam - 5);
-    } else if (tam > 8 && tam <= 12) {
-        campo.value = vr.substr(0, 2) + '.' + vr.substr(2, 3) + '.' + vr.substr(5, 3) + '/' + vr.substr(8, tam - 8);
-    } else if (tam > 12 && tam <= 14) {
-        campo.value = vr.substr(0, 2) + '.' + vr.substr(2, 3) + '.' + vr.substr(5, 3) + '/' + vr.substr(8, 4) + '-' + vr.substr(12, tam - 12);
-    } else {
-        campo.value = vr.substr(0, 2) + '.' + vr.substr(2, 3) + '.' + vr.substr(5, 3) + '/' + vr.substr(8, 4) + '-' + vr.substr(12, 2);
+        var tam = vr.length;
+        if (tam <= 2) {
+            campo.value = vr;
+        } else if (tam > 2 && tam <= 5) {
+            campo.value = vr.substr(0, 2) + '.' + vr.substr(2, tam - 2);
+        } else if (tam > 5 && tam <= 8) {
+            campo.value = vr.substr(0, 2) + '.' + vr.substr(2, 3) + '.' + vr.substr(5, tam - 5);
+        } else if (tam > 8 && tam <= 12) {
+            campo.value = vr.substr(0, 2) + '.' + vr.substr(2, 3) + '.' + vr.substr(5, 3) + '/' + vr.substr(8, tam - 8);
+        } else if (tam > 12 && tam <= 14) {
+            campo.value = vr.substr(0, 2) + '.' + vr.substr(2, 3) + '.' + vr.substr(5, 3) + '/' + vr.substr(8, 4) + '-' + vr.substr(12, tam - 12);
+        } else {
+            campo.value = vr.substr(0, 2) + '.' + vr.substr(2, 3) + '.' + vr.substr(5, 3) + '/' + vr.substr(8, 4) + '-' + vr.substr(12, 2);
+        }
+    };
+
+    function formataValorData(campo) {
+        var vr = campo.value;
+        vr = vr.replace(/\D/g, '');// Remove todos os caracteres não numéricos
+    
+        var tam = vr.length;
+        if (tam <= 2) {
+            campo.value = vr
+        } else if (tam > 2 && tam <= 4) {
+            campo.value = vr.substr(0, 2) + '/' + vr.substr(2, tam - 2);
+        } else if (tam > 4 && tam <= 8) {
+            campo.value = vr.substr(0, 2) + '/' + vr.substr(2, 2) + '/' + vr.substr(4, tam - 4);
+        } else {
+            campo.value = vr.substr(0, 2) + '/' + vr.substr(2, 2) + '/' + vr.substr(4, 4);
+        }
     }
-};
 
-
+    function formataValorPreco(campo) {
+        var vr = campo.value;
+        vr = vr.replace(/\D/g, ''); // Remove todos os caracteres não numéricos
+        
+        var tam = vr.length;
+        if (tam <= 2) {
+            campo.value = '0,' + vr;
+        } else {
+            if (vr.startsWith('0')) {
+                vr = vr.slice(1); // Retorna 'vr' sem o zero inicial
+            }
+            var inteiro = vr.substr(0, tam - 2);
+            var decimal = vr.substr(tam - 2, 2);
+            campo.value = inteiro + ',' + decimal;
+        }
+    }
 
     function formataValorCep(campo) {
         var vr = campo.value;
@@ -117,6 +148,12 @@ function formataValorCpf(campo) {
             break;
             case 'tel':
             formataTelefone(caixa);
+            break;
+            case 'data':
+            formataValorData(caixa);
+            break;
+            case 'preco':
+                formataValorPreco(caixa);
             break;
         }
         
