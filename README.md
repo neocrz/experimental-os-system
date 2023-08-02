@@ -30,4 +30,5 @@ OS_OWNER_LOGO=
 - `OS_OWNER_NAME`: Nome da empresa a utilizar o sistema 
 - `OS_OWNER_INFO`: String de informações sobre a empresa(endereço, bairro, cidade, estado, cep..)
 - `OS_OWNER_INFO2`: String de informações sobre a empresa(email, telefone, cnpj)
+- `OS_OWNER_INFO3`: String de informações sobre a empresa(site, etc)
 - `OS_OWNER_LOGO`: URL do logo da empresa

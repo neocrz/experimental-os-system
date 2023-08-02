@@ -12,6 +12,7 @@ class Cliente(db.Model):
     # empresas clientes
     id = db.Column(db.Integer(), primary_key=True)
     name = db.Column(db.String(length=64), nullable=False, unique=True)
+    razao_social = db.Column(db.String(length=64), nullable=False, unique=True)
     __tablename__ = 'clientes'
     endereco = db.Column(db.String(length=64), nullable=True, unique=False)
     num_endereco = db.Column(db.String(length=16), nullable=True, unique=False)

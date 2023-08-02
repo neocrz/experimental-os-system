@@ -23,6 +23,12 @@ class ClienteForm(FlaskForm):
             Length( max=64, message="No máximo 64 caracteres" )
             ]
     )
+    razao_social = StringField(
+        label="Razão Social:",
+        validators=[
+            Length( max=64, message="No máximo 64 caracteres" )
+            ]
+    )
 
     tipo_cliente = SelectField(
         u'Tipo', 

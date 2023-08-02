@@ -16,9 +16,10 @@ Modificar Cliente
             <input type="hidden" name="cliente_id" value="{{ cliente.id }}" /> 
             {{ render_field(form.tipo_cliente, value=cliente.tipo_cliente) }}
             {{ render_field(form.name, placeholder="Nome", value=cliente.name or '') }}
+            {{ render_field(form.razao_social, placeholder="Razão Social", value=cliente.razao_social or '') }}
             {{ render_field(form.cpf, placeholder="CPF", onkeyup="formataValorCpf(this)", onpaste="TrataPaste(this, event, 'cpf')" , value=cliente.cpf or '') }}
             {{ render_field(form.cnpj, placeholder="CNPJ", onkeyup="formataValorCnpj(this)", onpaste="TrataPaste(this, event, 'cnpj')" , value=cliente.cnpj or '') }}
-            {{ render_field(form.contato, placeholder="Insc. Municipal", value=cliente.contato or '') }}
+            {{ render_field(form.contato, placeholder="Contato", value=cliente.contato or '') }}
             {{ render_field(form.rg, placeholder="RG", onkeyup="formataValorRg(this)", onpaste="TrataPaste(this, event, 'rg')" , value=cliente.rg or '') }}
             {{ render_field(form.endereco, placeholder="Endereço", value=cliente.endereco or '') }}
             {{ render_field(form.num_endereco, placeholder="Nº Endereço", value=cliente.num_endereco or '') }}

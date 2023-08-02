@@ -39,7 +39,9 @@ def add_cliente():
             email=form.email.data,
             insc_estadual=form.insc_estadual.data,
             insc_municipal=form.insc_municipal.data,
-            contato=form.contato.data
+            contato=form.contato.data,
+            razao_social=form.razao_social.data
+            
         )
         db.session.add(cliente_to_create)
         db.session.commit()
@@ -89,6 +91,7 @@ def mod_cliente():
         cliente.insc_estadual=form.insc_estadual.data
         cliente.insc_municipal=form.insc_municipal.data
         cliente.contato=form.contato.data
+        cliente.razao_social=form.razao_social.data
         db.session.commit()
 
         flash(f"Cliente '{cliente.name}' modificado com sucesso!", category="success")

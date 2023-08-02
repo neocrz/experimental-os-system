@@ -14,10 +14,11 @@ Modificar Cliente
             <div class="form-elements">
             {{ form.hidden_tag() }} <!-- para prevenir Cross Site Request Forgery -->
             {{ render_field(form.tipo_cliente) }}
-            {{ render_field(form.name, placeholder="Nome") }}
+            {{ render_field(form.name, placeholder="Nome (ou Nome Fantasia)") }}
+            {{ render_field(form.razao_social, placeholder="Razão Social") }}
             {{ render_field(form.cpf, placeholder="CPF", onkeyup="formataValorCpf(this)", onpaste="TrataPaste(this, event, 'cpf')" ) }}
             {{ render_field(form.cnpj, placeholder="CNPJ", onkeyup="formataValorCnpj(this)", onpaste="TrataPaste(this, event, 'cnpj')" ) }}
-            {{ render_field(form.contato, placeholder="Insc. Municipal") }}
+            {{ render_field(form.contato, placeholder="Contato") }}
             {{ render_field(form.rg, placeholder="RG", onkeyup="formataValorRg(this)", onpaste="TrataPaste(this, event, 'rg')" ) }}
             {{ render_field(form.endereco, placeholder="Endereço") }}
             {{ render_field(form.num_endereco, placeholder="Nº Endereço") }}

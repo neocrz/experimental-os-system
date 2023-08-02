@@ -119,7 +119,9 @@ def print_ordem():
     sys_name = os.environ.get("OS_OWNER_NAME")
     sys_info = os.environ.get("OS_OWNER_INFO")
     sys_info2 = os.environ.get("OS_OWNER_INFO2")
+    sys_info3 = os.environ.get("OS_OWNER_INFO3")
     sys_logo = os.environ.get("OS_OWNER_LOGO")
+    sys_tec = os.environ.get("OS_OWNER_TEC")
     ordem_id = request.args.get('ordem_id')
     ordem = Ordem.query.get(ordem_id)
     return render_template(
@@ -128,5 +130,7 @@ def print_ordem():
         sys_name=sys_name, 
         sys_info=sys_info, 
         sys_info2=sys_info2,
-        sys_logo=sys_logo
+        sys_info3=sys_info3,
+        sys_logo=sys_logo,
+        sys_tec=sys_tec
         )

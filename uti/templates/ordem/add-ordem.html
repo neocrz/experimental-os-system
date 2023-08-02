@@ -33,10 +33,10 @@ Adicionar Equip
             {{ render_field(form.observacao, placeholder="Observações") }}
             {{ render_field(form.serv_executado, placeholder="Serviço Executado") }}
             {{ render_field(form.material, placeholder="Material Utilizado") }}
-            {{ render_field(form.valor_visita, placeholder="Valor da Visita", onkeyup="formataValorPreco(this)", onpaste="TrataPaste(this, event, 'preco')" ) }}
-            {{ render_field(form.maod_obra, placeholder="Mão de Obra", onkeyup="formataValorPreco(this)", onpaste="TrataPaste(this, event, 'preco')" ) }}
-            {{ render_field(form.valor_km, placeholder="Valor da Km", onkeyup="formataValorPreco(this)", onpaste="TrataPaste(this, event, 'preco')" ) }}
-            {{ render_field(form.valor_material, placeholder="Valor do Material", onkeyup="formataValorPreco(this)", onpaste="TrataPaste(this, event, 'preco')" ) }}
+            {{ render_field(form.valor_visita, placeholder="Valor da Visita", onkeyup="formataValorPreco(this)", onpaste="TrataPaste(this, event, 'preco')", value="0,00" ) }}
+            {{ render_field(form.maod_obra, placeholder="Mão de Obra", onkeyup="formataValorPreco(this)", onpaste="TrataPaste(this, event, 'preco')", value="0,00" ) }}
+            {{ render_field(form.valor_km, placeholder="Valor da Km", onkeyup="formataValorPreco(this)", onpaste="TrataPaste(this, event, 'preco')", value="0,00") }}
+            {{ render_field(form.valor_material, placeholder="Valor do Material", onkeyup="formataValorPreco(this)", onpaste="TrataPaste(this, event, 'preco')", value="0,00" ) }}
             {{ render_field(form.km_inicial, placeholder="Km Inicial") }}
             {{ render_field(form.km_final, placeholder="Km Final") }}
             </div>

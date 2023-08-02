@@ -1,10 +1,11 @@
 <div class="printable-ordem" >
     <div class="print-header">
-        <img class="logo" src="{{ sys_logo }}" alt="logo ico">
+        <img class="logo" src="{{ url_for('static', filename='./img/logo.svg', _external=True) }}" alt="logo ico">
         <div class="print-header-info">
             <h2>{{ sys_name }}</h2>
             <h5>{{ sys_info }}</h5>
             <h5>{{ sys_info2 }}</h5>
+            <h5>{{ sys_info3 }}</h5>
         </div>
         <div class="print-header-os">
             <h2 class="indicator">OS</h2>
@@ -19,16 +20,19 @@
             {% if ordem.cliente.tipo_cliente == "Física" %}
                 <p class="item">Nome<span>:</span></p> <p>{{ ordem.cliente.name }}</p>
             {% else %}
+                <p class="item">Nome Fantasia<span>:</span></p> <p>{{ ordem.cliente.name }}</p>
                 <p class="item">Razão Social<span>:</span></p> <p>{{ ordem.cliente.name }}</p>
                 <p class="item">Contato<span>:</span></p> <p>{{ ordem.cliente.contato }}</p>
             {% endif %}
            
             <p class="item">Endereço<span>:</span></p> <p>{{ ordem.cliente.endereco }}</p>
-            <p class="item">Email<span>:</span></p> <p>{{ ordem.cliente.email }}</p>
-            
+            {% if ordem.cliente.email %}
+                <p class="item">Email<span>:</span></p> <p>{{ ordem.cliente.email }}</p>
+            {% endif%}
+             
         </div>
         <div class="print-cliente-basico">
-            <p class="item">Ender. Nº<span>:</span></p> <p>{{ ordem.cliente.num_endereco }}</p>
+            <p class="item">Nº<span>:</span></p> <p>{{ ordem.cliente.num_endereco }}</p>
             <p class="item">Bairro<span>:</span></p> <p>{{ ordem.cliente.bairro }}</p>
             <p class="item">Cidade<span>:</span></p> <p>{{ ordem.cliente.cidade }}</p>
             <p class="item">Estado<span>:</span></p> <p>{{ ordem.cliente.estado }}</p>
@@ -42,7 +46,9 @@
                 <p class="item">CNPJ<span>:</span></p> <p>{{ ordem.cliente.cnpj }}</p>
             {% endif %}
             <p class="item">Telefone<span>:</span></p> <p>{{ ordem.cliente.telefone }}</p>
-            <p class="item">Telefone<span>:</span></p> <p>{{ ordem.cliente.telefone2 }}</p>
+            {% if ordem.cliente.telefone2 %}
+                <p class="item">Whatsapp<span>:</span></p> <p>{{ ordem.cliente.telefone2 }}</p>
+            {% endif %}
             
             
         </div>
@@ -62,7 +68,7 @@
             <p>{{ ordem.motivo_chamado }}</p>
         </div>
         <div>
-            <h4>Descrição do serviço:</h4>
+            <h4>Constatado:</h4>
             <p>{{ ordem.desc }}</p>
         </div>
         <div>
@@ -70,13 +76,13 @@
             <p>{{ ordem.serv_executado }}</p>
         </div>
         <div>
-            <h4>Observações:</h4>
-            <p>{{ ordem.observacao }}</p>
+            <h4>Material Utilizado:</h4>
+            <p>{{ ordem.material }}</p>
         </div>
     </div>
     <div class="print-preco">
         <div class="print-preco-items">
-            <p><strong>Técnico:</strong> Evandro Nunes Cruz</p>
+            <p><strong>Técnico:</strong> {{sys_tec}}</p>
             <p><strong>Data do Chamado:</strong> {{ ordem.data_chamado }}</p>
         </div>
         <div class="print-preco-items">
