@@ -21,7 +21,7 @@
                 <p class="item">Nome<span>:</span></p> <p>{{ ordem.cliente.name }}</p>
             {% else %}
                 <p class="item">Nome Fantasia<span>:</span></p> <p>{{ ordem.cliente.name }}</p>
-                <p class="item">Razão Social<span>:</span></p> <p>{{ ordem.cliente.name }}</p>
+                <p class="item">Razão Social<span>:</span></p> <p>{{ ordem.cliente.razao_social }}</p>
                 <p class="item">Contato<span>:</span></p> <p>{{ ordem.cliente.contato }}</p>
             {% endif %}
            
@@ -45,9 +45,14 @@
             {% else %}
                 <p class="item">CNPJ<span>:</span></p> <p>{{ ordem.cliente.cnpj }}</p>
             {% endif %}
-            <p class="item">Telefone<span>:</span></p> <p>{{ ordem.cliente.telefone }}</p>
+            {% if ordem.cliente.telefone %}
+                <p class="item">Telefone<span>:</span></p> <p>{{ ordem.cliente.telefone }}</p>
+            {% endif %}
             {% if ordem.cliente.telefone2 %}
-                <p class="item">Whatsapp<span>:</span></p> <p>{{ ordem.cliente.telefone2 }}</p>
+                <p class="item">Telefone<span>:</span></p> <p>{{ ordem.cliente.telefone2 }}</p>
+            {% endif %}
+            {% if ordem.cliente.telefone3 %}
+                <p class="item">Whatsapp<span>:</span></p> <p>{{ ordem.cliente.telefone3 }}</p>
             {% endif %}
             
             

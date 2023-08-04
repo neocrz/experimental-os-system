@@ -62,7 +62,7 @@
 
 .printable-ordem .print-cliente {
     display: grid;
-    grid-template-columns: 10fr 6fr 6fr;
+    grid-template-columns: 10fr 5fr 6fr;
     gap: 0 3pt;
     padding: 3pt;
     border-bottom: 1pt solid #000000;
@@ -89,7 +89,7 @@
 
 
 .printable-ordem .print-servico {
-    height: 200px;
+    height: 180px;
     display: grid;
     grid-template-rows: 1fr 1fr 2fr 2fr;
     gap: 2pt;

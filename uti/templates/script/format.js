@@ -47,7 +47,15 @@ function formataValorCpf(campo) {
         } else if (tam > 2 && tam <= 7) {
             campo.value = '(' + vr.substr(0, 2) + ') ' + vr.substr(2, tam - 2);
         } else if (tam > 7 && tam <= 11) {
-            campo.value = '(' + vr.substr(0, 2) + ') ' + vr.substr(2, 5) + '-' + vr.substr(7, tam - 7);
+            if (tam === 8) {
+                campo.value = '(' + vr.substr(0, 2) + ') ' + vr.substr(2, 4) + '-' + vr.substr(6, 2);
+            } else if (tam === 9) {
+                campo.value = '(' + vr.substr(0, 2) + ') ' + vr.substr(2, 5) + '-' + vr.substr(7, 2);
+            } else if (tam === 10) {
+                campo.value = '(' + vr.substr(0, 2) + ') ' + vr.substr(2, 4) + '-' + vr.substr(6, 4);
+            } else if (tam === 11) {
+                campo.value = '(' + vr.substr(0, 2) + ') ' + vr.substr(2, 5) + '-' + vr.substr(7, 4);
+            }
         } else if (tam > 11) {
             campo.value = '(' + vr.substr(0, 2) + ') ' + vr.substr(2, 5) + '-' + vr.substr(7, 4);
         }

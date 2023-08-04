@@ -105,7 +105,14 @@ class ClienteForm(FlaskForm):
     telefone2 = StringField(
         label="Telefone 2:",
         validators=[
-            Length( max=32, message="No máximo 32 caracteres para Telefone" )
+            Length( max=32, message="No máximo 32 caracteres para 'Telefone 2'" )
+            ]
+    )
+
+    telefone3 = StringField(
+        label="Whatsapp:",
+        validators=[
+            Length( max=32, message="No máximo 32 caracteres para 'Whatsapp'" )
             ]
     )
 
@@ -270,7 +277,6 @@ class EquipForm(FlaskForm):
     modelo = StringField(
         label="Modelo:",
         validators=[
-            DataRequired(),
             Length( max=128, message="No máximo 128 caracteres para 'Modelo'" )
             ]
     )
@@ -278,7 +284,6 @@ class EquipForm(FlaskForm):
     marca = StringField(
         label="Marca:",
         validators=[
-            DataRequired(),
             Length( max=128, message="No máximo 128 caracteres para 'Marca'" )
             ]
     )

@@ -23,7 +23,7 @@ Cliente
                     <li class="item">
                         <form method="post" action="{{url_for('cliente_page')}}">
                             <input type="hidden" name="cliente-id" value="{{ cliente.id }}" /> 
-                            <a href="#" onclick="this.parentNode.submit();">{{ cliente.id }} | {{ cliente.name }}</a>
+                            <a href="#" onclick="this.parentNode.submit();">{{ cliente.id }} | {{ cliente.razao_social }} | {{ cliente.name }}</a>
                         </form>
                     </li>
                     {% endfor %}
@@ -45,6 +45,7 @@ Cliente
                     <p><strong>Contato:</strong> <span class="data"></span>{{ data.contato or ' '}}</p>
                     <p><strong>Telefone:</strong> <span class="data"></span>{{ data.telefone or ' '}}</p>
                     <p><strong>Telefone 2:</strong> <span class="data"></span>{{ data.telefone2 or ' '}}</p>
+                    <p><strong>Whatsapp:</strong> <span class="data"></span>{{ data.telefone3 or ' '}}</p>
                     <p><strong>Endereço:</strong> <span class="data">{{ data.endereco or ' '}}</span></p>
                     <p><strong>Número:</strong> <span class="data">{{ data.num_endereco or ' '}}</span></p>
                     <p><strong>Bairro:</strong> <span class="data">{{ data.bairro or ' '}}</span></p>

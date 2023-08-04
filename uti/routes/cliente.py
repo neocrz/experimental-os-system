@@ -36,6 +36,7 @@ def add_cliente():
             cep=form.cep.data,
             telefone=form.telefone.data,
             telefone2=form.telefone2.data,
+            telefone3=form.telefone3.data,
             email=form.email.data,
             insc_estadual=form.insc_estadual.data,
             insc_municipal=form.insc_municipal.data,
@@ -87,6 +88,7 @@ def mod_cliente():
         cliente.cep=form.cep.data
         cliente.telefone=form.telefone.data
         cliente.telefone2=form.telefone2.data
+        cliente.telefone3=form.telefone3.data
         cliente.email=form.email.data
         cliente.insc_estadual=form.insc_estadual.data
         cliente.insc_municipal=form.insc_municipal.data

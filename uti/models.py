@@ -22,6 +22,7 @@ class Cliente(db.Model):
     cep = db.Column(db.String(length=32), nullable=True, unique=False)
     telefone = db.Column(db.String(length=32), nullable=True, unique=False)
     telefone2 = db.Column(db.String(length=32), nullable=True, unique=False)
+    telefone3 = db.Column(db.String(length=32), nullable=True, unique=False)
     email = db.Column(db.String(length=64), nullable=True, unique=False)
     contato = db.Column(db.String(length=64), nullable=True, unique=False)
     insc_estadual = db.Column(db.String(length=32), nullable=True, unique=False)
