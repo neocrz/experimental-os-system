@@ -3,23 +3,19 @@
 
 {% from "_formhelpers.html" import render_field %}
 {% block title %}
-Modificar Cliente
+Adicionar Cliente
 {% endblock%}
 
 {% block content %}
 <main class="add add-cliente">
     <div class="container">
-        <h1>Modificar Cliente</h1>
+        <h1>Adicionar Cliente</h1>
         <form action="" method="POST" class="form">
             <div class="form-elements">
             {{ form.hidden_tag() }} <!-- para prevenir Cross Site Request Forgery -->
             {{ render_field(form.tipo_cliente) }}
-            {{ render_field(form.name, placeholder="Nome (ou Nome Fantasia)") }}
-            {{ render_field(form.razao_social, placeholder="Razão Social") }}
-            {{ render_field(form.cpf, placeholder="CPF", onkeyup="formataValorCpf(this)", onpaste="TrataPaste(this, event, 'cpf')" ) }}
-            {{ render_field(form.cnpj, placeholder="CNPJ", onkeyup="formataValorCnpj(this)", onpaste="TrataPaste(this, event, 'cnpj')" ) }}
-            {{ render_field(form.contato, placeholder="Contato") }}
-            {{ render_field(form.rg, placeholder="RG", onkeyup="formataValorRg(this)", onpaste="TrataPaste(this, event, 'rg')" ) }}
+            {{ render_field(form.name, placeholder="Nome Fantasia/Apelido") }}
+            {{ render_field(form.razao_social, placeholder="Razão Social/Nome") }}
             {{ render_field(form.endereco, placeholder="Endereço") }}
             {{ render_field(form.num_endereco, placeholder="Nº Endereço") }}
             {{ render_field(form.bairro, placeholder="Bairro") }}
@@ -30,6 +26,10 @@ Modificar Cliente
             {{ render_field(form.telefone2, placeholder="Telefone 2", onkeyup="formataTelefone(this)", onpaste="TrataPaste(this, event, 'tel')" ) }}
             {{ render_field(form.telefone3, placeholder="Whatsapp", onkeyup="formataTelefone(this)", onpaste="TrataPaste(this, event, 'tel')" ) }}
             {{ render_field(form.email, placeholder="Email") }}
+            {{ render_field(form.contato, placeholder="Contato") }}
+            {{ render_field(form.rg, placeholder="RG", onkeyup="formataValorRg(this)", onpaste="TrataPaste(this, event, 'rg')" ) }}
+            {{ render_field(form.cpf, placeholder="CPF", onkeyup="formataValorCpf(this)", onpaste="TrataPaste(this, event, 'cpf')" ) }}
+            {{ render_field(form.cnpj, placeholder="CNPJ", onkeyup="formataValorCnpj(this)", onpaste="TrataPaste(this, event, 'cnpj')" ) }}
             {{ render_field(form.insc_estadual, placeholder="Insc. Estadual") }}
             {{ render_field(form.insc_municipal, placeholder="Insc. Municipal") }}
             </div>

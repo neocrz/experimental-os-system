@@ -54,13 +54,13 @@ Adicionar Equip
 {% include './script/autocomplete.js' %}
 {% include './script/format.js' %}
 
-var cli = [{% for cliente in clientes %} "{{ cliente.name }} | {{ cliente.id }}", {% endfor %}];
-var cli2 = [{% for cliente in clientes %} "{{ cliente.id }} | {{ cliente.name }}", {% endfor %}];
+var cli = [{% for cliente in clientes %} "{{ cliente.name }} | {{ cliente.razao_social }}", {% endfor %}];
+var cli2 = [{% for cliente in clientes %} "{{ cliente.razao_social }} | {{ cliente.name }}", {% endfor %}];
 var cli_id = [{% for cliente in clientes %} "{{ cliente.id }}", {% endfor %}];
 autocompletetwo(document.getElementById("search-cliente"), cli, cli2, cli_id);
 
 var equip = [{% for equip in equips %} "{{ equip.name }} | {{ equip.modelo }} | {{ equip.marca }}", {% endfor %}];
-var equip2 = [{% for equip in equips %} "{{ equip.id }} | {{ equip.name }}", {% endfor %}];
+var equip2 = [{% for equip in equips %} "{{ equip.modelo }} | {{ equip.name }} | {{ equip.marca }}", {% endfor %}];
 var equip_id = [{% for equip in equips %} "{{ equip.id }}", {% endfor %}];
 autocompletetwo(document.getElementById("search-equip"), equip, equip2, equip_id);
 

@@ -7,7 +7,7 @@ from uti.forms import AddClientForm, ModClienteForm
 @app.route("/cliente", methods=["GET", "POST"])
 @login_required
 def cliente_page():
-    clientes = Cliente.query.order_by(Cliente.name).all()
+    clientes = Cliente.query.order_by(Cliente.id).all()
 
     if request.method == "POST":
         if request.form.get('cliente-id'):
@@ -25,6 +25,7 @@ def add_cliente():
     if form.validate_on_submit():
         cliente_to_create = Cliente(
             name=form.name.data,
+            tipo_cliente = form.tipo_cliente.data,
             cpf=form.cpf.data,
             cnpj=form.cnpj.data,
             rg=form.rg.data,

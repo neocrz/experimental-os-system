@@ -17,14 +17,14 @@ class LoginForm(FlaskForm):
 
 class ClienteForm(FlaskForm):
     name = StringField(
-        label="Nome:",
+        label="Nome Fantasia/Apelido:",
         validators=[
             DataRequired(),
             Length( max=64, message="No máximo 64 caracteres" )
             ]
     )
     razao_social = StringField(
-        label="Razão Social:",
+        label="Razão Social/Nome:",
         validators=[
             Length( max=64, message="No máximo 64 caracteres" )
             ]

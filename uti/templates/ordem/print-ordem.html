@@ -10,6 +10,7 @@
 {% if ordem.tipo_ordem == "Ordem de Serviço" %}
     {% include 'ordem/css/' + modelo + '.css' %}
 {% endif %}
+
 @media print {
     @page {
     size: A4 portrait; /* Define o tamanho da página como A4 no modo retrato */

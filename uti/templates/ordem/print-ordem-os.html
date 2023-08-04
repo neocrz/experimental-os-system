@@ -18,10 +18,11 @@
             <p class="item">Tipo Ordem<span>:</span></p> <p>{{ ordem.tipo_ordem }}</p>
             
             {% if ordem.cliente.tipo_cliente == "Física" %}
-                <p class="item">Nome<span>:</span></p> <p>{{ ordem.cliente.name }}</p>
-            {% else %}
+                <p class="item">Nome<span>:</span></p> <p>{{ ordem.cliente.razao_social }}</p>
                 <p class="item">Nome Fantasia<span>:</span></p> <p>{{ ordem.cliente.name }}</p>
+            {% else %}
                 <p class="item">Razão Social<span>:</span></p> <p>{{ ordem.cliente.razao_social }}</p>
+                <p class="item">Nome Fantasia<span>:</span></p> <p>{{ ordem.cliente.name }}</p>
                 <p class="item">Contato<span>:</span></p> <p>{{ ordem.cliente.contato }}</p>
             {% endif %}
            
