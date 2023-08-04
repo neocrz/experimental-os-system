@@ -6,3 +6,4 @@ fast.py
 uti/static/img/os_logo.svg
 uti/routes/__pycache__
 backup/
+backup.py

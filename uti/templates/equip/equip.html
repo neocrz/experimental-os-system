@@ -23,7 +23,7 @@ Equipamento
                     <li class="item">
                         <form method="post" action="{{url_for('equip_page')}}">
                             <input type="hidden" name="equip-id" value="{{ equip.id }}" /> 
-                            <a href="#" onclick="this.parentNode.submit();">{{ equip.id }} | {{ equip.name }} | {{ equip.modelo }} | {{ equip.marca }}</a>
+                            <a href="#" onclick="this.parentNode.submit();"><strong>{{ equip.id }}</strong> | {{ equip.name }} | {{ equip.modelo }} | {{ equip.marca }}</a>
                         </form>
                     </li>
                     {% endfor %}
