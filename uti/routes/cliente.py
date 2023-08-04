@@ -98,6 +98,7 @@ def mod_cliente():
         return redirect(url_for('cliente_page'))
     
     form.tipo_cliente.default = cliente.tipo_cliente
+    form.estado.default = cliente.estado
     form.process()
 
     return render_template("cliente/mod-cliente.html", form=form, cliente=cliente)

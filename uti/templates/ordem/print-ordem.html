@@ -3,8 +3,9 @@
 
 {% block head %}
 <style>
-{% include 'ordem/css/print-ordem-second.css' %}
-
+{% if ordem.tipo_ordem == "Ordem de Serviço" %}
+    {% include 'ordem/css/' + modelo + '.css' %}
+{% endif %}
 @media print {
     @page {
     size: A4 portrait; /* Define o tamanho da página como A4 no modo retrato */
@@ -26,12 +27,26 @@ Impressão de Ordem
 <main class="print-ordem">
     <div class="container print-ordem-container">
         <h1>Imprimir ordem</h1>
+            <div>
+            <form action="" id="print-form" method="POST">
+                <label for="modelo">Modelo:</label>
+                <select name="modelo" id="cars" form="print-form" >
+                    <option value="print-ordem-os">Os</option>
+                    <option value="print-ordem-osfull">OS (Full)</option>
+                </select> 
+                <input type="submit" class="btn btn-less" value="Selecionar">
+            </form>
+            <br>
             <a class="btn" onclick="printDiv('printableArea')">Imprimir</a>
+        </div>
     </div>
+    
 </main>
 
 <div id="printableArea">
-    {% include 'ordem/print-ordem-second.html' %}
+    {% if ordem.tipo_ordem == "Ordem de Serviço" %}
+        {% include 'ordem/' + modelo + '.html' %}
+    {% endif %}
 </div>
 
 <div style="height: 200px;"></div>

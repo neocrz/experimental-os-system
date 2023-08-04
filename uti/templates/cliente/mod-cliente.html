@@ -25,7 +25,7 @@ Modificar Cliente
             {{ render_field(form.num_endereco, placeholder="Nº Endereço", value=cliente.num_endereco or '') }}
             {{ render_field(form.bairro, placeholder="Bairro", value=cliente.bairro or '') }}
             {{ render_field(form.cidade, placeholder="Cidade", value=cliente.cidade or '') }}
-            {{ render_field(form.estado, placeholder="Estado", value=cliente.estado or '') }}
+            {{ render_field(form.estado, placeholder="UF", value=cliente.estado or '') }}
             {{ render_field(form.cep, placeholder="CEP", onkeyup="formataValorCep(this)", onpaste="TrataPaste(this, event, 'cep')" , value=cliente.cep or '') }}
             {{ render_field(form.telefone, placeholder="Telefone", onkeyup="formataTelefone(this)", onpaste="TrataPaste(this, event, 'tel')" , value=cliente.telefone or '') }}
             {{ render_field(form.telefone2, placeholder="Telefone 2", onkeyup="formataTelefone(this)", onpaste="TrataPaste(this, event, 'tel')" , value=cliente.telefone2 or '') }}

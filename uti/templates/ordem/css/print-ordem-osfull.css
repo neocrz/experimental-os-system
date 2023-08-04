@@ -4,9 +4,9 @@
     color: #000000;
     margin: 0 auto;
     width: 44.8rem;
-    height: 32.715rem;
+    height: 65.43rem;
     max-width: 44.8rem;
-    max-height: 32.715rem;
+    max-height: 65.43rem;
     align-self: center;
     border: 1pt solid #000000;
     font-family: Arial, Helvetica, sans-serif;
@@ -17,10 +17,10 @@
 }
 
 .printable-ordem .print-header {
-    height: 62.4px;
+    height: auto;
     display: grid;
     grid-template-columns: 1fr 5fr 1fr;
-    gap: 20px;
+    gap: 5px;
     padding: 5px;
     border-bottom: 1pt solid #000000;
 }
@@ -62,7 +62,7 @@
 
 .printable-ordem .print-cliente {
     display: grid;
-    grid-template-columns: 9fr 7fr 7fr;
+    grid-template-columns: 10fr 6fr 6fr;
     gap: 0 3pt;
     padding: 3pt;
     border-bottom: 1pt solid #000000;
@@ -71,7 +71,7 @@
 
 .printable-ordem .print-cliente-basico {
     display: grid;
-    grid-template-columns: 7fr 13fr;
+    grid-template-columns: 6fr 13fr;
     gap: 3px;
 }
 
@@ -89,8 +89,9 @@
 
 
 .printable-ordem .print-servico {
-    height: 140px;
+    height: 200px;
     display: grid;
+    grid-template-rows: 1fr 1fr 2fr 2fr;
     gap: 2pt;
     padding: 3pt;
     border-bottom: 1pt solid #000000;

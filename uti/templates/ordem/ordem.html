@@ -51,20 +51,22 @@ Cliente
                             {{ data.equipamento.id }} | {{ data.equipamento.name }} 
                         {% endif %}
                     </span></p>
-                    <p><strong>Descrição:</strong> <span class="data">{{ data.desc or ''}}</span></p>
                     <p><strong>Tipo de Ordem:</strong> <span class="data">{{ data.tipo_ordem or ''}}</span></p>
                     <p><strong>Data da OS:</strong> <span class="data">{{ data.data_os or ''}}</span></p>
                     <p><strong>Data do Chamado:</strong> <span class="data">{{ data.data_chamado or ''}}</span></p>
                     <p><strong>Motivo do Chamado:</strong> <span class="data">{{ data.motivo_chamado or ''}}</span></p>
+                    <p><strong>Constatado:</strong> <span class="data">{{ data.constatado or ''}}</span></p>
                     <p><strong>Status do Serviço:</strong> <span class="data">{{ data.status_serviço or ''}}</span></p>
                     <p><strong>Observações:</strong> <span class="data">{{ data.observacao or ''}}</span></p>
                     <p><strong>Serviço Executado:</strong> <span class="data">{{ data.serv_executado or ''}}</span></p>
+                    <p><strong>Tipo de Material:</strong> <span class="data">{{ data.tipo_material or ''}}</span></p>
                     <p><strong>Material Utilizado:</strong> <span class="data">{{ data.material or ''}}</span></p>
-                    <p><strong>Valor da Visita:</strong> <span class="data">{{ data.valor_visita or ''}}</span></p>
-                    <p><strong>Valor da Km:</strong> <span class="data">{{ data.valor_km or ''}}</span></p>
-                    <p><strong>Valor do Material:</strong> <span class="data">{{ data.valor_material or ''}}</span></p>
                     <p><strong>Km Inicial:</strong> <span class="data">{{ data.km_inicial or ''}}</span></p>
                     <p><strong>Km Final:</strong> <span class="data">{{ data.km_final or ''}}</span></p>
+                    <p><strong>Km Total:</strong> <span class="data">{{ data.valor_km or ''}}</span></p>
+                    <p><strong>Valor da Mão de Obra:</strong> <span class="data">{{ data.maod_obra or ''}}</span></p>
+                    <p><strong>Valor do Deslocamento:</strong> <span class="data">{{ data.valor_visita or ''}}</span></p>
+                    <p><strong>Valor do Material:</strong> <span class="data">{{ data.valor_material or ''}}</span></p>
                     <p><strong>Valor Final:</strong> <span class="data">{{ data.valor_final or ''}}</span></p>
                 </div>
             {% endif %}

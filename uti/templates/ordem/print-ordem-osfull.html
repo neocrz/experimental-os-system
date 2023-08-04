@@ -5,6 +5,7 @@
             <h2>{{ sys_name }}</h2>
             <h5>{{ sys_info }}</h5>
             <h5>{{ sys_info2 }}</h5>
+            <h5>{{ sys_info3 }}</h5>
         </div>
         <div class="print-header-os">
             <h2 class="indicator">OS</h2>
@@ -19,18 +20,22 @@
             {% if ordem.cliente.tipo_cliente == "Física" %}
                 <p class="item">Nome<span>:</span></p> <p>{{ ordem.cliente.name }}</p>
             {% else %}
+                <p class="item">Nome Fantasia<span>:</span></p> <p>{{ ordem.cliente.name }}</p>
                 <p class="item">Razão Social<span>:</span></p> <p>{{ ordem.cliente.name }}</p>
+                <p class="item">Contato<span>:</span></p> <p>{{ ordem.cliente.contato }}</p>
             {% endif %}
-            <p class="item">Contato<span>:</span></p> <p>{{ ordem.cliente.contato }}</p>
+           
             <p class="item">Endereço<span>:</span></p> <p>{{ ordem.cliente.endereco }}</p>
-            <p class="item">Email<span>:</span></p> <p>{{ ordem.cliente.email }}</p>
-            
+            {% if ordem.cliente.email %}
+                <p class="item">Email<span>:</span></p> <p>{{ ordem.cliente.email }}</p>
+            {% endif%}
+             
         </div>
         <div class="print-cliente-basico">
-            <p class="item">Ender. Nº<span>:</span></p> <p>{{ ordem.cliente.num_endereco }}</p>
+            <p class="item">Nº<span>:</span></p> <p>{{ ordem.cliente.num_endereco }}</p>
             <p class="item">Bairro<span>:</span></p> <p>{{ ordem.cliente.bairro }}</p>
             <p class="item">Cidade<span>:</span></p> <p>{{ ordem.cliente.cidade }}</p>
-            <p class="item">Estado<span>:</span></p> <p>{{ ordem.cliente.estado }}</p>
+            <p class="item">UF<span>:</span></p> <p>{{ ordem.cliente.estado }}</p>
             <p class="item">CEP<span>:</span></p> <p>{{ ordem.cliente.cep }}</p>
         </div>
         <div class="print-cliente-basico">
@@ -41,7 +46,9 @@
                 <p class="item">CNPJ<span>:</span></p> <p>{{ ordem.cliente.cnpj }}</p>
             {% endif %}
             <p class="item">Telefone<span>:</span></p> <p>{{ ordem.cliente.telefone }}</p>
-            <p class="item">Telefone<span>:</span></p> <p>{{ ordem.cliente.telefone2 }}</p>
+            {% if ordem.cliente.telefone2 %}
+                <p class="item">Whatsapp<span>:</span></p> <p>{{ ordem.cliente.telefone2 }}</p>
+            {% endif %}
             
             
         </div>
@@ -50,9 +57,9 @@
         </div>
     </div>
     <div class="print-equipamento">
-        <p><strong>Equipamento:</strong> Equipamento tal de tal</p>
-        <p><strong>Modelo:</strong> Modelo tal</p>
-        <p><strong>Marca:</strong> Marca tal</p>
+        <p><strong>Equipamento:</strong> {{ ordem.equipamento.name }}</p>
+        <p><strong>Modelo:</strong> {{ ordem.equipamento.modelo }}</p>
+        <p><strong>Marca:</strong> {{ ordem.equipamento.marca }}</p>
 
     </div>
     <div class="print-servico">
@@ -61,37 +68,30 @@
             <p>{{ ordem.motivo_chamado }}</p>
         </div>
         <div>
-            <h4>Descrição do serviço:</h4>
-            <p>{{ ordem.desc }}</p>
+            <h4>Constatado:</h4>
+            <p>{{ ordem.constatado }}</p>
         </div>
         <div>
             <h4>Serviço Executado:</h4>
             <p>{{ ordem.serv_executado }}</p>
         </div>
         <div>
-            <h4>Observações:</h4>
-            <p>{{ ordem.observacao }}</p>
+            <h4>Material Utilizado:</h4>
+            <p>{{ ordem.material }}</p>
         </div>
     </div>
     <div class="print-preco">
         <div class="print-preco-items">
-            <p><strong>Técnico:</strong> Evandro Nunes Cruz</p>
+            <p><strong>Técnico:</strong> {{sys_tec}}</p>
             <p><strong>Data do Chamado:</strong> {{ ordem.data_chamado }}</p>
-            <p><strong>Status do Serviço:</strong> {{ ordem.status_serviço }}</p>
-            <p><strong>Data de Entrega:</strong> 01/08/2023</p>
         </div>
         <div class="print-preco-items">
-            <p><strong>Km. Inicial:</strong> {{ ordem.km_inicial }} km</p>
-            <p><strong>Km. Final:</strong> {{ ordem.km_final }} km</p>
-            <p><strong>Valor Km:</strong> R$ {{ ordem.valor_km }}</p>
-            <p><strong>Valor Visita:</strong> R$ {{ ordem.valor_visita }}</p>
+            <p style="padding-bottom: 3px;"><strong>Valor mão de Obra:</strong> R$ {{ ordem.maod_obra }}</p>
+            <p><strong>Valor Deslocamento:</strong> R$ {{ ordem.valor_visita }}</p>
         </div>
         <div class="print-preco-items">
-            <div>
-                <p style="padding-bottom: 3px;"><strong>Valor mão de Obra:</strong> R$ {{ ordem.maod_obra }}</p>
-                <p><strong>Valor Material:</strong> R$ {{ ordem.valor_material }}</p>
-            </div>
-            <p class="total"><strong>Valor Total:</strong> R$ 9999</p>
+            <p><strong>Valor Material:</strong> R$ {{ ordem.valor_material }}</p>
+            <p class="total"><strong>Valor Total:</strong> R$ {{ ordem.valor_final }}</p>
         </div>
     </div>
     <div class="print-footer">

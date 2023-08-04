@@ -7,8 +7,11 @@ def formatar_valor(valor_str):
 
     return valor_numerico
 
-def valor_tostring(valor_float):
+def valor_tostring(valor):
     # Converte o valor float para uma string com ponto no lugar da vírgula
-    valor_str = "{:.2f}".format(valor_float).replace('.', ',')
+    if type(valor) == float:
+        valor_str = "{:.2f}".format(valor).replace('.', ',')
+    elif type(valor) == int:
+        valor_str = str(valor)
 
     return valor_str

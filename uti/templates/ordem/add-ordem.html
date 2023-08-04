@@ -25,20 +25,20 @@ Adicionar Equip
                 </div>
             </div>
             {{ render_field(form.tipo_ordem, placeholder="Tipo de Ordem") }}
-            {{ render_field(form.desc, placeholder="Descrição da OS") }}
             {{ render_field(form.data_os, placeholder="Data da OS", onkeyup="formataValorData(this)", onpaste="TrataPaste(this, event, 'data')" ) }}
             {{ render_field(form.data_chamado, placeholder="Data do Chamado", onkeyup="formataValorData(this)", onpaste="TrataPaste(this, event, 'data')" ) }}
             {{ render_field(form.motivo_chamado, placeholder="Motivo do Chamado") }}
+            {{ render_field(form.constatado, placeholder="Constatado") }}
+            {{ render_field(form.serv_executado, placeholder="Serviço Executado") }}
             {{ render_field(form.status_serviço, placeholder="Status do Serviço") }}
             {{ render_field(form.observacao, placeholder="Observações") }}
-            {{ render_field(form.serv_executado, placeholder="Serviço Executado") }}
+            {{ render_field(form.tipo_material, placeholder="Tipo de material") }}
             {{ render_field(form.material, placeholder="Material Utilizado") }}
             {{ render_field(form.valor_visita, placeholder="Valor da Visita", onkeyup="formataValorPreco(this)", onpaste="TrataPaste(this, event, 'preco')", value="0,00" ) }}
             {{ render_field(form.maod_obra, placeholder="Mão de Obra", onkeyup="formataValorPreco(this)", onpaste="TrataPaste(this, event, 'preco')", value="0,00" ) }}
-            {{ render_field(form.valor_km, placeholder="Valor da Km", onkeyup="formataValorPreco(this)", onpaste="TrataPaste(this, event, 'preco')", value="0,00") }}
             {{ render_field(form.valor_material, placeholder="Valor do Material", onkeyup="formataValorPreco(this)", onpaste="TrataPaste(this, event, 'preco')", value="0,00" ) }}
-            {{ render_field(form.km_inicial, placeholder="Km Inicial") }}
-            {{ render_field(form.km_final, placeholder="Km Final") }}
+            {{ render_field(form.km_inicial, placeholder="Km Inicial", value="0" ) }}
+            {{ render_field(form.km_final, placeholder="Km Final", value="0" ) }}
             </div>
 
             <div class="form-options">

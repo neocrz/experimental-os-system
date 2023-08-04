@@ -1,6 +1,6 @@
 <div class="printable-ordem" >
     <div class="print-header">
-        <img class="logo" src="{{ url_for('static', filename='./img/logo.svg', _external=True) }}" alt="logo ico">
+        <img class="logo" src="{{ sys_logo }}" alt="logo ico">
         <div class="print-header-info">
             <h2>{{ sys_name }}</h2>
             <h5>{{ sys_info }}</h5>
@@ -35,7 +35,7 @@
             <p class="item">Nº<span>:</span></p> <p>{{ ordem.cliente.num_endereco }}</p>
             <p class="item">Bairro<span>:</span></p> <p>{{ ordem.cliente.bairro }}</p>
             <p class="item">Cidade<span>:</span></p> <p>{{ ordem.cliente.cidade }}</p>
-            <p class="item">Estado<span>:</span></p> <p>{{ ordem.cliente.estado }}</p>
+            <p class="item">UF<span>:</span></p> <p>{{ ordem.cliente.estado }}</p>
             <p class="item">CEP<span>:</span></p> <p>{{ ordem.cliente.cep }}</p>
         </div>
         <div class="print-cliente-basico">
@@ -69,7 +69,7 @@
         </div>
         <div>
             <h4>Constatado:</h4>
-            <p>{{ ordem.desc }}</p>
+            <p>{{ ordem.constatado }}</p>
         </div>
         <div>
             <h4>Serviço Executado:</h4>

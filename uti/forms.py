@@ -83,11 +83,9 @@ class ClienteForm(FlaskForm):
             ]
     )
 
-    estado = StringField(
-        label="Estado:",
-        validators=[
-            Length( max=64, message="No máximo 64 caracteres" )
-            ]
+    estado = SelectField(
+        u'UF:', 
+        choices=[('SP', 'SP'), ('AC', 'AC'), ('AL', 'AL'), ('AP', 'AP'), ('AM', 'AM'), ('BA', 'BA'), ('CE', 'CE'), ('ES', 'ES'), ('GO', 'GO'), ('MA', 'MA'), ('MT', 'MT'), ('MS', 'MS'), ('MG', 'MG'), ('PA', 'PA'), ('PB', 'PB'), ('PR', 'PR'), ('PE', 'PE'), ('PI', 'PI'), ('RJ', 'RJ'), ('RN', 'RN'), ('RS', 'RS'), ('RO', 'RO'), ('RR', 'RR'), ('SC', 'SC'), ('SE', 'SE'), ('TO', 'TO'), ('DF', 'DF')]
     )
 
     cep = StringField(
@@ -147,8 +145,8 @@ class ModClienteForm(ClienteForm):
     submit = SubmitField(label="Modificar Cliente")
 
 class OrdemForm(FlaskForm):
-    desc = StringField(
-        label="Descrição:",
+    constatado = StringField(
+        label="Constatado:",
         validators=[
             Length( max=256, message="No máximo 256 caracteres para 'Descrição'" )
             ]
@@ -156,7 +154,12 @@ class OrdemForm(FlaskForm):
 
     tipo_ordem = SelectField(
         u'Tipo de Ordem:', 
-        choices=[('Ordem de Serviço', 'Ordem de Serviço'), ('Orçamento', 'Orçamento')]
+        choices=[('Ordem de Serviço', 'Ordem de Serviço'), ('Orçamento', 'Orçamento'), ('Laudo', 'Laudo')]
+        )
+    
+    tipo_material = SelectField(
+        u'Tipo de Material:', 
+        choices=[('Aplicado', 'Aplicado'), ('Fornecido', 'Fornecido')]
         )
     
     
@@ -222,9 +225,9 @@ class OrdemForm(FlaskForm):
     )
 
     valor_km = StringField(
-        label="Valor da Km:",
+        label="Km total:",
         validators=[
-            Length( max=16, message="No máximo 16 caracteres para 'Valor da Km'" )
+            Length( max=16, message="No máximo 16 caracteres para 'Km total'" )
             ]
     )
 

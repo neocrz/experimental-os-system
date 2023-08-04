@@ -46,7 +46,7 @@ class Ordem(db.Model):
 
     __tablename__ = 'ordens'
     id = db.Column(db.Integer(), primary_key=True)
-    desc = db.Column(db.String(length=256), nullable=True, unique=False)
+    constatado = db.Column(db.String(length=256), nullable=True, unique=False)
     tipo_ordem = db.Column(db.String(length=32), nullable=False, default="Ordem de Serviço") # Ordem de Serviço ou Orçamento
     data_os = db.Column(db.String(length=32), nullable=True, unique=False) # Data Criação ou Modificação OS
     data_chamado = db.Column(db.String(length=32), nullable=True, unique=False) # Data Criação ou Modificação OS
@@ -55,6 +55,7 @@ class Ordem(db.Model):
     observacao = db.Column(db.String(length=512), nullable=True, unique=False) # Observação Serviço
     serv_executado = db.Column(db.String(length=512), nullable=True, unique=False) # Desc Serviço Executado
     material = db.Column(db.String(length=512), nullable=True, unique=False) # material usado
+    tipo_material = db.Column(db.String(length=512), nullable=True, unique=False, default="Aplicado") # material 'Aplicado' ou 'Fornecido'
     valor_visita = db.Column(db.String(length=16), nullable=True, unique=False) 
     maod_obra = db.Column(db.String(length=16), nullable=True, unique=False)
     valor_km = db.Column(db.String(length=16), nullable=True, unique=False)
