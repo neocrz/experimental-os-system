@@ -3,6 +3,10 @@
 
 {% block head %}
 <style>
+
+    .printableArea {
+        margin: 0 auto;
+    }
 {% if ordem.tipo_ordem == "Ordem de Serviço" %}
     {% include 'ordem/css/' + modelo + '.css' %}
 {% endif %}
@@ -14,6 +18,30 @@
     margin: 1cm;
     transform: scale(1); /* Escala o body para 50% */
     transform-origin: top left;
+    }
+}
+@media (max-width: 600px) {
+    .add .container {
+        padding: 10px;
+    }
+    .add .form {
+        margin: 0 auto;
+    }
+    .add .form-elements {
+        grid-template-columns: 1fr;
+    }
+    .printable-ordem {
+        transform: scale(0.5);
+        transform-origin: top left;
+        margin: 0 auto;
+        padding: 20px;
+    }
+}
+
+@media (max-width: 400px) {
+    .print-ordem-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
     }
 }
 </style>
@@ -43,7 +71,7 @@ Impressão de Ordem
     
 </main>
 
-<div id="printableArea">
+<div id="printableArea" class="printableArea">
     {% if ordem.tipo_ordem == "Ordem de Serviço" %}
         {% include 'ordem/' + modelo + '.html' %}
     {% endif %}
@@ -57,7 +85,6 @@ Impressão de Ordem
         var originalContents = document.body.innerHTML;
 
         document.body.innerHTML = printContents;
-        document.body.innerHTML += printContents;
 
         window.print();
 

@@ -23,7 +23,7 @@ Cliente
                     <li class="item">
                         <form method="post" action="{{url_for('ordem_page')}}">
                             <input type="hidden" name="ordem-id" value="{{ ordem.id }}" /> 
-                            <a href="#" onclick="this.parentNode.submit();">{{ ordem.id }} | {{ ordem.desc }}</a>
+                            <a href="#" onclick="this.parentNode.submit();">{{ ordem.id }} | {{ ordem.cliente.razao_social }} | {{ ordem.equipamento.name }}</a>
                         </form>
                     </li>
                     {% endfor %}

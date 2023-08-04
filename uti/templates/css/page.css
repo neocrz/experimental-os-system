@@ -127,3 +127,13 @@
 .page .info .data-box .data {
     padding-left: 5px;
 }
+
+@media (max-width: 800px) {
+    .page .container {
+        grid-template-columns: 1fr;
+    }
+
+    .page .info {
+        grid-column: 1;
+    }
+}

@@ -89,3 +89,39 @@
     background-color: var(--g7) !important;
     color: var(--g13);
 }
+
+@media (max-width: 800px) {
+    .add .container {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .add .container {
+        padding: 10px;
+    }
+    .add .container h1 {
+        margin-top: 20px;
+    }
+    .add .form {
+        margin: 0 auto;
+    }
+    .add .form-elements {
+        grid-template-columns: 1fr;
+    }
+
+    .add .form-options {
+        padding: 20px;
+    }
+}
+@media (max-width: 500px) {
+    .add .form-elements .form-item {
+        grid-template-columns: 1fr;
+    }
+
+    .add .form-elements .form-item input,
+    .add .form-elements .form-item label,
+    .add .form-elements .form-item select  {
+        width: 256px;
+    }
+}
