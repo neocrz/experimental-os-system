@@ -65,6 +65,9 @@
     <div class="print-equipamento">
         <p><strong>Equipamento:</strong> {{ ordem.equipamento.name }}</p>
         <p><strong>Modelo:</strong> {{ ordem.equipamento.modelo }}</p>
+        {% if ordem.equipamento.sn %}
+        <p><strong>N. Série:</strong> {{ ordem.equipamento.sn }}</p>
+        {% endif %}
         <p><strong>Marca:</strong> {{ ordem.equipamento.marca }}</p>
 
     </div>
