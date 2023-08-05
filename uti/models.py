@@ -41,6 +41,7 @@ class Equipamento(db.Model):
     name = db.Column(db.String(length=128), nullable=False, unique=True)
     modelo = db.Column(db.String(length=128), nullable=True, unique=False)
     marca = db.Column(db.String(length=128), nullable=True, unique=False)
+    sn = db.Column(db.String(length=64), nullable=True, unique=False)
     ordens = db.relationship('Ordem', backref='equipamento')
 
 class Ordem(db.Model):

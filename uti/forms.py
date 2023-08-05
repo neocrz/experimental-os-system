@@ -288,6 +288,13 @@ class EquipForm(FlaskForm):
             ]
     )
 
+    sn = StringField(
+        label="Número de Série:",
+        validators=[
+            Length( max=64, message="No máximo 64 caracteres para 'Numero de Série'" )
+            ]
+    )
+
 class AddEquipForm(EquipForm):
     submit = SubmitField(label="Adicionar Equipamento")
 

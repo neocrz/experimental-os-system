@@ -27,6 +27,7 @@ def add_equip():
             name=form.name.data,
             modelo=form.modelo.data,
             marca=form.marca.data,
+            sn=form.sn.data,
             )
         db.session.add(equip_to_create)
         db.session.commit()
@@ -59,6 +60,7 @@ def mod_equip():
         equip.name=form.name.data
         equip.modelo=form.modelo.data
         equip.marca=form.marca.data
+        equip.sn=form.sn.data
 
         db.session.commit()
         flash(f"Equipamento '{equip.id}' modificado com sucesso!", category="success")
