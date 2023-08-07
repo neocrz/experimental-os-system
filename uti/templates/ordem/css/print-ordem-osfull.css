@@ -4,9 +4,9 @@
     color: #000000;
     margin: 0 auto;
     width: 44.8rem;
-    height: 32.715rem;
+    height: 65.43rem;
     max-width: 44.8rem;
-    max-height: 32.715rem;
+    max-height: 65.43rem;
     align-self: center;
     border: 1pt solid #000000;
     font-family: Arial, Helvetica, sans-serif;
@@ -21,7 +21,7 @@
     display: grid;
     grid-template-columns: 1fr 5fr 1fr;
     gap: 5px;
-    padding: 5px;
+    padding: 15px 5px;
     border-bottom: 1pt solid #000000;
 }
 
@@ -61,7 +61,9 @@
 
 
 .printable-ordem .print-cliente {
+    height: 160px;
     display: grid;
+    align-items: center;
     grid-template-columns: 10fr 5fr 6fr;
     gap: 0 3pt;
     padding: 3pt;
@@ -72,7 +74,7 @@
 .printable-ordem .print-cliente-basico {
     display: grid;
     grid-template-columns: 7fr 13fr;
-    gap: 3px;
+    gap: 10px;
 }
 
 .printable-ordem .print-cliente-basico p{
@@ -88,8 +90,18 @@
 }
 
 
+
+
+.printable-ordem .print-equipamento {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 3px;
+    padding: 20px 5px;
+    font-size: 9pt;
+}
+
 .printable-ordem .print-servico {
-    height: 180px;
+    height: 320px;
     display: grid;
     grid-template-rows: 2fr 2fr 4fr 4fr 4fr;
     gap: 2pt;
@@ -98,25 +110,18 @@
     font-size: 9pt;
 }
 
-.printable-ordem .print-equipamento {
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr;
-    gap: 5px;
-    padding: 3pt;
-    font-size: 9pt;
-}
-
 .printable-ordem .print-preco {
     display: grid;
+    height: 80px;
     gap: 5px;
-    padding: 3pt;
+    padding: 5pt 3pt;
     grid-template-columns: 1fr 1fr 1fr;
     border-bottom: 1pt solid #000000;
     font-size: 9pt;
 }
 .printable-ordem .print-preco-items {
     display: grid;
-    gap: 3px 0px;
+    gap: 5px 0px;
 }
 
 .printable-ordem .print-preco-items .total {
@@ -149,7 +154,7 @@
 }
 
 .printable-ordem .print-footer-main .assinatura{
-    padding-top: 20px;
+    padding-top: 40px;
     width: 100%;
     border-bottom: 1pt solid #000000;
 }

@@ -58,6 +58,7 @@
             
             
         </div>
+        
     </div>
     <div class="print-equipamento">
         <p><strong>Equipamento:</strong> {{ ordem.equipamento.name }}</p>
@@ -96,10 +97,13 @@
             <p><strong>Data do Chamado:</strong> {{ ordem.data_chamado }}</p>
         </div>
         <div class="print-preco-items">
-            <p style="padding-bottom: 3px;"><strong>Valor mão de Obra:</strong> R$ {{ ordem.maod_obra }}</p>
-            <p><strong>Valor Deslocamento:</strong> R$ {{ ordem.valor_visita }}</p>
+            <p><strong>Km Inicial:</strong> {{ ordem.km_inicial }}</p>
+            <p><strong>Km Final:</strong> {{ ordem.km_final }}</p>
+            <p><strong>Km Total:</strong> {{ ordem.valor_km }}</p>
         </div>
         <div class="print-preco-items">
+            <p><strong>Valor mão de Obra:</strong> R$ {{ ordem.maod_obra }}</p>
+            <p><strong>Valor Deslocamento:</strong> R$ {{ ordem.valor_visita }}</p>
             <p><strong>Valor Material:</strong> R$ {{ ordem.valor_material }}</p>
             <p class="total"><strong>Valor Total:</strong> R$ {{ ordem.valor_final }}</p>
         </div>
@@ -111,7 +115,7 @@
             <p>data:</p>
         </div>
         <div class="print-footer-main">
-            <p>Assinatura do cliente:</p>
+            <p>Assinatura do Cliente:</p>
             <p>Assinatura do Técnico:</p>
             <p class="assinatura"> </p>
             <p class="assinatura"> </p>
