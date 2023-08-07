@@ -133,7 +133,7 @@ def print_ordem():
         return render_template(
         "ordem/print-ordem.html", 
         ordem=ordem, 
-        modelo="print-ordem-os",
+        modelo="print-ordem-osfull",
         sys_name=sys_name, 
         sys_info=sys_info, 
         sys_info2=sys_info2,
@@ -143,7 +143,26 @@ def print_ordem():
         )
     
     if request.method == "POST":
-        if request.form.get('modelo'):
+        if request.form.get('cli_signature'):
+            modelo = request.form['modelo']
+            cli_signature = request.form['cli_signature']
+            
+            ordem.cli_signature = cli_signature
+            db.session.add(ordem)
+            db.session.commit()
+
+            return render_template(
+            "ordem/print-ordem.html", 
+            ordem=ordem, 
+            modelo=modelo,
+            sys_name=sys_name, 
+            sys_info=sys_info, 
+            sys_info2=sys_info2,
+            sys_info3=sys_info3,
+            sys_logo=sys_logo,
+            sys_tec=sys_tec
+            )
+        elif request.form.get('modelo'):
             modelo = request.form['modelo']
             return render_template(
             "ordem/print-ordem.html", 

@@ -115,10 +115,122 @@
             <p>data:</p>
         </div>
         <div class="print-footer-main">
-            <p>Assinatura do Cliente:</p>
+            <p><a href="#" id="addSignatureLink">Assinatura do Cliente:</a></p>
             <p>Assinatura do Técnico:</p>
-            <p class="assinatura"> </p>
-            <p class="assinatura"> </p>
+            <img src="{{ ordem.cli_signature }}" alt="">
+            <img src="" alt="">
         </div>
     </div>
+    <div id="signaturePopup" class="popup">
+        
+            <div class="popup-content">
+                <form action="" id="client-sig" method="POST">
+                <canvas id="signatureCanvas"></canvas>
+                <input type="hidden" id="cliSignatureValue" name="cli_signature" value="">
+                <input type="hidden" id="modelo" name="modelo" value="{{ modelo }}">
+                
+                <button type="submit" id="saveButton">Concluído</button>
+                </form>
+                
+                <button id="clearButton">Refazer</button>
+            </div>
+            
+        
+    </div>
 </div>
+
+
+<script>
+const addSignatureLink = document.getElementById("addSignatureLink");
+const signaturePopup = document.getElementById("signaturePopup");
+const canvas = document.getElementById("signatureCanvas");
+const clearButton = document.getElementById("clearButton");
+const ctx = canvas.getContext("2d");
+let drawing = false;
+
+canvas.width = 300;
+canvas.height = 100;
+
+ctx.lineWidth = 1;
+ctx.strokeStyle = "black";
+
+addSignatureLink.addEventListener("click", (e) => {
+    e.preventDefault(); // Evita o comportamento padrão de navegação do link
+
+    // Exibir o pop-up para adicionar assinatura
+    
+    signaturePopup.style.display = "block";
+});
+
+// ...
+
+
+
+canvas.addEventListener("mousedown", () => {
+    drawing = true;
+    ctx.beginPath();
+});
+
+canvas.addEventListener("mousemove", (e) => {
+    if (!drawing) return;
+
+    const x = e.offsetX;
+    const y = e.offsetY;
+
+    ctx.lineTo(x, y);
+    ctx.stroke();
+});
+
+canvas.addEventListener("mouseup", () => {
+    drawing = false;
+});
+
+clearButton.addEventListener("click", () => {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+});
+
+document.getElementById("client-sig").addEventListener("submit", function(event) {
+    event.preventDefault();
+    const signatureImage = canvas.toDataURL("image/png");
+    var hiddensig = document.getElementById("cliSignatureValue");
+
+    hiddensig.value = signatureImage
+    
+    // Fechar o popup após concluir
+    signaturePopup.style.display = "none";
+
+    this.submit();
+});
+
+
+function getTouchPos(evt) {
+    const rect = canvas.getBoundingClientRect();
+    return {
+        x: evt.touches[0].clientX - rect.left,
+        y: evt.touches[0].clientY - rect.top
+    };
+}
+
+canvas.addEventListener("touchstart", (e) => {
+    e.preventDefault();
+    
+    drawing = true;
+    const pos = getTouchPos(e);
+    ctx.beginPath();
+    ctx.moveTo(pos.x, pos.y);
+});
+
+canvas.addEventListener("touchmove", (e) => {
+    e.preventDefault();
+    
+    if (!drawing) return;
+
+    const pos = getTouchPos(e);
+    ctx.lineTo(pos.x, pos.y);
+    ctx.stroke();
+});
+
+canvas.addEventListener("touchend", () => {
+    drawing = false;
+});
+</script>
