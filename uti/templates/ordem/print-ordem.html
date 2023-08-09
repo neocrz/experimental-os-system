@@ -7,9 +7,7 @@
     .printableArea {
         margin: 0 auto;
     }
-{% if ordem.tipo_ordem == "Ordem de Serviço" %}
     {% include 'ordem/css/' + modelo + '.css' %}
-{% endif %}
 
 @media print {
     @page {
@@ -68,9 +66,8 @@ Impressão de Ordem
 </main>
 
 <div id="printableArea" class="printableArea">
-    {% if ordem.tipo_ordem == "Ordem de Serviço" %}
         {% include 'ordem/' + modelo + '.html' %}
-    {% endif %}
+
 </div>
 
 <div style="height: 200px;"></div>
