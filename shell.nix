@@ -1,7 +1,9 @@
-# shell.nix
-{ pkgs ? import <nixpkgs> {} }:
+{ pkgs ? import <nixpkgs> { }}:
+
+with pkgs;
+
 let
-  my-python-packages = ps: with ps; [
+  myEnv = python3.withPackages (ps: with ps; [
     flask
     requests
     flask-sqlalchemy
@@ -14,7 +16,8 @@ let
     flask-bcrypt
     email-validator
     bcrypt
-    # other python packages
-  ];
-  my-python = pkgs.python3.withPackages my-python-packages;
-in my-python.env
+  ]);
+in
+mkShell {
+  buildInputs = [ myEnv ];
+}
