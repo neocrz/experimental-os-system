@@ -31,7 +31,7 @@ def add_ordem():
         cliente_id = request.form.get('cliente_id')
         cliente = Cliente.query.get(cliente_id)
         equip_id = request.form.get('equip_id')
-        equip = Cliente.query.get(equip_id)
+        equip = Equipamento.query.get(equip_id)
         ordem_to_create = Ordem(
             constatado=form.constatado.data,
             cliente_id=cliente.id,
