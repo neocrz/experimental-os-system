@@ -27,6 +27,7 @@ def add_ordem():
     clientes = Cliente.query.all()
     equips = Equipamento.query.all()
     form = AddOrdemForm()
+    
     if form.validate_on_submit():
         cliente_id = request.form.get('cliente_id')
         cliente = Cliente.query.get(cliente_id)
@@ -35,7 +36,7 @@ def add_ordem():
         preco_km=valor_tostring(float(
                 (formatar_valor(form.km_final.data) - formatar_valor(form.km_inicial.data)) * 
                 formatar_valor(form.unit_km.data)
-                )),
+                ))
         ordem_to_create = Ordem(
             constatado=form.constatado.data,
             cliente_id=cliente.id,
@@ -57,11 +58,11 @@ def add_ordem():
             valor_km=valor_tostring(int(formatar_valor(form.km_final.data) - formatar_valor(form.km_inicial.data))),
             preco_km=preco_km,
             valor_material=form.valor_material.data,
-            valor_final=valor_tostring(formatar_valor(
-                form.valor_material.data) + 
+            valor_final=valor_tostring(
+                formatar_valor(form.valor_material.data) + 
                 formatar_valor(form.valor_visita.data) + 
                 formatar_valor(form.maod_obra.data) + 
-                preco_km
+                formatar_valor(preco_km)
                 ),
             )
         db.session.add(ordem_to_create)
