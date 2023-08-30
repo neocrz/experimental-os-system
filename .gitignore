@@ -1,6 +1,7 @@
 .venv
 uti/__pycache__
 .env
+.envbackup
 uti/data.sqlite
 fast.py
 uti/static/img/os_logo.svg
