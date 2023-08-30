@@ -231,17 +231,19 @@ class OrdemForm(FlaskForm):
             ]
     )
 
-    valor_km = StringField(
-        label="Km total:",
-        validators=[
-            Length( max=16, message="No máximo 16 caracteres para 'Km total'" )
-            ]
-    )
+    
 
     valor_material = StringField(
         label="Valor do Material:",
         validators=[
             Length( max=16, message="No máximo 16 caracteres para 'Valor do Material'" )
+            ]
+    )
+
+    unit_km = StringField(
+        label="Valor da Km:",
+        validators=[
+            Length( max=16, message="No máximo 16 caracteres para 'Valor da Km'." )
             ]
     )
 
@@ -256,6 +258,13 @@ class OrdemForm(FlaskForm):
         label="Km Final:",
         validators=[
             Length( max=16, message="No máximo 16 caracteres para 'Km Final'" )
+            ]
+    )
+
+    valor_km = StringField(
+        label="Km total:",
+        validators=[
+            Length( max=16, message="No máximo 16 caracteres para 'Km total'" )
             ]
     )
 

@@ -60,10 +60,12 @@ class Ordem(db.Model):
     tipo_material = db.Column(db.String(length=512), nullable=True, unique=False, default="Aplicado") # material 'Aplicado' ou 'Fornecido'
     valor_visita = db.Column(db.String(length=16), nullable=True, unique=False) 
     maod_obra = db.Column(db.String(length=16), nullable=True, unique=False)
-    valor_km = db.Column(db.String(length=16), nullable=True, unique=False)
     valor_material = db.Column(db.String(length=16), nullable=True, unique=False)
     km_inicial = db.Column(db.String(length=16), nullable=True, unique=False)
     km_final = db.Column(db.String(length=16), nullable=True, unique=False)
+    unit_km = db.Column(db.String(length=16), nullable=True, unique=False)
+    valor_km = db.Column(db.String(length=16), nullable=True, unique=False)
+    preco_km = db.Column(db.String(length=16), nullable=True, unique=False)
     valor_final = db.Column(db.String(length=16), nullable=True, unique=False)
     
     cli_signature = db.Column(db.String(length=9999), nullable=True, unique=False)

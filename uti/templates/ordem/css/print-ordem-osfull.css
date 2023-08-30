@@ -112,7 +112,7 @@
 
 .printable-ordem .print-preco {
     display: grid;
-    height: 80px;
+    height: 120px;
     gap: 5px;
     padding: 5pt 3pt;
     grid-template-columns: 1fr 1fr 1fr;
@@ -125,7 +125,7 @@
 }
 
 .printable-ordem .print-preco-items .total {
-    font-size: 11pt;
+    font-size: 12pt;
 }
 
 

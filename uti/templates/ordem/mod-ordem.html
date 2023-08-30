@@ -38,6 +38,7 @@ Modificar Equip
                 {{ render_field(form.valor_visita, placeholder="Valor da Visita", onkeyup="formataValorPreco(this)", onpaste="TrataPaste(this, event, 'preco')" , value=ordem.valor_visita) }}
                 {{ render_field(form.maod_obra, placeholder="Mão de Obra", onkeyup="formataValorPreco(this)", onpaste="TrataPaste(this, event, 'preco')" , value=ordem.maod_obra) }}
                 {{ render_field(form.valor_material, placeholder="Valor do Material", onkeyup="formataValorPreco(this)", onpaste="TrataPaste(this, event, 'preco')" , value=ordem.valor_material) }}
+                {{ render_field(form.unit_km, placeholder="Valor por Km", onkeyup="formataValorPreco(this)", onpaste="TrataPaste(this, event, 'preco')", value=ordem.unit_km ) }}
                 {{ render_field(form.km_inicial, placeholder="Km Inicial", value=ordem.km_inicial) }}
                 {{ render_field(form.km_final, placeholder="Km Final", value=ordem.km_final) }}
             </div>

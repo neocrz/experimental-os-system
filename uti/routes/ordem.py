@@ -32,6 +32,10 @@ def add_ordem():
         cliente = Cliente.query.get(cliente_id)
         equip_id = request.form.get('equip_id')
         equip = Equipamento.query.get(equip_id)
+        preco_km=valor_tostring(float(
+                (formatar_valor(form.km_final.data) - formatar_valor(form.km_inicial.data)) * 
+                formatar_valor(form.unit_km.data)
+                )),
         ordem_to_create = Ordem(
             constatado=form.constatado.data,
             cliente_id=cliente.id,
@@ -47,11 +51,18 @@ def add_ordem():
             material=form.material.data,
             valor_visita=form.valor_visita.data,
             maod_obra=form.maod_obra.data,
-            valor_km=valor_tostring(int(formatar_valor(form.km_final.data) - formatar_valor(form.km_inicial.data))),
-            valor_material=form.valor_material.data,
+            unit_km=form.unit_km.data,
             km_inicial=form.km_inicial.data,
             km_final=form.km_final.data,
-            valor_final=valor_tostring( formatar_valor(form.valor_material.data) + formatar_valor(form.valor_visita.data) + formatar_valor(form.maod_obra.data)),
+            valor_km=valor_tostring(int(formatar_valor(form.km_final.data) - formatar_valor(form.km_inicial.data))),
+            preco_km=preco_km,
+            valor_material=form.valor_material.data,
+            valor_final=valor_tostring(formatar_valor(
+                form.valor_material.data) + 
+                formatar_valor(form.valor_visita.data) + 
+                formatar_valor(form.maod_obra.data) + 
+                preco_km
+                ),
             )
         db.session.add(ordem_to_create)
         db.session.commit()
@@ -71,6 +82,9 @@ def mod_ordem():
     equips = Equipamento.query.all()
 
     if form.validate_on_submit():
+        preco_km=valor_tostring(float(
+                (formatar_valor(form.km_final.data) - formatar_valor(form.km_inicial.data)) * formatar_valor(form.unit_km.data)
+                ))
         cliente_id = request.form['cliente_id']
         cliente = Cliente.query.get(cliente_id)
         equip_id = request.form['equip_id']
@@ -90,10 +104,16 @@ def mod_ordem():
         ordem.valor_visita=form.valor_visita.data
         ordem.maod_obra=form.maod_obra.data
         ordem.valor_km=valor_tostring(int(formatar_valor(form.km_final.data) - formatar_valor(form.km_inicial.data)))
+        ordem.preco_km=preco_km
         ordem.valor_material=form.valor_material.data
         ordem.km_inicial=form.km_inicial.data
         ordem.km_final=form.km_final.data
-        ordem.valor_final=valor_tostring( formatar_valor(form.valor_material.data) + formatar_valor(form.valor_visita.data) + formatar_valor(form.maod_obra.data))
+        ordem.valor_final=valor_tostring( 
+            formatar_valor(form.valor_material.data) + 
+            formatar_valor(form.valor_visita.data) + 
+            formatar_valor(form.maod_obra.data) +
+            formatar_valor(preco_km)
+            )
 
         db.session.add(ordem)
         db.session.commit()

@@ -99,11 +99,13 @@
         <div class="print-preco-items">
             <p><strong>Km Inicial:</strong> {{ ordem.km_inicial }}</p>
             <p><strong>Km Final:</strong> {{ ordem.km_final }}</p>
+            <p><strong>Valor por Km:</strong> {{ ordem.unit_km }}</p>
             <p><strong>Km Total:</strong> {{ ordem.valor_km }}</p>
         </div>
         <div class="print-preco-items">
             <p><strong>Valor mão de Obra:</strong> R$ {{ ordem.maod_obra }}</p>
             <p><strong>Valor Deslocamento:</strong> R$ {{ ordem.valor_visita }}</p>
+            <p><strong>Valor Km:</strong> R$ {{ ordem.preco_km }}</p>
             <p><strong>Valor Material:</strong> R$ {{ ordem.valor_material }}</p>
             <p class="total"><strong>Valor Total:</strong> R$ {{ ordem.valor_final }}</p>
         </div>
