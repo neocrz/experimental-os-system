@@ -9,11 +9,11 @@ def load_user(user_id):
 
 
 class Cliente(db.Model):
+    __tablename__ = 'clientes'
     # empresas clientes
     id = db.Column(db.Integer(), primary_key=True)
     name = db.Column(db.String(length=64), nullable=False, unique=True)
-    razao_social = db.Column(db.String(length=64), nullable=False, unique=True)
-    __tablename__ = 'clientes'
+    razao_social = db.Column(db.String(length=64), nullable=False, unique=True)    
     endereco = db.Column(db.String(length=64), nullable=True, unique=False)
     num_endereco = db.Column(db.String(length=16), nullable=True, unique=False)
     bairro = db.Column(db.String(length=64), nullable=True, unique=False)
@@ -43,6 +43,32 @@ class Equipamento(db.Model):
     marca = db.Column(db.String(length=128), nullable=True, unique=False)
     sn = db.Column(db.String(length=64), nullable=True, unique=False)
     ordens = db.relationship('Ordem', backref='equipamento')
+
+
+class Fornecedor(db.Model):
+    __tablename__ = 'fornecedores'
+    id = db.Column(db.Integer(), primary_key=True)
+    name = db.Column(db.String(length=64), nullable=False, unique=True)
+    razao_social = db.Column(db.String(length=64), nullable=False, unique=True)    
+    endereco = db.Column(db.String(length=64), nullable=True, unique=False)
+    num_endereco = db.Column(db.String(length=16), nullable=True, unique=False)
+    bairro = db.Column(db.String(length=64), nullable=True, unique=False)
+    cidade = db.Column(db.String(length=32), nullable=True, unique=False)
+    estado = db.Column(db.String(length=32), nullable=True, unique=False)
+    cep = db.Column(db.String(length=32), nullable=True, unique=False)
+    telefone = db.Column(db.String(length=32), nullable=True, unique=False)
+    telefone2 = db.Column(db.String(length=32), nullable=True, unique=False)
+    telefone3 = db.Column(db.String(length=32), nullable=True, unique=False)
+    email = db.Column(db.String(length=64), nullable=True, unique=False)
+    contato = db.Column(db.String(length=64), nullable=True, unique=False)
+    insc_estadual = db.Column(db.String(length=32), nullable=True, unique=False)
+    insc_municipal = db.Column(db.String(length=32), nullable=True, unique=False)
+    cpf = db.Column(db.String(length=32), nullable=True, unique=False)
+    cnpj = db.Column(db.String(length=32), nullable=True, unique=False)
+    rg = db.Column(db.String(length=32), nullable=True, unique=False)
+    tipo_fornecedor = db.Column(db.String(length=10), nullable=False, default="Física") #Física ou Jurídica
+
+
 
 class Ordem(db.Model):
 
